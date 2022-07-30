@@ -3,12 +3,15 @@ name: Check and Lint
 on:
   pull_request:
     paths:
+      - '.github/workflows/check-and-lint.yml'
       - 'scripts/**'
       - '**.gd'
   push:
     paths:
+      - '.github/workflows/check-and-lint.yml'
       - 'scripts/**'
       - '**.gd'
+  workflow_dispatch:
 
 jobs:
   # Run the `gdlint` linting tool
