@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/forward_down.obj-260a9f3d98c1b78d7b99931c4b440b00.mesh"
+
+[deps]
+
+files=[ "res://.import/forward_down.obj-260a9f3d98c1b78d7b99931c4b440b00.mesh" ]
+
+source_file="res://assets/blocks/forward_down.obj"
+dest_files=[ "res://.import/forward_down.obj-260a9f3d98c1b78d7b99931c4b440b00.mesh", "res://.import/forward_down.obj-260a9f3d98c1b78d7b99931c4b440b00.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

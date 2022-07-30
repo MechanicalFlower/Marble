@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/blocks/piece.gd" type="Script" id=1]
+[ext_resource path="res://scripts/blocks/bumper.gd" type="Script" id=2]
+[ext_resource path="res://resources/blocks/default_piece_material.tres" type="Material" id=3]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=4]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CylinderMesh" id=2]
+height = 0.2
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.2
+bottom_radius = 0.2
+
+[sub_resource type="CylinderShape" id=4]
+height = 2.44273
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="Animation" id=6]
+resource_name = "bump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00613901, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.1, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, -0.1, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.7, 0.50035, 0.7 )
+
+[node name="Bumper" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="Base" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41963, 0 )
+material_override = ExtResource( 3 )
+mesh = SubResource( 1 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.090125, 0 )
+material_override = ExtResource( 3 )
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="Piston" type="MeshInstance" parent="Top"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00042, 0 )
+material_override = ExtResource( 3 )
+mesh = SubResource( 3 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24834, 0 )
+shape = SubResource( 4 )
+
+[node name="BeginArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="BeginArea"]
+shape = SubResource( 5 )
+
+[node name="EndArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EndArea"]
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bump = SubResource( 6 )
+
+[node name="Area" type="Area" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494116, 0 )
+shape = SubResource( 7 )
+
+[node name="BumpSound" type="AudioStreamPlayer3D" parent="Area"]
+stream = ExtResource( 4 )
+unit_size = 10.0
+
+[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]

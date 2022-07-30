@@ -1,0 +1,511 @@
+{
+	"pieces": [
+		{
+			"position": [
+				-5.88789,
+				40.70866,
+				-1.471792
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				39.70866,
+				2.528208
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				38.70866,
+				6.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				37.70866,
+				10.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				36.70866,
+				14.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				-1.88789,
+				35.70866,
+				16.52821
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/turn_left_covered.tscn"
+		},
+		{
+			"position": [
+				-0.88789,
+				34.70866,
+				13.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/turn_left_covered.tscn"
+		},
+		{
+			"position": [
+				-3.88789,
+				33.70866,
+				12.52821
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				32.70866,
+				16.52821
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/turn_left_3.tscn"
+		},
+		{
+			"position": [
+				-0.88789,
+				31.70866,
+				19.52821
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/turn_left_3.tscn"
+		},
+		{
+			"position": [
+				2.11211,
+				30.70866,
+				14.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				2.112109,
+				29.70866,
+				10.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				2.112109,
+				28.70866,
+				6.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				-2.836864,
+				24.93354,
+				5.604907
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/hopper3.tscn"
+		},
+		{
+			"position": [
+				-2.836864,
+				22.93354,
+				5.604907
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/tube_vertical_to_horizontal.tscn"
+		},
+		{
+			"position": [
+				0.163136,
+				21.93354,
+				5.604907
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				4.163136,
+				20.93354,
+				5.604907
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				8.163136,
+				19.93354,
+				5.604908
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/bumper.tscn"
+		},
+		{
+			"position": [
+				16.399506,
+				20.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/hopper3.tscn"
+		},
+		{
+			"position": [
+				16.399506,
+				18.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/tube_vertical_to_horizontal.tscn"
+		},
+		{
+			"position": [
+				19.399506,
+				17.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				23.399506,
+				17.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				27.399506,
+				17.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				31.399506,
+				16.630377,
+				5.647233
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/turn_left_3.tscn"
+		},
+		{
+			"position": [
+				34.399506,
+				15.630377,
+				0.647233
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				30.399506,
+				14.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				26.399506,
+				13.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				22.399506,
+				12.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				18.399506,
+				11.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				14.399506,
+				10.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				10.399506,
+				9.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				6.399506,
+				8.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				2.399506,
+				7.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-1.600494,
+				6.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.600494,
+				5.630377,
+				-1.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/looping.tscn"
+		},
+		{
+			"position": [
+				-7.600494,
+				5.630377,
+				-4.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				-11.600494,
+				5.630377,
+				-4.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				-15.600494,
+				5.630377,
+				-4.352767
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				-20.600494,
+				5.630377,
+				-4.352767
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/finish_line.tscn"
+		}
+	]
+}

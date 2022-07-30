@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/spectator_avatar.gd" type="Script" id=1]
+[ext_resource path="res://scripts/mouse_look.gd" type="Script" id=2]
+[ext_resource path="res://scripts/interaction.gd" type="Script" id=3]
+[ext_resource path="res://assets/sounds/select.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/select2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/rotate.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/no.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/place.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/remove.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/pick.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/nudge_up.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/nudge_down.wav" type="AudioStream" id=12]
+
+
+[node name="FPAvatar" type="Spatial"]
+script = ExtResource( 1 )
+speed = 8.0
+
+[node name="Camera" type="Camera" parent="."]
+script = ExtResource( 2 )
+sensitivity = 0.2
+distance = 0.0
+
+[node name="Interaction" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Select" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 4 )
+
+[node name="Select2" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 5 )
+
+[node name="Rotate" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 6 )
+
+[node name="No" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 7 )
+
+[node name="Place" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 8 )
+
+[node name="Remove" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 9 )
+
+[node name="Pick" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 10 )
+
+[node name="NudgeUp" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 11 )
+
+[node name="NudgeDown" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 12 )

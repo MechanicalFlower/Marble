@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+}
+
+[application]
+
+config/name="Marble"
+run/main_scene="res://scenes/main.tscn"
+config/icon="res://assets/icon.png"
+
+[audio]
+
+default_bus_layout="res://resources/default_bus_layout.tres"
+
+[autoload]
+
+DDD="*res://scripts/ddd.gd"
+
+[importer_defaults]
+
+wav={
+"compress/mode": 0,
+"edit/loop": false,
+"edit/normalize": false,
+"edit/trim": false,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
+}
+
+[layer_names]
+
+3d_physics/layer_1="Props"
+3d_physics/layer_2="ConnectAreas"
+3d_physics/layer_3="Marbles"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+common/enable_object_picking=false
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
