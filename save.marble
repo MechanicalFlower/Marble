@@ -11,7 +11,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -24,7 +24,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -37,7 +37,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -50,7 +50,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -63,7 +63,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/turn_left_2.tscn"
+			"type": "res://scenes/blocks/turn_left_2.tscn"
 		},
 		{
 			"position": [
@@ -76,7 +76,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/turn_left_covered.tscn"
+			"type": "res://scenes/blocks/turn_left_covered.tscn"
 		},
 		{
 			"position": [
@@ -89,7 +89,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/turn_left_covered.tscn"
+			"type": "res://scenes/blocks/turn_left_covered.tscn"
 		},
 		{
 			"position": [
@@ -102,7 +102,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/turn_left_2.tscn"
+			"type": "res://scenes/blocks/turn_left_2.tscn"
 		},
 		{
 			"position": [
@@ -115,7 +115,7 @@
 				0,
 				0
 			],
-			"type": "res://blocks/turn_left_3.tscn"
+			"type": "res://scenes/blocks/turn_left_3.tscn"
 		},
 		{
 			"position": [
@@ -128,7 +128,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/turn_left_3.tscn"
+			"type": "res://scenes/blocks/turn_left_3.tscn"
 		},
 		{
 			"position": [
@@ -141,7 +141,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -154,7 +154,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -167,7 +167,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/turn_left_2.tscn"
+			"type": "res://scenes/blocks/turn_left_2.tscn"
 		},
 		{
 			"position": [
@@ -180,7 +180,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/hopper3.tscn"
+			"type": "res://scenes/blocks/hopper3.tscn"
 		},
 		{
 			"position": [
@@ -193,7 +193,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/tube_vertical_to_horizontal.tscn"
+			"type": "res://scenes/blocks/tube_vertical_to_horizontal.tscn"
 		},
 		{
 			"position": [
@@ -206,7 +206,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -219,7 +219,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -232,7 +232,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/bumper.tscn"
+			"type": "res://scenes/blocks/bumper.tscn"
 		},
 		{
 			"position": [
@@ -245,7 +245,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/hopper3.tscn"
+			"type": "res://scenes/blocks/hopper3.tscn"
 		},
 		{
 			"position": [
@@ -258,7 +258,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/tube_vertical_to_horizontal.tscn"
+			"type": "res://scenes/blocks/tube_vertical_to_horizontal.tscn"
 		},
 		{
 			"position": [
@@ -271,7 +271,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -284,7 +284,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -297,7 +297,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -310,7 +310,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/turn_left_3.tscn"
+			"type": "res://scenes/blocks/turn_left_3.tscn"
 		},
 		{
 			"position": [
@@ -323,7 +323,7 @@
 				3.141593,
 				0
 			],
-			"type": "res://blocks/turn_left_2.tscn"
+			"type": "res://scenes/blocks/turn_left_2.tscn"
 		},
 		{
 			"position": [
@@ -336,7 +336,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -349,7 +349,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -362,7 +362,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -375,7 +375,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -388,7 +388,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -401,7 +401,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -414,7 +414,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -427,7 +427,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -440,7 +440,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward_down.tscn"
+			"type": "res://scenes/blocks/forward_down.tscn"
 		},
 		{
 			"position": [
@@ -453,7 +453,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/looping.tscn"
+			"type": "res://scenes/blocks/looping.tscn"
 		},
 		{
 			"position": [
@@ -466,7 +466,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -479,7 +479,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -492,7 +492,7 @@
 				4.712389,
 				0
 			],
-			"type": "res://blocks/forward.tscn"
+			"type": "res://scenes/blocks/forward.tscn"
 		},
 		{
 			"position": [
@@ -505,7 +505,7 @@
 				1.570796,
 				0
 			],
-			"type": "res://blocks/finish_line.tscn"
+			"type": "res://scenes/blocks/finish_line.tscn"
 		}
 	]
 }
