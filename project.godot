@@ -8,23 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
-
 [application]
 
 config/name="Marble"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/gui/splash_screen.tscn"
 config/icon="res://assets/icon.png"
 
 [audio]
 
 default_bus_layout="res://resources/default_bus_layout.tres"
-
-[autoload]
-
-DDD="*res://scripts/ddd.gd"
 
 [importer_defaults]
 

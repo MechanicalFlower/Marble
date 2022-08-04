@@ -1,6 +1,6 @@
 extends Area
 
-var Group = load("res://scripts/groups.gd")
+var Group = load("res://scripts/constants/groups.gd")
 
 onready var _animation_player = get_parent().get_node("AnimationPlayer")
 onready var _bump_sound = get_node("BumpSound")

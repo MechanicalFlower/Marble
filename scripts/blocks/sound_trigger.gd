@@ -1,6 +1,6 @@
 extends Area
 
-var Group = load("res://scripts/groups.gd")
+var Group = load("res://scripts/constants/groups.gd")
 
 onready var _player = get_node("Sound")
 

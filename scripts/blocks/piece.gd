@@ -1,13 +1,13 @@
 extends StaticBody
 
-const CollisionLayers = preload("res://scripts/collision_layers.gd")
+const CollisionLayers = preload("res://scripts/constants/collision_layers.gd")
 
 const DefaultPieceMaterial = preload("res://resources/blocks/default_piece_material.tres")
 const DefaultGhostMaterial = preload("res://resources/blocks/default_ghost_material.tres")
 
 export(bool) var empty_material_override = false
 
-var Group = load("res://scripts/groups.gd")
+var Group = load("res://scripts/constants/groups.gd")
 
 var _begin_area = null
 var _end_area = null

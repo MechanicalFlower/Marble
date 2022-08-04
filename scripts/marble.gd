@@ -2,14 +2,12 @@ extends RigidBody
 
 const AVG_AMOUNT = 10
 
-var Group = load("res://scripts/groups.gd")
+var Group = load("res://scripts/constants/groups.gd")
 
 var _ground_normal = Vector3.UP
 var _avg_ground_normal = Vector3.UP
 var _avg_pos = Vector3()
 var _last_contact_time = 0.0
-
-onready var _visual = get_node("Node/Scene Root")
 
 
 func _ready():
@@ -49,16 +47,3 @@ func _integrate_forces(state):
 	_avg_ground_normal = (_avg_ground_normal * (a - 1) + _ground_normal) / a
 
 	_avg_pos = (_avg_pos * (a - 1.0) + translation) / a
-	var forward = (translation - _avg_pos).normalized()
-
-	_visual.translation = translation
-	var tmp_scale = _visual.scale
-	var up = get_avg_ground_normal()
-
-	var off = Vector3()
-	if now - _last_contact_time < 500.0:
-		off = 0.5 * up * sin(OS.get_ticks_msec() / 70.0)
-
-	_visual.look_at(_visual.translation + forward + off, up)
-	# TODO look_at resets scale in Godot 3.1, was fixed in master
-	_visual.scale = tmp_scale

@@ -31,7 +31,6 @@ func _physics_process(delta):
 	pitch_scale = clamp(_speed * 0.5, 0.1, 10.0)
 	var linear_vol = clamp(_speed * 0.5 - 2.0, 0.0, 1.0)
 	unit_db = linear2db(linear_vol)
-	#DDD.set_text("linear", linear_vol)
 
 
 func _on_Marble_body_entered(_body):

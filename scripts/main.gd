@@ -1,69 +1,71 @@
 extends Node
 
-const EditAvatarScene = preload("res://scenes/first_person_avatar.tscn")
-const MarbleAvatarScene = preload("res://scenes/marble_camera.tscn")
+const RotateCamera = preload("res://scenes/camera/rotate_camera.tscn")
+const FlyAvatarScene = preload("res://scenes/camera/first_person_avatar.tscn")
+const FocusAvatarScene = preload("res://scenes/camera/marble_camera.tscn")
+const Race = preload("res://scenes/race.tscn")
 const MarbleScene = preload("res://scenes/marble.tscn")
 
-const MODE_EDIT = 0
-const MODE_MARBLE = 1
+const MODE_MARBLE = 0
+const MODE_FOCUS = 1
+const MODE_START = 2
+const MODE_PAUSE = 3
 
-var Group = load("res://scripts/groups.gd")
+var Group = load("res://scripts/constants/groups.gd")
 
-var _edit_avatar = null
-var _marble_avatar = null
-var _mode = MODE_EDIT
+var _rotate_camera = null
+var _fly_avatar = null
+var _focus_avatar = null
+var _race = null
+var _mode = MODE_START
+var _current_marble_index = 0
 
 onready var _player_spawn = get_node("PlayerSpawn")
 onready var _pause_menu = get_node("Menu")
-onready var _load_sound = get_node("LoadSound")
-onready var _save_sound = get_node("SaveSound")
 
 
 func _ready():
-	_edit_avatar = EditAvatarScene.instance()
-	_marble_avatar = MarbleAvatarScene.instance()
+	_rotate_camera = RotateCamera.instance()
+	_fly_avatar = FlyAvatarScene.instance()
+	_focus_avatar = FocusAvatarScene.instance()
 
-	_edit_avatar.translation = _player_spawn.translation
+	_race = Race.instance()
+	_race.hide()
+	add_child(_race)
 
-	set_mode(MODE_EDIT)
+	_fly_avatar.translation = _player_spawn.translation
+
+	set_mode(_mode)
 
 
 func _exit_tree():
-	if not _edit_avatar.is_inside_tree():
-		_edit_avatar.free()
-	if not _marble_avatar.is_inside_tree():
-		_marble_avatar.free()
+	if not _fly_avatar.is_inside_tree():
+		_fly_avatar.free()
+	if not _focus_avatar.is_inside_tree():
+		_focus_avatar.free()
 
 
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			match event.scancode:
-				KEY_M:
-					try_place_start_marble()
 				KEY_TAB:
-					if _mode == MODE_EDIT:
-						var marble = try_place_start_marble()
-						if marble != null:
-							set_mode(MODE_MARBLE, marble)
+					if _mode == MODE_MARBLE:
+						try_place_start_marble()
+						var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
+						if len(marbles) != 0:
+							set_mode(MODE_FOCUS, marbles[_current_marble_index])
+							_current_marble_index += 1
 						else:
 							print("Could not place start marble")
 					else:
-						set_mode(MODE_EDIT)
+						set_mode(MODE_MARBLE)
 				KEY_ESCAPE:
+					if _mode != MODE_PAUSE:
+						set_mode(MODE_PAUSE)
+				KEY_R:
 					if _mode == MODE_MARBLE:
-						set_mode(MODE_EDIT)
-					else:
-						if _pause_menu.visible:
-							_pause_menu.close()
-						else:
-							_pause_menu.show()
-
-
-#				KEY_K:
-#					save_machine()
-#				KEY_L:
-#					load_machine()
+						_race.generate_race()
 
 
 func try_place_start_marble():
@@ -87,27 +89,52 @@ func get_highest_piece():
 	return highest_piece
 
 
-func set_mode(mode, target_marble = null):
-	_mode = mode
+func replace_camera(new_camera, old_cameras):
+	# Ensure old cameras are remove from the current scene
+	for camera in old_cameras:
+		if camera.is_inside_tree():
+			camera.get_parent().remove_child(camera)
+	# And create a new one
+	if not new_camera.is_inside_tree():
+		add_child(new_camera)
 
-	if _mode == MODE_MARBLE:
+
+func set_mode(mode, target_marble = null):
+	if mode == MODE_FOCUS and _mode != MODE_MARBLE:
+		print("Cannot switch to focus  mode, you need to be in marble mode first")
+		return
+
+	if mode == MODE_FOCUS:
 		var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
 		if len(marbles) == 0:
-			print("Cannot switch to marble mode, there are no marbles")
+			print("Cannot switch to focus  mode, there are no marbles")
 			return
-		print("Switch to marble mode")
-		if _edit_avatar.is_inside_tree():
-			remove_from_tree(_edit_avatar)
-		if not _marble_avatar.is_inside_tree():
-			add_child(_marble_avatar)
-		_marble_avatar.set_target(target_marble)
 
-	else:
-		print("Switch to edit mode")
-		if _marble_avatar.is_inside_tree():
-			_marble_avatar.get_parent().remove_child(_marble_avatar)
-		if not _edit_avatar.is_inside_tree():
-			add_child(_edit_avatar)
+	if (_mode == MODE_PAUSE or _mode == MODE_START) and mode != _mode:
+		# Close pause menu
+		if _pause_menu.visible:
+			_pause_menu.close()
+
+	_mode = mode
+
+	if _mode == MODE_FOCUS:
+		print("Switch to focus mode")
+		replace_camera(_focus_avatar, [_fly_avatar, _rotate_camera])
+		_focus_avatar.set_target(target_marble)
+
+	elif _mode == MODE_MARBLE:
+		print("Switch to marble mode")
+		replace_camera(_fly_avatar, [_focus_avatar, _rotate_camera])
+
+	elif _mode == MODE_START:
+		print("Switch to start mode")
+		_pause_menu.open(_pause_menu.MODE_START)
+		replace_camera(_rotate_camera, [_focus_avatar, _fly_avatar])
+
+	elif _mode == MODE_PAUSE:
+		print("Switch to pause mode")
+		_pause_menu.open(_pause_menu.MODE_PAUSE)
+		replace_camera(_rotate_camera, [_focus_avatar, _fly_avatar])
 
 
 static func remove_from_tree(node):
@@ -115,71 +142,13 @@ static func remove_from_tree(node):
 
 
 func _process(_delta):
-	if not _marble_avatar.has_target():
-		if _mode == MODE_MARBLE:
-			set_mode(MODE_EDIT)
+	if not _pause_menu.visible:
+		if _mode == MODE_START:
+			_race.generate_race()
+			_race.show()
+		if _mode == MODE_PAUSE or _mode == MODE_START:
+			set_mode(MODE_MARBLE)
 
-
-func save_machine(fpath):
-	var pieces = get_tree().get_nodes_in_group(Group.PIECES)
-	var pieces_data = []
-	for piece in pieces:
-		var pos = piece.translation
-		var rot = piece.rotation
-		var piece_data = {
-			"type": piece.filename,
-			"position": [pos.x, pos.y, pos.z],
-			"rotation": [rot.x, rot.y, rot.z]
-		}
-		pieces_data.push_back(piece_data)
-	var data = {"pieces": pieces_data}
-	var json = JSON.print(data, "\t", true)
-	var f = File.new()
-	var err = f.open(fpath, File.WRITE)
-	if err != OK:
-		print("Could not save file ", fpath, ", error ", err)
-		return
-	f.store_string(json)
-	f.close()
-
-
-static func array_to_vec3(a):
-	return Vector3(a[0], a[1], a[2])
-
-
-func load_machine(fpath):
-	var f = File.new()
-	var err = f.open(fpath, File.READ)
-	if err != OK:
-		print("Could not open file ", fpath, ", error ", err)
-		return
-	var json = f.get_as_text()
-	var json_res = JSON.parse(json)
-	if json_res.error != OK:
-		print("Error when loading json ", fpath, ": ", json_res.error_string)
-		return
-	var data = json_res.result
-
-	var pieces = get_tree().get_nodes_in_group(Group.PIECES)
-	for piece in pieces:
-		piece.queue_free()
-
-	for piece_data in data.pieces:
-		var piece_scene = load(piece_data.type)
-		var piece = piece_scene.instance()
-		var pos = array_to_vec3(piece_data.position)
-		var rot = array_to_vec3(piece_data.rotation)
-		piece.translation = pos
-		piece.rotation = rot
-		add_child(piece)
-		piece.set_ghost(false)
-
-
-func _on_Menu_load_path_selected(fpath):
-	load_machine(fpath)
-	_load_sound.play()
-
-
-func _on_Menu_save_path_selected(fpath):
-	save_machine(fpath)
-	_save_sound.play()
+	if not _focus_avatar.has_target():
+		if _mode == MODE_FOCUS:
+			set_mode(MODE_MARBLE)
