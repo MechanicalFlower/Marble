@@ -11,6 +11,8 @@ const MODE_FOCUS = 1
 const MODE_START = 2
 const MODE_PAUSE = 3
 
+const TIME_PERIOD = 5 # 500ms
+
 var Group = load("res://scripts/constants/groups.gd")
 
 var _rotate_camera = null
@@ -19,6 +21,7 @@ var _focus_avatar = null
 var _race = null
 var _mode = MODE_START
 var _current_marble_index = 0
+var _time = TIME_PERIOD
 
 onready var _player_spawn = get_node("PlayerSpawn")
 onready var _pause_menu = get_node("Menu")
@@ -30,10 +33,10 @@ func _ready():
 	_focus_avatar = FocusAvatarScene.instance()
 
 	_race = Race.instance()
-	_race.hide()
 	add_child(_race)
 
 	_fly_avatar.translation = _player_spawn.translation
+	_fly_avatar.rotate_y(90 * PI / 180)
 
 	set_mode(_mode)
 
@@ -63,6 +66,9 @@ func _unhandled_input(event):
 				KEY_ESCAPE:
 					if _mode != MODE_PAUSE:
 						set_mode(MODE_PAUSE)
+				KEY_T:
+					if _mode == MODE_MARBLE:
+						try_place_start_marble()
 				KEY_R:
 					if _mode == MODE_MARBLE:
 						_race.generate_race()
@@ -73,7 +79,7 @@ func try_place_start_marble():
 	if piece == null:
 		return null
 	var marble = MarbleScene.instance()
-	marble.translation = piece.translation + Vector3.UP * 5.0
+	marble.translation = piece.translation + Vector3.UP * 5.0 + Vector3.FORWARD * ((randi() % 6) - 3)
 	add_child(marble)
 	return marble
 
@@ -141,11 +147,15 @@ static func remove_from_tree(node):
 	node.get_parent().remove_child(node)
 
 
-func _process(_delta):
-	if not _pause_menu.visible:
+func _process(delta):
+	_time += delta
+	if _time > TIME_PERIOD:
 		if _mode == MODE_START:
 			_race.generate_race()
-			_race.show()
+			# Reset timer
+			_time = 0
+
+	if not _pause_menu.visible:
 		if _mode == MODE_PAUSE or _mode == MODE_START:
 			set_mode(MODE_MARBLE)
 

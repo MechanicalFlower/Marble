@@ -25,9 +25,14 @@ func generate_race():
 
 	randomize()
 
+	_old_ghost = null
+	_previous_info_piece = null
+	_previous_rotation_index = 0
+
+	place_piece(-2)
 	for step in _step_count:
 		# select a random piece
-		var piece_index = umod(randi(), len(PieceList.PIECES) - 1)
+		var piece_index = umod(randi(), len(PieceList.PIECES) - 2)
 		place_piece(piece_index)
 	place_piece(-1)
 
@@ -46,7 +51,7 @@ func place_piece(piece_index):
 		rotation_index = (rotation_index - 1) % 4
 	ghost.rotate_y(float(rotation_index) * PI / 2.0)
 
-	var offset = Vector3(0, 25, 0)
+	var offset = Vector3(-10, 25, 0)
 	if _old_ghost != null:
 		offset = _old_ghost.get_end().global_transform.origin - ghost.get_begin().global_transform.origin
 	ghost.global_translate(offset)

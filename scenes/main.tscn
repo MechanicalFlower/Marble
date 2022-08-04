@@ -1,19 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/double_esc_exit.gd" type="Script" id=3]
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=4]
-[ext_resource path="res://resources/environment/ground_material.tres" type="Material" id=5]
-[ext_resource path="res://scenes/environment/crate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gui/menu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 50, 1, 50 )
-
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 100, 2, 100 )
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -41,45 +33,6 @@ texture = ExtResource( 4 )
 
 [node name="PlayerSpawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2655, 0 )
-
-[node name="Env" type="Spatial" parent="."]
-
-[node name="Ground" type="StaticBody" parent="Env"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Env/Ground"]
-shape = SubResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Env/Ground"]
-mesh = SubResource( 3 )
-material/0 = ExtResource( 5 )
-
-[node name="Crate" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8923, 0, -45.296 )
-
-[node name="Crate2" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( 0.716537, 0, 0.697549, 0, 1, 0, -0.697549, 0, 0.716537, -46.9861, 0, -43.625 )
-
-[node name="Crate3" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( -0.252066, 0, 0.96771, 0, 1, 0, -0.96771, 0, -0.252066, -47.038, 0, -38.2278 )
-
-[node name="Crate4" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( -0.252066, 0, 0.96771, 0, 1, 0, -0.96771, 0, -0.252066, -45.0797, 0, 44.3638 )
-
-[node name="Crate6" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( 0.600765, 0, 0.799426, 0, 1, 0, -0.799426, 0, 0.600765, -41.2908, -4.76837e-07, 45.6443 )
-
-[node name="Crate7" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( 0.98664, 0, -0.162914, 0, 1, 0, 0.162914, 0, 0.98664, -46.6933, 0, 37.3648 )
-
-[node name="Crate8" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( 0.300927, 0, 0.953647, 0, 1, 0, -0.953647, 0, 0.300927, 45.0806, 0, 44.5974 )
-
-[node name="Crate9" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( -0.18096, 0, 0.98349, 0, 1, 0, -0.98349, 0, -0.18096, 47.4921, 0, 39.2818 )
-
-[node name="Crate5" parent="Env" instance=ExtResource( 6 )]
-transform = Transform( -0.07583, 0, 0.997121, 0, 1, 0, -0.997121, 0, -0.07583, -45.0797, 1.87385, 44.3638 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

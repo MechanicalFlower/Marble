@@ -18,6 +18,7 @@ const PIECES = [
 	# preload("res://scenes/blocks/looping.tscn"),
 	# preload("res://scenes/blocks/tube_vertical_to_horizontal.tscn"),
 	# preload("res://scenes/blocks/bumper.tscn"),
+	preload("res://scenes/blocks/standing_start.tscn"),
 	preload("res://scenes/blocks/finish_line.tscn")
 ]
 
@@ -30,5 +31,5 @@ const INFOS = [
 	FORWARD, # FORWARD, FORWARD,
 	TURN_LEFT, TURN_LEFT, TURN_LEFT, TURN_RIGHT, TURN_RIGHT, TURN_RIGHT,
 	FORWARD, FORWARD, FORWARD,
-	FORWARD, # FORWARD, FORWARD, FORWARD
+	FORWARD, FORWARD, # FORWARD, FORWARD, FORWARD
 ]
