@@ -1,60 +1,41 @@
+class_name MarbleCamera
+
 extends Spatial
 
-const AVG_AMOUNT = 16
+const AVG_AMOUNT := 16
 
 var _target = null
-var _prev_pos = Vector3()
-var _prev_up = Vector3(0, 1, 0)
+var _prev_pos := Vector3.ZERO
+var _prev_up := Vector3.UP
 
-onready var _camera = get_node("Camera")
+onready var _camera := get_node("%Camera") as Camera
 
 
-func set_target(t):
-	_target = t
-	#_target.hide()
+func set_target(target) -> void:
+	_target = target
 	if _target != null:
 		translation = _target.translation + Vector3(0.1, 1, 0.1)
 	set_physics_process(_target != null)
 
 
-func has_target():
+func has_target() -> bool:
 	return _target != null and is_instance_valid(_target)
 
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if not has_target():
 		_target = null
-		print("No target")
 		set_physics_process(false)
 		return
-	#process_avg(delta)
-	process_ccd(delta)
+	process_ccd()
 
 
-func process_ccd(_delta):
-	var distance = 4.0
+func process_ccd() -> void:
+	var distance := 4.0
 	var target_pos = _target.translation
-	var normal = Vector3.UP  #_target.get_avg_ground_normal()
-	# var v_offset = Vector3(0, 2, 0)
+	var normal = Vector3.UP
 	look_at(target_pos, normal)
 	var forward = -transform.basis.z
 	var d = target_pos.distance_to(translation)
 	if d > distance:
 		translation = target_pos - forward * distance
-
-
-func process_avg(_delta):
-	var pos = _target.translation
-	var diff = pos - _prev_pos
-
-#	var state = get_viewport().world.direct_space_state
-#	state.intersect_ray(pos, pos
-
-	if diff == Vector3():
-		print("Diff is zero")
-		return
-
-	translation = _prev_pos
-	look_at(pos, _target.get_avg_ground_normal())
-	var avg = float(AVG_AMOUNT)
-	_prev_pos = (_prev_pos * (avg - 1.0) + pos) / avg

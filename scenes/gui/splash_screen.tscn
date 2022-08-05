@@ -38,7 +38,7 @@ texture = ExtResource( 3 )
 
 [node name="MechanicalFlower" type="AnimatedSprite" parent="CenterContainer"]
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [connection signal="animation_finished" from="CenterContainer/MechanicalFlower" to="." method="_on_AnimatedSprite_animation_finished"]

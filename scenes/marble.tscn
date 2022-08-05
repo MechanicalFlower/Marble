@@ -17,6 +17,7 @@ roughness = 0.29
 radius = 0.3
 
 [node name="Marble" type="RigidBody"]
+pause_mode = 2
 collision_layer = 4
 contacts_reported = 2
 contact_monitor = true
@@ -39,6 +40,13 @@ script = ExtResource( 4 )
 stream = ExtResource( 5 )
 unit_size = 3.0
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Name" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+billboard = 1
+text = "toto"
+uppercase = true
 
 [connection signal="body_entered" from="." to="RollSound" method="_on_Marble_body_entered"]
 [connection signal="body_exited" from="." to="RollSound" method="_on_Marble_body_exited"]

@@ -8,15 +8,99 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area",
+"class": "Bumper",
+"language": "GDScript",
+"path": "res://scripts/blocks/bumper.gd"
+}, {
+"base": "Area",
+"class": "FinishLine",
+"language": "GDScript",
+"path": "res://scripts/blocks/finish_line.gd"
+}, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://scripts/main.gd"
+}, {
+"base": "RigidBody",
+"class": "Marble",
+"language": "GDScript",
+"path": "res://scripts/marble.gd"
+}, {
+"base": "Spatial",
+"class": "MarbleCamera",
+"language": "GDScript",
+"path": "res://scripts/camera/marble_camera.gd"
+}, {
+"base": "Control",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://scripts/gui/menu.gd"
+}, {
+"base": "Spatial",
+"class": "MouseLook",
+"language": "GDScript",
+"path": "res://scripts/mouse_look.gd"
+}, {
+"base": "StaticBody",
+"class": "Piece",
+"language": "GDScript",
+"path": "res://scripts/blocks/piece.gd"
+}, {
+"base": "Node",
+"class": "Race",
+"language": "GDScript",
+"path": "res://scripts/race.gd"
+}, {
+"base": "VBoxContainer",
+"class": "Ranking",
+"language": "GDScript",
+"path": "res://scripts/gui/ranking.gd"
+}, {
+"base": "AudioStreamPlayer3D",
+"class": "RollSound",
+"language": "GDScript",
+"path": "res://scripts/roll_sound.gd"
+}, {
+"base": "Spatial",
+"class": "RotationCamera",
+"language": "GDScript",
+"path": "res://scripts/camera/rotation_camera.gd"
+}, {
+"base": "Spatial",
+"class": "SpectatorAvatar",
+"language": "GDScript",
+"path": "res://scripts/camera/spectator_camera.gd"
+}, {
+"base": "Control",
+"class": "SplashScreen",
+"language": "GDScript",
+"path": "res://scripts/gui/splash_screen.gd"
+} ]
+_global_script_class_icons={
+"Bumper": "",
+"FinishLine": "",
+"Main": "",
+"Marble": "",
+"MarbleCamera": "",
+"Menu": "",
+"MouseLook": "",
+"Piece": "",
+"Race": "",
+"Ranking": "",
+"RollSound": "",
+"RotationCamera": "",
+"SpectatorAvatar": "",
+"SplashScreen": ""
+}
+
 [application]
 
 config/name="Marble"
 run/main_scene="res://scenes/gui/splash_screen.tscn"
 config/icon="res://assets/icon.png"
-
-[audio]
-
-default_bus_layout="res://resources/default_bus_layout.tres"
 
 [importer_defaults]
 
@@ -44,4 +128,5 @@ common/enable_object_picking=false
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

@@ -45,27 +45,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41963, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 1 )
 skeleton = NodePath("")
-material/0 = null
 
 [node name="Top" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.090125, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 2 )
 skeleton = NodePath("")
-material/0 = null
 
 [node name="Piston" type="MeshInstance" parent="Top"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00042, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 3 )
 skeleton = NodePath("")
-material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24834, 0 )
 shape = SubResource( 4 )
 
 [node name="BeginArea" type="Area" parent="."]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
 collision_layer = 2
 collision_mask = 0
@@ -74,6 +72,7 @@ collision_mask = 0
 shape = SubResource( 5 )
 
 [node name="EndArea" type="Area" parent="."]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1 )
 collision_layer = 2
 collision_mask = 0
@@ -82,6 +81,7 @@ collision_mask = 0
 shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 anims/bump = SubResource( 6 )
 
 [node name="Area" type="Area" parent="."]
@@ -92,6 +92,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494116, 0 )
 shape = SubResource( 7 )
 
 [node name="BumpSound" type="AudioStreamPlayer3D" parent="Area"]
+unique_name_in_owner = true
 stream = ExtResource( 4 )
 unit_size = 10.0
 

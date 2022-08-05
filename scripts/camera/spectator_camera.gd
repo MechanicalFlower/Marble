@@ -1,16 +1,18 @@
+class_name SpectatorCamera
+
 extends Spatial
 
-export var speed = 10.0
+export var speed := 10.0
+
+onready var _camera := get_node("%Camera") as Camera
 
 
-func _physics_process(delta):
-	var head = get_node("Camera")
+func _physics_process(delta: float) -> void:
+	var forward = -_camera.transform.basis.z
+	var right = _camera.transform.basis.x
+	var up = Vector3.UP
 
-	var forward = -head.transform.basis.z
-	var right = head.transform.basis.x
-	var up = Vector3(0, 1, 0)
-
-	var dir = Vector3()
+	var dir = Vector3.ZERO
 
 	if Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_A):
 		dir -= right
@@ -33,7 +35,4 @@ func _physics_process(delta):
 	var dir_len = dir.length()
 	if dir_len > 0.01:
 		dir /= dir_len
-
-		var motor = dir * (speed * delta)
-
-		translate(motor)
+		translate(dir * (speed * delta))

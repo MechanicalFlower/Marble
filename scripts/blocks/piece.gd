@@ -1,52 +1,38 @@
+class_name Piece
+
 extends StaticBody
 
-const CollisionLayers = preload("res://scripts/constants/collision_layers.gd")
+const CollisionLayers := preload("res://scripts/constants/collision_layers.gd")
 
-const DefaultPieceMaterial = preload("res://resources/blocks/default_piece_material.tres")
-const DefaultGhostMaterial = preload("res://resources/blocks/default_ghost_material.tres")
+const DefaultPieceMaterial := preload("res://resources/blocks/default_piece_material.tres")
+const DefaultGhostMaterial := preload("res://resources/blocks/default_ghost_material.tres")
 
-export(bool) var empty_material_override = false
+export var empty_material_override := false
 
-var Group = load("res://scripts/constants/groups.gd")
+var Group := load("res://scripts/constants/groups.gd")
 
-var _begin_area = null
-var _end_area = null
-
-
-func _ready():
-	_begin_area = get_node("BeginArea")
-	_end_area = get_node("EndArea")
+onready var _begin_area := get_node("%BeginArea") as Area
+onready var _end_area := get_node("%EndArea") as Area
 
 
-func get_piece_index(piece_list):
-	for i in len(piece_list):
-		var piece = piece_list[i]
-		if piece.resource_path == filename:
-			return i
-	return -1
+func _init() -> void:
+	add_to_group(Group.PIECES)
 
 
-func set_ghost(is_ghost):
-	var mat
+func _ready() -> void:
+	# Setup collision layers
+	collision_layer = 1 << CollisionLayers.PROPS
+	_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
+	_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
 
-	if is_ghost:
-		mat = DefaultGhostMaterial
-		collision_layer = 0
-		_begin_area.collision_layer = 0
-		_end_area.collision_layer = 0
-		if is_in_group(Group.PIECES):
-			remove_from_group(Group.PIECES)
+	set_material()
 
-	else:
-		if empty_material_override:
-			mat = null
-		else:
-			mat = DefaultPieceMaterial
-		collision_layer = 1 << CollisionLayers.PROPS
-		_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
-		_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
-		if not is_in_group(Group.PIECES):
-			add_to_group(Group.PIECES)
+
+func set_material() -> void:
+	var mat = null
+
+	if not empty_material_override:
+		mat = DefaultPieceMaterial
 
 	for i in get_child_count():
 		var child = get_child(i)
@@ -54,9 +40,9 @@ func set_ghost(is_ghost):
 			child.material_override = mat
 
 
-func get_begin():
+func get_begin() -> Area:
 	return _begin_area
 
 
-func get_end():
+func get_end() -> Area:
 	return _end_area

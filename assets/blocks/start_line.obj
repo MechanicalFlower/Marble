@@ -1,6 +1,6 @@
-# Blender v2.91.2 OBJ File: 'standing_start.blend'
+# Blender v2.91.2 OBJ File: 'start_line.blend'
 # www.blender.org
-mtllib standing_start.mtl
+mtllib start_line.mtl
 o Cube
 v -2.071211 4.300000 -3.500000
 v -2.071211 -4.300000 -3.500000

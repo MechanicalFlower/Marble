@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/camera/rotation_camera.gd" type="Script" id=1]
+
+[node name="RotationCamera" type="Spatial"]
+script = ExtResource( 1 )
+rotation_speed = 0.25
+
+[node name="Camera" type="Camera" parent="."]
+unique_name_in_owner = true

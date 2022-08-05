@@ -41,7 +41,8 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 
-[node name="TextEdit" type="TextEdit" parent="Panel/VBoxContainer"]
+[node name="Input" type="TextEdit" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 54.0
 margin_right = 368.0
 margin_bottom = 86.0
@@ -54,6 +55,7 @@ margin_bottom = 98.0
 rect_min_size = Vector2( 0, 8 )
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 102.0
 margin_right = 368.0
 margin_bottom = 134.0
@@ -61,6 +63,7 @@ rect_min_size = Vector2( 0, 32 )
 text = "Start"
 
 [node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 margin_top = 138.0
 margin_right = 368.0
@@ -69,6 +72,7 @@ rect_min_size = Vector2( 0, 32 )
 text = "Resume"
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 margin_top = 174.0
 margin_right = 368.0
@@ -77,6 +81,7 @@ rect_min_size = Vector2( 0, 32 )
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 138.0
 margin_right = 368.0
 margin_bottom = 170.0
@@ -98,6 +103,7 @@ text = "Mechanical Flower"
 align = 1
 
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource( 3 )
 
 [connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

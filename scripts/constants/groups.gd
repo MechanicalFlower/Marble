@@ -1,2 +1,2 @@
-const MARBLES = "marbles"
-const PIECES = "pieces"
+const MARBLES := "marbles"
+const PIECES := "pieces"
