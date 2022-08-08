@@ -24,6 +24,7 @@ var _time := 0.0
 onready var _player_spawn := get_node("%PlayerSpawn") as Spatial
 onready var _pause_menu := get_node("%Menu") as Control
 onready var _race := get_node("%Race") as Spatial
+onready var _crosshair := get_node("%CrosshairContainer") as CenterContainer
 
 
 func _ready() -> void:
@@ -141,11 +142,13 @@ func set_mode(mode, target_marble = null):
 
 	if _mode == State.MODE_FOCUS:
 		print("Switch to focus mode")
+		_crosshair.hide()
 		replace_camera(_focus_camera, [_fly_camera, _rotation_camera])
 		_focus_camera.set_target(target_marble)
 
 	elif _mode == State.MODE_MARBLE:
 		print("Switch to marble mode")
+		_crosshair.show()
 		# If no marbles exists, create one for each name
 		if marble_count == 0:
 			for name in _pause_menu.get_names():
@@ -156,11 +159,13 @@ func set_mode(mode, target_marble = null):
 	elif _mode == State.MODE_START:
 		print("Switch to pause mode")
 		_pause_menu.open_start_menu()
+		_crosshair.hide()
 		replace_camera(_rotation_camera, [_focus_camera, _fly_camera])
 
 	elif _mode == State.MODE_PAUSE:
 		print("Switch to pause mode")
 		_pause_menu.open_pause_menu()
+		_crosshair.hide()
 		replace_camera(_rotation_camera, [_focus_camera, _fly_camera])
 
 

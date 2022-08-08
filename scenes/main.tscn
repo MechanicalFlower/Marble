@@ -15,6 +15,8 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.23546
 shadow_enabled = true
 
 [node name="CrosshairContainer" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

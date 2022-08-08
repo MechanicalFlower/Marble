@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/gui/menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/gui/title.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/box_pixies.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/sounds/ui_open.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/gui/description.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 2 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -34,32 +38,38 @@ margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -16.0
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
 margin_right = 368.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="Input" type="TextEdit" parent="Panel/VBoxContainer"]
-unique_name_in_owner = true
-margin_top = 54.0
-margin_right = 368.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 0, 32 )
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+text = "Marbles"
+align = 1
+uppercase = true
 
 [node name="Spacer" type="Control" parent="Panel/VBoxContainer"]
-margin_top = 90.0
+margin_top = 36.0
 margin_right = 368.0
-margin_bottom = 98.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="Input" type="LineEdit" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 48.0
+margin_right = 368.0
+margin_bottom = 72.0
+placeholder_text = "Write one or more names separated by commas."
+
+[node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
+margin_top = 76.0
+margin_right = 368.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 0, 8 )
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 102.0
+margin_top = 88.0
 margin_right = 368.0
-margin_bottom = 134.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 0, 32 )
 text = "Start"
 
@@ -83,23 +93,23 @@ text = "Restart"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 138.0
+margin_top = 124.0
 margin_right = 368.0
-margin_bottom = 170.0
+margin_bottom = 156.0
 rect_min_size = Vector2( 0, 32 )
 text = "Quit"
 
-[node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
-margin_top = 174.0
+[node name="Spacer3" type="Control" parent="Panel/VBoxContainer"]
+margin_top = 160.0
 margin_right = 368.0
-margin_bottom = 182.0
+margin_bottom = 168.0
 rect_min_size = Vector2( 0, 8 )
 
 [node name="Description" type="Label" parent="Panel/VBoxContainer"]
 self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
-margin_top = 186.0
+margin_top = 172.0
 margin_right = 368.0
-margin_bottom = 200.0
+margin_bottom = 186.0
 text = "Mechanical Flower"
 align = 1
 script = ExtResource( 4 )

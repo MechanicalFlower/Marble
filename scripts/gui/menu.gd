@@ -9,7 +9,7 @@ var _mode: int = State.MODE_START
 var _last_action: int = Action.ACTION_NOOP
 
 onready var _open_sound := get_node("%OpenSound") as AudioStreamPlayer
-onready var _input := get_node("%Input") as TextEdit
+onready var _input := get_node("%Input") as LineEdit
 onready var _start_button := get_node("%StartButton") as Button
 onready var _resume_button := get_node("%ResumeButton") as Button
 onready var _restart_button := get_node("%RestartButton") as Button
