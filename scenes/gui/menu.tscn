@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/gui/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gui/title.png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/ui_open.wav" type="AudioStream" id=3]
+[ext_resource path="res://scripts/gui/description.gd" type="Script" id=4]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -94,13 +95,14 @@ margin_right = 368.0
 margin_bottom = 182.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Description" type="Label" parent="Panel/VBoxContainer"]
 self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
 margin_top = 186.0
 margin_right = 368.0
 margin_bottom = 200.0
 text = "Mechanical Flower"
 align = 1
+script = ExtResource( 4 )
 
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
