@@ -139,4 +139,5 @@ common/enable_object_picking=false
 [rendering]
 
 quality/driver/fallback_to_gles2=true
+vram_compression/import_etc=true
 environment/default_environment="res://default_env.tres"

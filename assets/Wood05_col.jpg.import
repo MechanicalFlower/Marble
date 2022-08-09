@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.s3tc.stex"
 path.etc2="res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.etc2.stex"
+path.etc="res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Wood05_col.jpg"
-dest_files=[ "res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.s3tc.stex", "res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.etc2.stex" ]
+dest_files=[ "res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.s3tc.stex", "res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.etc2.stex", "res://.import/Wood05_col.jpg-2a98dc9186c66565b4172473844de988.etc.stex" ]
 
 [params]
 
