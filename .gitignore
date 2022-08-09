@@ -10,3 +10,4 @@ export.cfg
 data_*/
 
 scripts/version.gd
+.vscode/
