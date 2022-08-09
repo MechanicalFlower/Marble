@@ -110,7 +110,7 @@ config/icon="res://assets/icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_version_export/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot_version_exporter/plugin.cfg" )
 
 [importer_defaults]
 
@@ -138,5 +138,5 @@ common/enable_object_picking=false
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
+quality/driver/fallback_to_gles2=true
 environment/default_environment="res://default_env.tres"

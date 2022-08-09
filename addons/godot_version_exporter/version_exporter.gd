@@ -23,18 +23,16 @@ func _enter_tree() -> void:
 	exporter = AEVExporter.new()
 	exporter.plugin = self
 	add_export_plugin(exporter)
-	add_tool_menu_item("Print Current Version", self, "print_version")
-	
+
 	if not File.new().file_exists(VERSION_SCRIPT_PATH):
 		exporter.store_version(fetch_version())
 
 func _exit_tree() -> void:
 	remove_export_plugin(exporter)
-	remove_tool_menu_item("Print Current Version")
 
 class AEVExporter extends EditorExportPlugin:
 	var plugin
-	
+
 	func _export_begin(_features: PoolStringArray, _is_debug: bool, _path: String, _flags: int) -> void:
 		var version: String = plugin.fetch_version()
 		store_version(version)

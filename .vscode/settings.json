@@ -1,5 +1,5 @@
 {
   "files.exclude": {
-    "**/*.import": true,
+    "**/*.import": true
   }
 }
