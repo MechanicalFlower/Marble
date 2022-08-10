@@ -16,4 +16,4 @@ jobs:
       - name: Install GDScript Toolkit
         run: pip3 install 'gdtoolkit==3.*'
       - name: Run pre-commit hooks
-        uses: pre-commit/action@v2.0.0
+        uses: pre-commit/action@v3.0.0
