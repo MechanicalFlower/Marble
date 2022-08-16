@@ -7,15 +7,18 @@ enum Action { ACTION_NOOP, ACTION_START, ACTION_RESUME, ACTION_QUIT }
 
 var _mode: int = State.MODE_START
 var _last_action: int = Action.ACTION_NOOP
+var _is_web_export := false
 
 onready var _open_sound := get_node("%OpenSound") as AudioStreamPlayer
 onready var _input := get_node("%Input") as LineEdit
 onready var _start_button := get_node("%StartButton") as Button
 onready var _resume_button := get_node("%ResumeButton") as Button
 onready var _restart_button := get_node("%RestartButton") as Button
+onready var _quit_button := get_node("%QuitButton") as Button
 
 
 func _ready() -> void:
+	_is_web_export = OS.get_name() == "HTML5"
 	set_mode(_mode)
 
 
@@ -59,11 +62,13 @@ func set_mode(mode: int) -> void:
 		_start_button.show()
 		_resume_button.hide()
 		_restart_button.hide()
+		_quit_button.disabled = _is_web_export
 	elif _mode == State.MODE_PAUSE:
 		_input.hide()
 		_start_button.hide()
 		_resume_button.show()
 		_restart_button.show()
+		_quit_button.disabled = not _is_web_export
 
 	if _mode == State.MODE_START or _mode == State.MODE_PAUSE:
 		show()

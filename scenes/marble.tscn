@@ -17,7 +17,6 @@ roughness = 0.29
 radius = 0.3
 
 [node name="Marble" type="RigidBody"]
-pause_mode = 2
 collision_layer = 4
 contacts_reported = 2
 contact_monitor = true

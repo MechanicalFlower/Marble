@@ -8,6 +8,7 @@
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [node name="Main" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -38,4 +39,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2655, 0 )
 unique_name_in_owner = true
 
 [node name="Race" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+
+[node name="MarbleSpawn" type="Node" parent="."]
+pause_mode = 1
 unique_name_in_owner = true

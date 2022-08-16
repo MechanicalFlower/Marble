@@ -21,7 +21,34 @@ var _mode: int = State.MODE_START
 var _current_marble_index := 0
 var _time := 0.0
 
+# There are limited places to ensure equality among the marbles.
+# TODO : remove this limit
+var _positions := [
+	[0, 0],
+	[1, 0],
+	[2, 0],
+	[3, 0],
+	[4, 0],
+	[5, 0],
+	[6, 0],
+	[0, 1],
+	[1, 1],
+	[2, 1],
+	[3, 1],
+	[4, 1],
+	[5, 1],
+	[6, 1],
+	[0, 2],
+	[1, 2],
+	[2, 2],
+	[3, 2],
+	[4, 2],
+	[5, 2],
+	[6, 2],
+]
+
 onready var _player_spawn := get_node("%PlayerSpawn") as Spatial
+onready var _marble_spawn := get_node("%MarbleSpawn") as Node
 onready var _pause_menu := get_node("%Menu") as Control
 onready var _race := get_node("%Race") as Spatial
 onready var _crosshair := get_node("%CrosshairContainer") as CenterContainer
@@ -81,14 +108,19 @@ func try_place_start_marble():
 	var piece = get_highest_piece()
 	if piece == null:
 		return null
+	if len(_positions) == 0:
+		print("There are limited places to ensure equality among the marbles.")
+		return
 	randomize()
+	var position = _positions.pop_at(randi() % len(_positions))
 	var marble = MarbleScene.instance()
 	marble.translation = (
 		piece.translation
 		+ Vector3.UP * 5.0
-		+ Vector3.FORWARD * ((randi() % 6) - 3)
+		+ Vector3.FORWARD * (position[0] - 3)
+		+ Vector3.RIGHT * (position[1] - 1)
 	)
-	add_child(marble)
+	_marble_spawn.add_child(marble)
 	return marble
 
 
@@ -149,11 +181,16 @@ func set_mode(mode, target_marble = null):
 	elif _mode == State.MODE_MARBLE:
 		print("Switch to marble mode")
 		_crosshair.show()
-		# If no marbles exists, create one for each name
+		# If no marbles exists
 		if marble_count == 0:
+			# Stop SceneTree, to make all the marbles leave at the same time
+			get_tree().set_pause(true)
+			# Create one marble for each name
 			for name in _pause_menu.get_names():
 				var marble = try_place_start_marble()
 				marble.set_name(name)
+			# Release SceneTree
+			get_tree().set_pause(false)
 		replace_camera(_fly_camera, [_focus_camera, _rotation_camera])
 
 	elif _mode == State.MODE_START:
