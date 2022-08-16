@@ -12,12 +12,12 @@ var _yaw := 0.0
 var _pitch := 0.0
 
 
-func _ready():
+func _ready() -> void:
 	if capture_mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 			if capture_mouse:
@@ -45,7 +45,7 @@ func _unhandled_input(event):
 
 
 func update_rotations() -> void:
-	set_translation(Vector3())
+	set_translation(Vector3.ZERO)
 	set_rotation(Vector3(0, deg2rad(_yaw), 0))
 	rotate(get_transform().basis.x.normalized(), -deg2rad(_pitch))
 	set_translation(get_transform().basis.z * distance)

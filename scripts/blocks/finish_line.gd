@@ -5,7 +5,7 @@ extends Area
 var Group := load("res://scripts/constants/groups.gd")
 
 onready var _player := get_node("%Sound") as AudioStreamPlayer3D
-onready var _ranking := get_node("%Ranking") as VBoxContainer
+onready var _ranking := get_node("%Ranking") as Ranking
 
 
 func _on_Area_body_entered(body: PhysicsBody) -> void:

@@ -38,26 +38,26 @@ func _process(_delta: float) -> void:
 	if translation.y < -100:
 		print("Marble is too low, freeing")
 		queue_free()
-	var offset = global_transform.origin + Vector3(0, 0.5, 0)
+	var offset := global_transform.origin + Vector3(0, 0.5, 0)
 	_name.global_transform.origin = offset
 
 
 func _integrate_forces(state: PhysicsDirectBodyState) -> void:
-	var now = OS.get_ticks_msec()
+	var now := OS.get_ticks_msec()
 
 	if state.get_contact_count() > 0:
-		var hit_pos = Vector3()
+		var hit_pos := Vector3.ZERO
 		for i in state.get_contact_count():
 			hit_pos += state.get_contact_collider_position(i)
 		hit_pos /= float(state.get_contact_count())
-		var diff = state.transform.origin - hit_pos
+		var diff := state.transform.origin - hit_pos
 		if diff != Vector3():
 			_ground_normal = diff.normalized()
 		_last_contact_time = now
 	else:
 		_ground_normal = Vector3.UP
 
-	var a = float(AVG_AMOUNT)
+	var a := float(AVG_AMOUNT)
 	_avg_ground_normal = (_avg_ground_normal * (a - 1) + _ground_normal) / a
 
 	_avg_pos = (_avg_pos * (a - 1.0) + translation) / a

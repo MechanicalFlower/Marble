@@ -4,14 +4,12 @@ extends Spatial
 
 const AVG_AMOUNT := 16
 
-var _target = null
+var _target: Spatial = null
 var _prev_pos := Vector3.ZERO
 var _prev_up := Vector3.UP
 
-onready var _camera := get_node("%Camera") as Camera
 
-
-func set_target(target) -> void:
+func set_target(target: Spatial) -> void:
 	_target = target
 	if _target != null:
 		translation = _target.translation + Vector3(0.1, 1, 0.1)
