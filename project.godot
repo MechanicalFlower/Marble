@@ -75,14 +75,9 @@ _global_script_classes=[ {
 "path": "res://scripts/camera/rotation_camera.gd"
 }, {
 "base": "Spatial",
-"class": "SpectatorAvatar",
+"class": "SpectatorCamera",
 "language": "GDScript",
 "path": "res://scripts/camera/spectator_camera.gd"
-}, {
-"base": "Control",
-"class": "SplashScreen",
-"language": "GDScript",
-"path": "res://scripts/gui/splash_screen.gd"
 } ]
 _global_script_class_icons={
 "Bumper": "",
@@ -98,14 +93,14 @@ _global_script_class_icons={
 "Ranking": "",
 "RollSound": "",
 "RotationCamera": "",
-"SpectatorAvatar": "",
-"SplashScreen": ""
+"SpectatorCamera": ""
 }
 
 [application]
 
 config/name="Marble"
-run/main_scene="res://scenes/gui/splash_screen.tscn"
+run/main_scene="res://scenes/main.tscn"
+run/disable_stdout=true
 config/icon="res://assets/icon.png"
 
 [editor_plugins]
