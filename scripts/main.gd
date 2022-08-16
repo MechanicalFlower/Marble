@@ -65,7 +65,7 @@ func _unhandled_input(event):
 						else:
 							print("Could not place start marble")
 				KEY_ESCAPE:
-					if _mode != State.MODE_PAUSE:
+					if _mode != State.MODE_START and _mode != State.MODE_PAUSE:
 						set_mode(State.MODE_PAUSE)
 				# Debug command to spawn a new marble
 				KEY_T:
@@ -157,7 +157,7 @@ func set_mode(mode, target_marble = null):
 		replace_camera(_fly_camera, [_focus_camera, _rotation_camera])
 
 	elif _mode == State.MODE_START:
-		print("Switch to pause mode")
+		print("Switch to start mode")
 		_pause_menu.open_start_menu()
 		_crosshair.hide()
 		replace_camera(_rotation_camera, [_focus_camera, _fly_camera])
