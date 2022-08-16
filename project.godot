@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/blocks/bumper.gd"
 }, {
-"base": "Label",
-"class": "Description",
-"language": "GDScript",
-"path": "res://scripts/gui/description.gd"
-}, {
 "base": "Area",
 "class": "FinishLine",
 "language": "GDScript",
@@ -81,7 +76,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bumper": "",
-"Description": "",
 "FinishLine": "",
 "Main": "",
 "Marble": "",
@@ -105,7 +99,7 @@ config/icon="res://assets/icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_version_exporter/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 

@@ -9,5 +9,5 @@ export.cfg
 .mono/
 data_*/
 
-scripts/version.gd
 .vscode/
+build/
