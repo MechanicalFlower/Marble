@@ -62,13 +62,17 @@ func set_mode(mode: int) -> void:
 		_start_button.show()
 		_resume_button.hide()
 		_restart_button.hide()
-		_quit_button.disabled = _is_web_export
+
+		if _is_web_export:
+			_quit_button.disabled = true
 	elif _mode == State.MODE_PAUSE:
 		_input.hide()
 		_start_button.hide()
 		_resume_button.show()
 		_restart_button.show()
-		_quit_button.disabled = not _is_web_export
+
+		if _is_web_export:
+			_quit_button.disabled = false
 
 	if _mode == State.MODE_START or _mode == State.MODE_PAUSE:
 		show()

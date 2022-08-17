@@ -3,9 +3,7 @@ class_name Piece
 extends StaticBody
 
 const CollisionLayers := preload("res://scripts/constants/collision_layers.gd")
-
-const DefaultPieceMaterial := preload("res://resources/blocks/default_piece_material.tres")
-const DefaultGhostMaterial := preload("res://resources/blocks/default_ghost_material.tres")
+const DefaultPieceMaterial := preload("res://resources/default_piece_material.tres")
 
 export var empty_material_override := false
 
