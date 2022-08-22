@@ -23,29 +23,7 @@ var _time := 0.0
 
 # There are limited places to ensure equality among the marbles.
 # TODO : remove this limit
-var _positions := [
-	[0, 0],
-	[1, 0],
-	[2, 0],
-	[3, 0],
-	[4, 0],
-	[5, 0],
-	[6, 0],
-	[0, 1],
-	[1, 1],
-	[2, 1],
-	[3, 1],
-	[4, 1],
-	[5, 1],
-	[6, 1],
-	[0, 2],
-	[1, 2],
-	[2, 2],
-	[3, 2],
-	[4, 2],
-	[5, 2],
-	[6, 2],
-]
+var _positions := []
 
 onready var _player_spawn := get_node("%PlayerSpawn") as Spatial
 onready var _marble_spawn := get_node("%MarbleSpawn") as Node
@@ -61,6 +39,8 @@ func _ready() -> void:
 
 	_fly_camera.translation = _player_spawn.translation
 	_fly_camera.rotate_y(90.0 * PI / 180.0)
+
+	reset_position()
 
 	set_mode(_mode)
 
@@ -102,6 +82,13 @@ func _unhandled_input(event):
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
 						_race.call_deferred("generate_race")
+
+
+func reset_position():
+	_positions = []
+	for i in range(7):
+		for j in range(2):
+			_positions.append([i, j])
 
 
 func try_place_start_marble():
@@ -183,6 +170,7 @@ func set_mode(mode, target_marble = null):
 		_crosshair.show()
 		# If no marbles exists
 		if marble_count == 0:
+			reset_position()
 			# Stop SceneTree, to make all the marbles leave at the same time
 			get_tree().set_pause(true)
 			# Create one marble for each name
