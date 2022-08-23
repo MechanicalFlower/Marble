@@ -133,6 +133,7 @@ func replace_camera(new_camera, old_cameras):
 
 
 func set_mode(mode, target_marble = null):
+	var start_a_new_race = false
 	var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
 	var marble_count = len(marbles)
 
@@ -144,6 +145,7 @@ func set_mode(mode, target_marble = null):
 		if _mode == State.MODE_PAUSE or _mode == State.MODE_START:
 			# For each start action, delete all marbles
 			if _pause_menu.is_start() or _pause_menu.is_quit():
+				start_a_new_race = true
 				for marble in marbles:
 					marble.queue_free()
 				marble_count = 0
@@ -169,7 +171,7 @@ func set_mode(mode, target_marble = null):
 		print("Switch to marble mode")
 		_crosshair.show()
 		# If no marbles exists
-		if marble_count == 0:
+		if start_a_new_race:
 			reset_position()
 			# Stop SceneTree, to make all the marbles leave at the same time
 			get_tree().set_pause(true)
