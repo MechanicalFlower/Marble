@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://scripts/blocks/bumper.gd"
 }, {
 "base": "Area",
+"class": "Checkpoint",
+"language": "GDScript",
+"path": "res://scripts/blocks/checkpoint.gd"
+}, {
+"base": "Area",
 "class": "FinishLine",
 "language": "GDScript",
 "path": "res://scripts/blocks/finish_line.gd"
@@ -43,6 +48,16 @@ _global_script_classes=[ {
 "class": "MouseLook",
 "language": "GDScript",
 "path": "res://scripts/mouse_look.gd"
+}, {
+"base": "Control",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://scripts/gui/overlay.gd"
+}, {
+"base": "HBoxContainer",
+"class": "Participant",
+"language": "GDScript",
+"path": "res://scripts/gui/participant.gd"
 }, {
 "base": "StaticBody",
 "class": "Piece",
@@ -76,12 +91,15 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bumper": "",
+"Checkpoint": "",
 "FinishLine": "",
 "Main": "",
 "Marble": "",
 "MarbleCamera": "",
 "Menu": "",
 "MouseLook": "",
+"Overlay": "",
+"Participant": "",
 "Piece": "",
 "Race": "",
 "Ranking": "",
@@ -94,12 +112,11 @@ _global_script_class_icons={
 
 config/name="Marble"
 run/main_scene="res://scenes/main.tscn"
-run/disable_stdout=true
 config/icon="res://assets/icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/monitor_overlay/plugin.cfg" )
 
 [importer_defaults]
 

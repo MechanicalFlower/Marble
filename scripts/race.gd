@@ -6,11 +6,9 @@ var PieceList = load("res://scripts/constants/piece_list.gd")
 var Group = load("res://scripts/constants/groups.gd")
 
 var _step_count := 10
-var _previous_piece = null
+var _previous_piece: Piece = null
 var _piece_orientation = null
-var _previous_rotation_index = 0
-
-onready var _main := get_parent() as Node
+var _previous_rotation_index := 0
 
 
 static func umod(x: int, d: int) -> int:
@@ -26,7 +24,7 @@ func _ready() -> void:
 func generate_race() -> void:
 	var pieces = get_tree().get_nodes_in_group(Group.PIECES)
 	for piece in pieces:
-		piece.queue_free()
+		piece.call_deferred("queue_free")
 
 	randomize()
 
@@ -52,7 +50,7 @@ func place_piece(piece_index: int) -> void:
 	var piece = piece_data["resource"].instance()
 
 	# Add the piece to the main Node
-	_main.add_child(piece)
+	add_child(piece)
 
 	# Rotate the piece
 	var rotation_index = _previous_rotation_index

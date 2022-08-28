@@ -21,7 +21,7 @@ func _ready() -> void:
 	# Setup collision layers
 	collision_layer = 1 << CollisionLayers.PROPS
 	_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
-	_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
+	_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS | 1 << CollisionLayers.PROPS
 
 	set_material()
 

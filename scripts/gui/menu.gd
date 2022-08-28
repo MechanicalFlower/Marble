@@ -11,10 +11,9 @@ var _is_web_export := false
 
 onready var _open_sound := get_node("%OpenSound") as AudioStreamPlayer
 onready var _input := get_node("%Input") as LineEdit
-onready var _start_button := get_node("%StartButton") as Button
-onready var _resume_button := get_node("%ResumeButton") as Button
-onready var _restart_button := get_node("%RestartButton") as Button
-onready var _quit_button := get_node("%QuitButton") as Button
+onready var _start_button := get_node("%StartMenu") as Control
+onready var _pause_menu := get_node("%PauseMenu") as Control
+onready var _quit_button := _start_button.get_node("VBoxContainer/QuitButton") as Button
 
 
 func _ready() -> void:
@@ -58,28 +57,24 @@ func set_mode(mode: int) -> void:
 	_mode = mode
 
 	if _mode == State.MODE_START:
-		_input.show()
 		_start_button.show()
-		_resume_button.hide()
-		_restart_button.hide()
+		_pause_menu.hide()
 
 		if _is_web_export:
 			_quit_button.disabled = true
 	elif _mode == State.MODE_PAUSE:
-		_input.hide()
 		_start_button.hide()
-		_resume_button.show()
-		_restart_button.show()
+		_pause_menu.show()
 
 		if _is_web_export:
 			_quit_button.disabled = false
 
-	if _mode == State.MODE_START or _mode == State.MODE_PAUSE:
-		show()
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif _mode == State.MODE_OFF:
+	if _mode == State.MODE_OFF:
 		hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func open_start_menu() -> void:

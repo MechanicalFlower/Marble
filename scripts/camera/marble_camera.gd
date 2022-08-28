@@ -20,6 +20,10 @@ func has_target() -> bool:
 	return _target != null and is_instance_valid(_target)
 
 
+func get_target() -> Spatial:
+	return _target
+
+
 func _physics_process(_delta: float) -> void:
 	if not has_target():
 		_target = null

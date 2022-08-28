@@ -5,7 +5,6 @@ extends Area
 var Group := load("res://scripts/constants/groups.gd")
 
 onready var _player := get_node("%Sound") as AudioStreamPlayer3D
-onready var _ranking := get_node("%Ranking") as Ranking
 
 
 func _on_Area_body_entered(body: PhysicsBody) -> void:
@@ -14,8 +13,7 @@ func _on_Area_body_entered(body: PhysicsBody) -> void:
 		# Play the final sound
 		_player.play()
 
-		# Add its name to the ranking
-		_ranking.add_finisher(body.get_name())
+		body.set_has_finish(true)
 
 		# Delete the marble
-		body.queue_free()
+		body.free_marble()
