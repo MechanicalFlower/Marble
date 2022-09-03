@@ -7,11 +7,11 @@ const Participant := preload("res://scenes/gui/participant.tscn")
 var Group := load("res://scripts/constants/groups.gd")
 
 onready var _ranking := get_node("%Ranking") as VBoxContainer
+onready var _marble_spawn := get_parent().get_node("MarbleSpawn") as Node
 
 
 func _process(_delta):
-	var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
-	var marble_count = len(marbles)
+	var marble_count = _marble_spawn.get_child_count()
 
 	if marble_count > 0:
 		_ranking.update()

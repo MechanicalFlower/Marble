@@ -63,7 +63,7 @@ func _unhandled_input(event):
 			match event.scancode:
 				KEY_TAB:
 					if _mode == State.MODE_MARBLE or _mode == State.MODE_FOCUS:
-						var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
+						var marbles = _marble_spawn.get_children()
 
 						var visible_marbles := []
 						for marble in marbles:
@@ -86,7 +86,7 @@ func _unhandled_input(event):
 				# Debug command to spawn a new marble
 				KEY_T:
 					if _mode == State.MODE_MARBLE:
-						var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
+						var marbles = _marble_spawn.get_children()
 
 						var all_marble_has_finish = true
 						for marble in marbles:
@@ -109,7 +109,7 @@ func _unhandled_input(event):
 					if _mode == State.MODE_MARBLE:
 						_race.call_deferred("generate_race")
 				# Debug command to show/hide the monitor overlay
-				KEY_D:
+				KEY_Y:
 					if _monitor.visible:
 						_monitor.hide()
 					else:
@@ -144,7 +144,7 @@ func try_place_start_marble() -> Marble:
 
 
 func get_highest_piece() -> Piece:
-	var pieces = get_tree().get_nodes_in_group(Group.PIECES)
+	var pieces = _race.get_children()
 	if len(pieces) == 0:
 		return null
 	var highest_piece = pieces[0]
@@ -166,7 +166,7 @@ func replace_camera(new_camera, old_cameras) -> void:
 
 func set_mode(mode, target_marble = null):
 	var start_a_new_race = false
-	var marbles = get_tree().get_nodes_in_group(Group.MARBLES)
+	var marbles = _marble_spawn.get_children()
 	var marble_count = len(marbles)
 
 	if mode == State.MODE_FOCUS and _mode != State.MODE_MARBLE and _mode != State.MODE_FOCUS:

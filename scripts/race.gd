@@ -22,9 +22,9 @@ func _ready() -> void:
 
 
 func generate_race() -> void:
-	var pieces = get_tree().get_nodes_in_group(Group.PIECES)
-	for piece in pieces:
-		piece.call_deferred("queue_free")
+	for piece in get_children():
+		if piece.is_in_group(Group.PIECES):
+			piece.call_deferred("queue_free")
 
 	randomize()
 
