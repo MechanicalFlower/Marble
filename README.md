@@ -9,6 +9,12 @@ A marble race minigame, made with [Godot Engine](https://godotengine.org/).
 
 </div>
 
+## Contributing
+
+We welcome community contributions to this project.
+
+Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
+
 ## References
 
 - [marbles](https://github.com/Zylann/marbles) by [Zylann](https://github.com/Zylann)
