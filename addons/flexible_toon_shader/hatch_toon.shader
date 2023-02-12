@@ -42,7 +42,7 @@ float split_hatch(float diffuse, vec2 uv, vec3 weights, vec3 pos) {
 	float k = round((1.0f - diffuse) * float(cuts)) - 0.5;
 	for (float i = 0.0f; i < k; ++i) {
 		float offset = 2.0 * i / float(cuts);
-		
+
 		if (i >= float(cuts) / 2.0) {
 			if (use_triplanar) {
 				value *= triplanar_texture(hatch_texture, weights, pos + vec3(offset), ORIENTATION_CROSS).r;
@@ -54,9 +54,9 @@ float split_hatch(float diffuse, vec2 uv, vec3 weights, vec3 pos) {
 				value *= triplanar_texture(hatch_texture, weights, pos + vec3(offset), ORIENTATION_STRAIGHT).r;
 			} else {
 				value *= texture(hatch_texture, uv.xy + vec2(offset)).r;
-			}			
+			}
 		}
-		
+
 	}
 	return value;
 }
@@ -76,20 +76,20 @@ void light() {
 	if (use_attenuation) {
 		attenuation = ATTENUATION.x;
 	}
-	
+
 	// Diffuse lighting.
 	float NdotL = dot(NORMAL, LIGHT);
 	float diffuse_amount = NdotL + (attenuation - 1.0) + wrap;
 	diffuse_amount *= steepness;
 	float cuts_inv = 1.0f / float(cuts);
 	float diffuse_stepped = clamp(diffuse_amount + mod(1.0f - diffuse_amount, cuts_inv), 0.0f, 1.0f);
-	
+
 	// Apply diffuse result to different styles.
 	vec3 diffuse = ALBEDO.rgb * LIGHT_COLOR / PI;
 	diffuse *= split_hatch(diffuse_stepped, hatch_scale*UV, normal, hatch_scale*vertex_pos);
-	
+
 	DIFFUSE_LIGHT = max(DIFFUSE_LIGHT, diffuse);
-	
+
 	// Simple rim lighting.
 	if (use_rim) {
 		float NdotV = dot(NORMAL, VIEW);

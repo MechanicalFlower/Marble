@@ -51,10 +51,10 @@ vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos
 void vertex() {
 	world_normal = vec3(0, 1.0, 0);
 	object_normal = NORMAL;
-	
+
 	power_normal = pow(abs(NORMAL), vec3(10.0));
 	power_normal = normalize(power_normal);
-	
+
 	triplanar_pos = VERTEX.xyz * vec3(1.0, -1.0, 1.0);
 }
 
@@ -69,7 +69,7 @@ void light() {
 	if (use_attenuation) {
 		attenuation = ATTENUATION.x;
 	}
-	
+
 	// Diffuse lighting.
 	float NdotL = dot(NORMAL, LIGHT);
 	float diffuse_amount = NdotL + (attenuation - 1.0) + wrap;
@@ -85,7 +85,7 @@ void light() {
 		border = step(diffuse_stepped - corr_border_width, diffuse_amount)
 				 - step(1.0 - corr_border_width, diffuse_amount);
 	}
-	
+
 	// Apply diffuse result to different styles.
 	vec3 diffuse = ALBEDO.rgb * LIGHT_COLOR / PI;
 	if (use_ramp) {
@@ -93,14 +93,14 @@ void light() {
 	} else {
 		diffuse *= diffuse_stepped * (1.0f - border);
 	}
-	
+
 	if (clamp_diffuse_to_max) {
 		// Clamp diffuse to max for multiple light sources.
 		DIFFUSE_LIGHT = max(DIFFUSE_LIGHT, diffuse);
 	} else {
 		DIFFUSE_LIGHT += diffuse;
 	}
-	
+
 	// Specular lighting.
 	if (use_specular) {
 		vec3 H = normalize(LIGHT + VIEW);
@@ -111,7 +111,7 @@ void light() {
 		specular_amount = split_specular(specular_amount);
 		SPECULAR_LIGHT += specular_strength * specular_amount * LIGHT_COLOR;
 	}
-	
+
 	// Simple rim lighting.
 	if (use_rim) {
 		float NdotV = dot(NORMAL, VIEW);

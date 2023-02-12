@@ -1,9 +1,8 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.3.0
+  rev: v4.3.0
   hooks:
-  - id: check-added-large-files # Prevent giant files from being committed
-  - id: check-byte-order-marker # Prevents weird UTF-8 encoding edge cases
+  - id: fix-byte-order-marker   # Prevents weird UTF-8 encoding edge cases
   - id: check-case-conflict     # Check if case-insensitive filesystems would bork
   - id: check-docstring-first   # Check for if docstring was misplaced
   - id: check-executables-have-shebangs
@@ -16,8 +15,24 @@ repos:
   - id: trailing-whitespace     # No trailing whitespace
 - repo: local
   hooks:
-  - id: gdlint
-    name: gdlint
-    entry: gdlint scripts/
+  - id: check-gdscript
+    name: check gdscript
+    entry: gdformat
     language: system
-    files: ^scripts/.*\.gd$
+    files: \.gd$
+    exclude: ^addons/
+  - id: check-shaders
+    name: check shaders
+    entry: clang-format
+    args:
+      - --style=file
+      - -Werror
+    language: system
+    files: \.shader$
+    exclude: ^addons/
+  - id: lint-gdscript
+    name: lint gdscript
+    entry: gdlint
+    language: system
+    files: \.gd$
+    exclude: ^addons/
