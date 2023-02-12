@@ -12,11 +12,17 @@ var _has_finish := false
 onready var _name := get_node("%Name") as Label3D
 
 
-func _init() -> void:
+func _ready() -> void:
+	randomize()
 	add_to_group(Group.MARBLES)
-	
-	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool
 
+	# Set material color
+	var material = get_node("MeshInstance").get_active_material(0)
+	material.set_shader_param("albedo", Color(randf(), randf(), randf()))
+	get_node("MeshInstance").set_surface_material(0, material)
+
+	# Set collision mask
+	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool
 	if collision_enabled:
 		collision_mask = 1 << CollisionLayers.PROPS | 1 << CollisionLayers.MARBLES
 	else:

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://scripts/blocks/piece.gd" type="Script" id=1]
 [ext_resource path="res://assets/blocks/finish_line.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://resources/default_piece_material.tres" type="Material" id=3]
-[ext_resource path="res://resources/flag_material.tres" type="Material" id=4]
-[ext_resource path="res://resources/flag_text_material.tres" type="Material" id=5]
+[ext_resource path="res://resources/materials/piece.tres" type="Material" id=3]
+[ext_resource path="res://resources/materials/flag.tres" type="Material" id=4]
+[ext_resource path="res://resources/materials/flag_text.tres" type="Material" id=5]
 [ext_resource path="res://scripts/blocks/finish_line.gd" type="Script" id=6]
 [ext_resource path="res://assets/sounds/finish_line.wav" type="AudioStream" id=7]
 

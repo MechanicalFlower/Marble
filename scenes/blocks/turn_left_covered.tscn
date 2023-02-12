@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/blocks/piece.gd" type="Script" id=1]
-[ext_resource path="res://resources/default_piece_material.tres" type="Material" id=2]
+[ext_resource path="res://resources/materials/piece.tres" type="Material" id=2]
 [ext_resource path="res://assets/blocks/turn_left_covered.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://scripts/blocks/checkpoint.gd" type="Script" id=4]
 
