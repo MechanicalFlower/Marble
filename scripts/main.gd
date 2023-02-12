@@ -32,7 +32,6 @@ onready var _pause_menu := get_node("%Menu") as Menu
 onready var _race := get_node("%Race") as Race
 onready var _crosshair := get_node("%CrosshairContainer") as CenterContainer
 onready var _overlay := get_node("%Overlay") as Overlay
-onready var _monitor := get_node("%MonitorOverlay") as Control
 
 
 func _ready() -> void:
@@ -108,12 +107,6 @@ func _unhandled_input(event):
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
 						_race.call_deferred("generate_race")
-				# Debug command to show/hide the monitor overlay
-				KEY_Y:
-					if _monitor.visible:
-						_monitor.hide()
-					else:
-						_monitor.show()
 
 
 func reset_position() -> void:

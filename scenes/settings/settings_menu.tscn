@@ -1,0 +1,229 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/fonts/settings_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/settings/check_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/settings/slider.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 6.0
+bg_color = Color( 1, 1, 1, 0 )
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 6.0
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_top = 10.0
+bg_color = Color( 1, 1, 1, 0 )
+
+[node name="Settings" type="TabContainer"]
+margin_right = 8.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 650, 0 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_bg = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+use_hidden_tabs_for_min_size = true
+
+[node name="Display" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 47.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 4
+
+[node name="Fullscreen" parent="Display" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 650.0
+margin_bottom = 50.0
+text = "Fullscreen"
+settings_section = "graphics"
+settings_key = "fullscreen_enabled"
+
+[node name="Sound" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 47.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 4
+
+[node name="MusicLabel" type="Label" parent="Sound"]
+margin_right = 650.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+custom_fonts/font = ExtResource( 1 )
+text = "Music"
+align = 1
+valign = 1
+
+[node name="Music" parent="Sound" instance=ExtResource( 3 )]
+margin_top = 38.0
+margin_right = 650.0
+margin_bottom = 54.0
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+settings_section = "sound"
+settings_key = "music_volume"
+
+[node name="EffectsLabel" type="Label" parent="Sound"]
+margin_top = 58.0
+margin_right = 650.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 34 )
+custom_fonts/font = ExtResource( 1 )
+text = "Effects"
+align = 1
+valign = 1
+
+[node name="Effects" parent="Sound" instance=ExtResource( 3 )]
+margin_top = 96.0
+margin_right = 650.0
+margin_bottom = 112.0
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+settings_section = "sound"
+settings_key = "effects_volume"
+
+[node name="Controls" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 47.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseLabel" type="Label" parent="Controls"]
+margin_right = 650.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+custom_fonts/font = ExtResource( 1 )
+text = "Mouse sensitivity (3D)"
+align = 1
+valign = 1
+
+[node name="Mouse" parent="Controls" instance=ExtResource( 3 )]
+margin_top = 38.0
+margin_right = 650.0
+margin_bottom = 54.0
+min_value = 0.1
+max_value = 1.0
+step = 0.01
+value = 0.1
+settings_section = "controls"
+settings_key = "mouse_sensitivity"
+
+[node name="Movement" type="HBoxContainer" parent="Controls"]
+margin_top = 58.0
+margin_right = 650.0
+margin_bottom = 108.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="Controls/Movement"]
+margin_right = 520.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Movement"
+valign = 1
+
+[node name="Value" type="Label" parent="Controls/Movement"]
+margin_left = 520.0
+margin_right = 650.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "WSAD / ZQSD"
+align = 1
+valign = 1
+
+[node name="CameraRotation" type="HBoxContainer" parent="Controls"]
+margin_top = 112.0
+margin_right = 650.0
+margin_bottom = 162.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="Controls/CameraRotation"]
+margin_right = 520.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Camera rotation"
+valign = 1
+
+[node name="Value" type="Label" parent="Controls/CameraRotation"]
+margin_left = 520.0
+margin_right = 650.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Mouse"
+align = 1
+valign = 1
+
+[node name="Interact" type="HBoxContainer" parent="Controls"]
+margin_top = 166.0
+margin_right = 650.0
+margin_bottom = 216.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="Controls/Interact"]
+margin_right = 520.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Use/pick up"
+valign = 1
+
+[node name="Value" type="Label" parent="Controls/Interact"]
+margin_left = 520.0
+margin_right = 650.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "LMB"
+align = 1
+valign = 1
+
+[node name="Settings" type="HBoxContainer" parent="Controls"]
+margin_top = 220.0
+margin_right = 650.0
+margin_bottom = 270.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="Controls/Settings"]
+margin_right = 520.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Show settings screen"
+valign = 1
+
+[node name="Value" type="Label" parent="Controls/Settings"]
+margin_left = 520.0
+margin_right = 650.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Esc"
+align = 1
+valign = 1

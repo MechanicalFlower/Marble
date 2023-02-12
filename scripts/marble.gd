@@ -2,6 +2,8 @@ class_name Marble
 
 extends RigidBody
 
+const CollisionLayers := preload("res://scripts/constants/collision_layers.gd")
+
 var Group = load("res://scripts/constants/groups.gd")
 
 var _checkpoint_count := 0
@@ -12,6 +14,13 @@ onready var _name := get_node("%Name") as Label3D
 
 func _init() -> void:
 	add_to_group(Group.MARBLES)
+	
+	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool
+
+	if collision_enabled:
+		collision_mask = 1 << CollisionLayers.PROPS | 1 << CollisionLayers.MARBLES
+	else:
+		collision_mask = 1 << CollisionLayers.PROPS
 
 
 func incr_checkpoint_count() -> void:
