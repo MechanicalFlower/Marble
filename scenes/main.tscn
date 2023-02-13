@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/overlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/race.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/gui/crosshair.png" type="Texture" id=4]
+[ext_resource path="res://scenes/marble.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/menu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -50,6 +51,47 @@ unique_name_in_owner = true
 [node name="Race" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 
-[node name="MarbleSpawn" type="Node" parent="."]
-pause_mode = 1
+[node name="MarblePool" type="Spatial" parent="."]
 unique_name_in_owner = true
+
+[node name="Marble1" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble2" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble3" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble4" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble5" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble6" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble7" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble8" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble9" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble10" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble11" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble12" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble13" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Marble14" parent="MarblePool" instance=ExtResource( 5 )]
+visible = false

@@ -13,8 +13,9 @@ var _last_body_exit_time := 0.0
 onready var _hit_sound := get_node("HitSound") as AudioStreamPlayer3D
 
 
-func _ready() -> void:
-	play()
+func _ready():
+	var now := OS.get_ticks_msec()
+	_last_body_exit_time = now + 500.0
 
 
 func _physics_process(delta: float) -> void:

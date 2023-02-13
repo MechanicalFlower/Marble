@@ -8,7 +8,6 @@ const RotationCamera := preload("res://scenes/camera/rotation_camera.tscn")
 const FlyCamera := preload("res://scenes/camera/spectator_camera.tscn")
 const FocusCamera := preload("res://scenes/camera/marble_camera.tscn")
 const Race := preload("res://scenes/race.tscn")
-const MarbleScene := preload("res://scenes/marble.tscn")
 
 const TIME_PERIOD := 5  # 500ms
 
@@ -27,11 +26,11 @@ var _time := 0.0
 var _positions := []
 
 onready var _player_spawn := get_node("%PlayerSpawn") as Spatial
-onready var _marble_spawn := get_node("%MarbleSpawn") as Node
 onready var _pause_menu := get_node("%Menu") as Menu
 onready var _race := get_node("%Race") as Race
 onready var _crosshair := get_node("%CrosshairContainer") as CenterContainer
 onready var _overlay := get_node("%Overlay") as Overlay
+onready var _marble_pool := get_node("%MarblePool") as Spatial
 
 
 func _ready() -> void:
@@ -62,11 +61,11 @@ func _unhandled_input(event):
 			match event.scancode:
 				KEY_TAB:
 					if _mode == State.MODE_MARBLE or _mode == State.MODE_FOCUS:
-						var marbles = _marble_spawn.get_children()
+						var marbles = _marble_pool.get_children()
 
 						var visible_marbles := []
 						for marble in marbles:
-							if not marble.has_finish():
+							if marble.visible:
 								visible_marbles.append(marble)
 
 						var marble_count = len(visible_marbles)
@@ -85,7 +84,7 @@ func _unhandled_input(event):
 				# Debug command to spawn a new marble
 				KEY_T:
 					if _mode == State.MODE_MARBLE:
-						var marbles = _marble_spawn.get_children()
+						var marbles = _marble_pool.get_children()
 
 						var all_marble_has_finish = true
 						for marble in marbles:
@@ -97,7 +96,7 @@ func _unhandled_input(event):
 							_overlay.reset()
 							reset_position()
 							for marble in marbles:
-								marble.call_deferred("queue_free")
+								marble.free_marble()
 
 						var marble = try_place_start_marble()
 						if marble != null:
@@ -125,15 +124,24 @@ func try_place_start_marble() -> Marble:
 		return null
 	randomize()
 	var position = _positions.pop_at(randi() % len(_positions))
-	var marble = MarbleScene.instance()
-	marble.translation = (
+	var marbles = _marble_pool.get_children()
+
+	var new_marble
+	for marble in marbles:
+		if not marble.visible:
+			new_marble = marble
+			break
+	new_marble.translation = (
 		piece.translation
 		+ Vector3.UP * 5.0
 		+ Vector3.FORWARD * (position[0] - 3)
 		+ Vector3.RIGHT * (position[1] - 1)
 	)
-	_marble_spawn.add_child(marble)
-	return marble
+	new_marble.show()
+	new_marble.set_process(true)
+	new_marble.set_physics_process(true)
+	new_marble.set_sleeping(false)
+	return new_marble
 
 
 func get_highest_piece() -> Piece:
@@ -159,8 +167,11 @@ func replace_camera(new_camera, old_cameras) -> void:
 
 func set_mode(mode, target_marble = null):
 	var start_a_new_race = false
-	var marbles = _marble_spawn.get_children()
-	var marble_count = len(marbles)
+	var marbles = _marble_pool.get_children()
+	var marble_count = 0
+	for marble in marbles:
+		if marble.visible:
+			marble_count += 1
 
 	if mode == State.MODE_FOCUS and _mode != State.MODE_MARBLE and _mode != State.MODE_FOCUS:
 		print("Cannot switch to focus mode, you need to be in marble mode first")
@@ -172,7 +183,7 @@ func set_mode(mode, target_marble = null):
 			if _pause_menu.is_start() or _pause_menu.is_quit():
 				start_a_new_race = true
 				for marble in marbles:
-					marble.call_deferred("queue_free")
+					marble.free_marble()
 				marble_count = 0
 
 			# Ensure that the pause menu is close
@@ -181,7 +192,7 @@ func set_mode(mode, target_marble = null):
 
 	if mode == State.MODE_FOCUS:
 		if marble_count == 0:
-			print("Cannot switch to focus  mode, there are no marbles")
+			print("Cannot switch to focus mode, there are no marbles")
 			return
 
 	_mode = mode

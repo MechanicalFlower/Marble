@@ -65,3 +65,6 @@ func free_marble() -> void:
 #	queue_free()
 	hide()
 	set_process(false)
+	set_physics_process(false)
+	set_sleeping(true)
+	
