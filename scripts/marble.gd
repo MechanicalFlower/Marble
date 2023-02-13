@@ -17,9 +17,13 @@ func _ready() -> void:
 	add_to_group(Group.MARBLES)
 
 	# Set material color
-	var material = get_node("MeshInstance").get_active_material(0)
-	material.set_shader_param("albedo", Color(randf(), randf(), randf()))
-	get_node("MeshInstance").set_surface_material(0, material)
+	var color =  Color(randf(), randf(), randf())
+	var x_ray_material = get_node("MeshInstance").get_active_material(0)
+	x_ray_material.set_albedo(color)
+	var toon_material = x_ray_material.get_next_pass()
+	toon_material.set_shader_param("albedo", color)
+	x_ray_material.set_next_pass(toon_material)
+	get_node("MeshInstance").set_surface_material(0, x_ray_material)
 
 	# Set collision mask
 	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool

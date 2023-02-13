@@ -118,4 +118,6 @@ void light() {
 		float rim_light = pow(1.0 - NdotV, rim_width);
 		DIFFUSE_LIGHT += rim_light * rim_color.rgb * rim_color.a * LIGHT_COLOR / PI;
 	}
+	
+	ALPHA = 1.0;
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/marble.gd" type="Script" id=1]
-[ext_resource path="res://resources/materials/marble.tres" type="Material" id=2]
+[ext_resource path="res://resources/materials/xray_marble.tres" type="Material" id=2]
 [ext_resource path="res://assets/sounds/roll.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/roll_sound.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=5]
@@ -41,6 +41,7 @@ attenuation_filter_cutoff_hz = 20500.0
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 billboard = 1
+no_depth_test = true
 text = "toto"
 uppercase = true
 
