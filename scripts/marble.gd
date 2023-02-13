@@ -17,7 +17,7 @@ func _ready() -> void:
 	add_to_group(Group.MARBLES)
 
 	# Set material color
-	var color =  Color(randf(), randf(), randf())
+	var color = Color(randf(), randf(), randf())
 	var x_ray_material = get_node("MeshInstance").get_active_material(0)
 	x_ray_material.set_albedo(color)
 	var toon_material = x_ray_material.get_next_pass()
@@ -65,10 +65,20 @@ func _process(_delta: float) -> void:
 	_name.global_transform.origin = offset
 
 
+func reset() -> void:
+	show()
+	set_process(true)
+	set_physics_process(true)
+	set_sleeping(false)
+	set_linear_velocity(Vector3.ZERO)
+
+	_has_finish = false
+	_checkpoint_count = 0
+
+
 func free_marble() -> void:
 #	queue_free()
 	hide()
 	set_process(false)
 	set_physics_process(false)
 	set_sleeping(true)
-	

@@ -95,8 +95,6 @@ func _unhandled_input(event):
 						if all_marble_has_finish:
 							_overlay.reset()
 							reset_position()
-							for marble in marbles:
-								marble.free_marble()
 
 						var marble = try_place_start_marble()
 						if marble != null:
@@ -126,21 +124,22 @@ func try_place_start_marble() -> Marble:
 	var position = _positions.pop_at(randi() % len(_positions))
 	var marbles = _marble_pool.get_children()
 
-	var new_marble
+	var new_marble = null
 	for marble in marbles:
 		if not marble.visible:
 			new_marble = marble
 			break
+
+	if new_marble == null:
+		return null
+
 	new_marble.translation = (
 		piece.translation
 		+ Vector3.UP * 5.0
 		+ Vector3.FORWARD * (position[0] - 3)
 		+ Vector3.RIGHT * (position[1] - 1)
 	)
-	new_marble.show()
-	new_marble.set_process(true)
-	new_marble.set_physics_process(true)
-	new_marble.set_sleeping(false)
+	new_marble.reset()
 	return new_marble
 
 
