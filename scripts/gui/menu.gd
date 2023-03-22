@@ -15,13 +15,18 @@ onready var _start_button := get_node("%StartMenu") as Control
 onready var _pause_menu := get_node("%PauseMenu") as Control
 onready var _quit_button := _start_button.get_node("VBoxContainer/QuitButton") as Button
 onready var _collision_toggle := get_node("%CollisionToggle") as CheckButton
+onready var _explosion_toggle := get_node("%ExplosionToggle") as CheckButton
 
 
 func _ready() -> void:
 	_collision_toggle.pressed = SettingsManager.get_value("marbles", "collision_enabled")
+	_explosion_toggle.pressed = SettingsManager.get_value("marbles", "explosion_enabled")
 
 	_is_web_export = OS.get_name() == "HTML5"
 	set_mode(_mode)
+
+	if OS.is_debug_build():
+		_input.set_text("quentin,augustin,antoine,maxime,geoffrey,jacques")
 
 
 func _on_StartButton_pressed() -> void:
@@ -45,6 +50,11 @@ func _on_QuitButton_pressed() -> void:
 func _on_CollisionToggle_toggled(pressed: bool):
 	_collision_toggle.pressed = pressed
 	SettingsManager.set_value("marbles", "collision_enabled", pressed)
+
+
+func _on_ExplosionToggle_toggled(pressed: bool):
+	_explosion_toggle.pressed = pressed
+	SettingsManager.set_value("marbles", "explosion_enabled", pressed)
 
 
 func _notification(what: int) -> void:

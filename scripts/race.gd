@@ -1,3 +1,5 @@
+tool
+
 class_name Race
 
 extends Node
@@ -18,10 +20,11 @@ static func umod(x: int, d: int) -> int:
 
 
 func _ready() -> void:
-	call_deferred("generate_race")
+	var explosion_enabled = SettingsManager.get_value("marbles", "explosion_enabled") as bool
+	call_deferred("generate_race", !explosion_enabled)
 
 
-func generate_race() -> void:
+func generate_race(with_end: bool = true) -> void:
 	for piece in get_children():
 		if piece.is_in_group(Group.PIECES):
 			piece.call_deferred("queue_free")
@@ -36,13 +39,18 @@ func generate_race() -> void:
 	# Place the start line
 	place_piece(-2)
 
+	generate_chunk()
+
+	if with_end:
+		# Place the finish line
+		place_piece(-1)
+
+
+func generate_chunk():
 	for step in _step_count:
 		# Select a random piece
 		var piece_index = umod(randi(), len(PieceList.PIECES) - 2)
 		place_piece(piece_index)
-
-	# Place the finish line
-	place_piece(-1)
 
 
 func place_piece(piece_index: int) -> void:

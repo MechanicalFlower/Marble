@@ -3,17 +3,27 @@ class_name Ranking
 
 extends VBoxContainer
 
+var _first_marble: Marble = null
+var _last_marble: Marble = null
+
 
 func update() -> void:
-	var childs := get_children()
+	var children := get_children()
 
-	childs.sort_custom(self, "more_checkpoint")
+	children.sort_custom(self, "more_checkpoint")
+
+	if len(children) > 0:
+		_first_marble = children[0].get_marble()
 
 	var rank := 0
-	for child in childs:
+	for child in children:
 		move_child(child, rank)
 		rank += 1
 		child.set_rank(rank)
+
+		var marble = child.get_marble()
+		if !marble.has_finish() and marble.is_visible():
+			_last_marble = marble
 
 
 func more_checkpoint(a: Participant, b: Participant) -> bool:
@@ -31,7 +41,14 @@ func more_checkpoint(a: Participant, b: Participant) -> bool:
 	elif b_marble.has_finish():
 		out = false
 	else:
-		out = a_marble.get_checkpoint_count() > b_marble.get_checkpoint_count()
+		if a_marble.has_explode() and b_marble.has_explode():
+			out = a.get_rank() < b.get_rank()
+		elif a_marble.has_explode():
+			out = false
+		elif b_marble.has_explode():
+			out = true
+		else:
+			out = a_marble.get_checkpoint_count() > b_marble.get_checkpoint_count()
 	return out
 
 

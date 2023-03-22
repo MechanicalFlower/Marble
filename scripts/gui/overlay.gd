@@ -6,7 +6,7 @@ const Participant := preload("res://scenes/gui/participant.tscn")
 
 var Group := load("res://scripts/constants/groups.gd")
 
-onready var _ranking := get_node("%Ranking") as VBoxContainer
+onready var _ranking := get_node("%Ranking") as Ranking
 onready var _marble_pool := get_parent().get_node("MarblePool") as Node
 
 

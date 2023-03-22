@@ -1,4 +1,5 @@
 # Helps with handling Godot Engine settings relevant to GOAT.
+tool
 
 extends Node
 
@@ -9,6 +10,7 @@ const SETTINGS_FILE_NAME := "user://settings.cfg"
 # Each entry contains: section name, key name, default value
 var default_values := [
 	["marbles", "collision_enabled", true],
+	["marbles", "explosion_enabled", false],
 ]
 
 # If enabled, settings will be saved to file when changed

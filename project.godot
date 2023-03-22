@@ -123,6 +123,10 @@ default_bus_layout="res://resources/default_bus_layout.tres"
 SettingsManager="*res://scripts/framework/settings_manager.gd"
 FPSGraphOverlay="*res://addons/fps_graph_overlay/FPSGraphOverlay.tscn"
 
+[build_info]
+
+package/version="1.3.0"
+
 [display]
 
 window/stretch/mode="2d"

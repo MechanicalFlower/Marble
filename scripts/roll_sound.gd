@@ -10,6 +10,7 @@ var _last_hit_time := 0.0
 var _last_body_enter_time := 0.0
 var _last_body_exit_time := 0.0
 
+onready var _marble := get_parent() as Marble
 onready var _hit_sound := get_node("HitSound") as AudioStreamPlayer3D
 
 
@@ -37,12 +38,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Marble_body_entered(_body: Node) -> void:
-	var now := OS.get_ticks_msec()
-	_last_body_enter_time = now
-	if now - _last_body_exit_time > 500.0:
-		if now - _last_hit_time > 500.0:
-			_hit_sound.play()
-			_last_hit_time = now
+	if _marble.in_race():
+		var now := OS.get_ticks_msec()
+		_last_body_enter_time = now
+		if now - _last_body_exit_time > 500.0:
+			if now - _last_hit_time > 500.0:
+				_hit_sound.play()
+				_last_hit_time = now
 
 
 func _on_Marble_body_exited(_body: Node) -> void:

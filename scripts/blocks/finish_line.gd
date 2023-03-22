@@ -13,7 +13,4 @@ func _on_Area_body_entered(body: PhysicsBody) -> void:
 		# Play the final sound
 		_player.play()
 
-		body.set_has_finish(true)
-
-		# Delete the marble
-		body.free_marble()
+		body.finish()
