@@ -25,7 +25,7 @@ jobs:
       - name: Add Build Info
         uses: robpc/godot-build-info-action@v1
         with:
-          version: ${GAME_VERSION}
+          version: ${{ env.GAME_VERSION }}
 
       - name: Setup
         run: |
@@ -40,11 +40,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: windows
+          name: windows-v${{ env.GAME_VERSION }}
           path: build/windows
-
-      - name: Zip Folder
-        run: zip -r itch.zip build/windows
 
   export-linux:
     name: Linux Export
@@ -60,7 +57,7 @@ jobs:
       - name: Add Build Info
         uses: robpc/godot-build-info-action@v1
         with:
-          version: ${GAME_VERSION}
+          version: ${{ env.GAME_VERSION }}
 
       - name: Setup
         run: |
@@ -75,11 +72,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: linux
+          name: linux-v${{ env.GAME_VERSION }}
           path: build/linux
-
-      - name: Zip Folder
-        run: zip -r itch.zip build/linux
 
   export-web:
     name: Web Export
@@ -95,7 +89,7 @@ jobs:
       - name: Add Build Info
         uses: robpc/godot-build-info-action@v1
         with:
-          version: ${GAME_VERSION}
+          version: ${{ env.GAME_VERSION }}
 
       - name: Setup
         run: |
@@ -110,7 +104,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: web
+          name: web-v${{ env.GAME_VERSION }}
           path: build/web
 
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
@@ -124,9 +118,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
           folder: build/web # The folder the action should deploy.
-
-      - name: Zip Folder
-        run: zip -r itch.zip build/web
 
   export-mac:
     name: Mac Export
@@ -142,7 +133,7 @@ jobs:
       - name: Add Build Info
         uses: robpc/godot-build-info-action@v1
         with:
-          version: ${GAME_VERSION}
+          version: ${{ env.GAME_VERSION }}
 
       - name: Setup
         run: |
@@ -157,8 +148,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: mac
+          name: mac-v${{ env.GAME_VERSION }}
           path: build/mac
-
-      - name: Zip Folder
-        run: zip -r itch.zip build/mac
