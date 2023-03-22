@@ -22,6 +22,7 @@ func add_marble_rank(marble: Marble) -> void:
 	var participant = Participant.instance()
 	participant.set_marble(marble)
 	_ranking.add_child(participant)
+	_ranking.add_child(HSeparator.new())
 
 
 func reset() -> void:

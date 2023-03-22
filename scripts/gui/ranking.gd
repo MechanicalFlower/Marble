@@ -10,14 +10,19 @@ var _last_marble: Marble = null
 func update() -> void:
 	var children := get_children()
 
-	children.sort_custom(self, "more_checkpoint")
+	var arr := []
+	for child in children:
+		if child is Participant:
+			arr.append(child)
 
-	if len(children) > 0:
-		_first_marble = children[0].get_marble()
+	arr.sort_custom(self, "more_checkpoint")
+
+	if len(arr) > 0:
+		_first_marble = arr[0].get_marble()
 
 	var rank := 0
-	for child in children:
-		move_child(child, rank)
+	for child in arr:
+		move_child(child, rank * 2)
 		rank += 1
 		child.set_rank(rank)
 
