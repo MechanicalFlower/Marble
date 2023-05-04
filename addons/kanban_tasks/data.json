@@ -1,0 +1,92 @@
+{
+  "settings": {
+    "show_details_preview": true
+  },
+  "categories": [
+    {
+      "title": "Task",
+      "color": "6b6b6d"
+    },
+    {
+      "title": "Bug",
+      "color": "bb1c37"
+    },
+    {
+      "title": "Feature",
+      "color": "3acc11"
+    }
+  ],
+  "columns": [
+    {
+      "stages": [
+        0
+      ]
+    },
+    {
+      "stages": [
+        1
+      ]
+    },
+    {
+      "stages": [
+        2
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "title": "Todo",
+      "tasks": [
+        0,
+        4,
+        5
+      ]
+    },
+    {
+      "title": "Doing",
+      "tasks": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "title": "Done",
+      "tasks": [
+
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "category": 2,
+      "title": "Add a victory animation",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Allow mods",
+      "details": ""
+    },
+    {
+      "category": 2,
+      "title": "Add more feedbacks",
+      "details": "\n\n"
+    },
+    {
+      "category": 0,
+      "title": "Add packaging",
+      "details": "Snap/Flathub\n"
+    },
+    {
+      "category": 1,
+      "title": "Fix mouse capture on web",
+      "details": ""
+    },
+    {
+      "category": 1,
+      "title": "Fix bad performance on 4k screen",
+      "details": ""
+    }
+  ]
+}

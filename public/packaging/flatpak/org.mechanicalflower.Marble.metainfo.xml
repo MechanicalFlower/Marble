@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.mechanicalflower.Marble</id>
+
+  <name>Marble</name>
+  <summary>A marble race minigame, made with Godot Engine.</summary>
+
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>Marble is an  open source mini-game about marble racing.</p>
+    <h2>Controls</h2>
+    <ul>
+      <li>WASD - Move</li>
+      <li>Tab - Follow a marble</li>
+      <li>ESC - Return to Menu</li>
+    </ul>
+    <h2>Features</h2>
+    <ul>
+      <li>Name your marbles</li>
+      <li>Start procedural races</li>
+      <li>Watch the real-time ranking</li>
+    </ul>
+    <p>The game is made with the open source Godot Engine. The source code and assets are MIT licensed.</p>
+  </description>
+
+  <url type="homepage">https://mechanical-flower.itch.io/Marble</url>
+  <url type="bugtracker">https://github.com/MechanicalFlower/Marble/issues</url>
+  <url type="donation">https://mechanical-flower.itch.io/Marble</url>
+  <url type="translate">https://hosted.weblate.org/engage/tabletop-club/</url>
+  <url type="contribute">https://github.com/MechanicalFlower/Marble/blob/main/CONTRIBUTING.md</url>
+
+  <launchable type="desktop-id">org.mechanicalflower.Marble.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyNi5wbmc=/original/tN7o%2BG.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyNS5wbmc=/original/VjJ1UY.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyNC5wbmc=/original/Ja7DVM.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyNy5wbmc=/original/6R42au.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyOC5wbmc=/original/zOU3en.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvMTY4MTEzNS8xMTY1MzUyMy5wbmc=/original/jtRiOj.png</image>
+    </screenshot>
+  </screenshots>
+
+  <recommends>
+    <display_length compare="ge">medium</display_length>
+  </recommends>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <internet>offline-only</internet>
+  </supports>
+
+  <releases>
+    <release version="0.1.0" date="2023-04-29" />
+  </releases>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">moderate</content_attribute>
+    <content_attribute id="social-info">mild</content_attribute>
+  </content_rating>
+</component>

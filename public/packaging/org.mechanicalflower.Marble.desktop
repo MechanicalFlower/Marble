@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.3
+Type=Application
+
+Name=Marble
+Comment==A marble race minigame, made with Godot Engine.
+Categories=Game;
+
+Icon=org.mechanicalflower.Marble
+Exec=marble-wrapper
+Terminal=false

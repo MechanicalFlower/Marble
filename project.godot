@@ -49,6 +49,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/gui/menu.gd"
 }, {
+"base": "Resource",
+"class": "ModData",
+"language": "GDScript",
+"path": "res://addons/mod_loader/mod_data.gd"
+}, {
+"base": "Node",
+"class": "ModLoaderUtils",
+"language": "GDScript",
+"path": "res://addons/mod_loader/mod_loader_utils.gd"
+}, {
+"base": "Resource",
+"class": "ModManifest",
+"language": "GDScript",
+"path": "res://addons/mod_loader/mod_manifest.gd"
+}, {
 "base": "Spatial",
 "class": "MouseLook",
 "language": "GDScript",
@@ -103,6 +118,9 @@ _global_script_class_icons={
 "Marble": "",
 "MarbleCamera": "",
 "Menu": "",
+"ModData": "",
+"ModLoaderUtils": "",
+"ModManifest": "",
 "MouseLook": "",
 "Overlay": "",
 "Participant": "",
@@ -126,6 +144,7 @@ default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
+ModLoader="*res://addons/mod_loader/mod_loader.gd"
 SettingsManager="*res://scripts/framework/settings_manager.gd"
 FPSGraphOverlay="*res://addons/fps_graph_overlay/FPSGraphOverlay.tscn"
 Shake="*res://scripts/shake.gd"
@@ -141,7 +160,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/fps_graph_overlay/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/fps_graph_overlay/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg" )
 
 [importer_defaults]
 

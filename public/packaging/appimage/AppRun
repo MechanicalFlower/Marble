@@ -1,0 +1,15 @@
+#!/bin/sh
+
+path="$APPIMAGE"
+cd "$(dirname "$0")"
+ExExist="$(grep -i Exec "$HOME"/.local/share/applications/org.mechanicalflower.Marble.desktop)"
+
+if [ ! -f "$HOME"/.local/share/applications/org.mechanicalflower.Marble.desktop ] || [ "$ExExist" != "Exec=\"""$path""\"" ]
+then
+    cp ./Marble.png $HOME/.icons/
+    cp ./org.mechanicalflower.Marble.desktop $HOME/.local/share/applications/org.mechanicalflower.Marble.desktop
+    sed -i -e "s|RepCurrent|$path|g" "$HOME"/.local/share/applications/org.mechanicalflower.Marble.desktop
+    sed -i -e "s|MyHome|$HOME|g" "$HOME"/.local/share/applications/org.mechanicalflower.Marble.desktop
+fi
+
+exec ./Marble.x86_64
