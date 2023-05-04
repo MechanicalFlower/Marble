@@ -1,0 +1,17 @@
+{
+	"name": "cheatcodes",
+	"namespace": "florianvazelle",
+	"version_number": "1.0.0",
+	"description": "",
+	"website_url": "https://github.com/florianvazelle/MarbleMods",
+	"dependencies": [],
+	"extra": {
+		"godot": {
+			"incompatibilities": [],
+			"authors": ["florianvazelle"],
+			"compatible_mod_loader_version": "3.5.1",
+			"compatible_game_version": ["1.3.0"],
+			"config_defaults": {}
+		}
+	}
+}
