@@ -2,11 +2,10 @@ class_name Main
 
 extends Node
 
-enum State { MODE_START, MODE_PAUSE, MODE_MARBLE, MODE_FOCUS }
+enum State { MODE_START, MODE_PAUSE, MODE_MARBLE }
 
 const RotationCamera := preload("res://scenes/camera/rotation_camera.tscn")
-const FlyCamera := preload("res://scenes/camera/spectator_camera.tscn")
-const FocusCamera := preload("res://scenes/camera/marble_camera.tscn")
+const CinematicCamera := preload("res://scenes/camera/marble_camera.tscn")
 const Race := preload("res://scenes/race.tscn")
 
 const TIME_PERIOD := 5  # 500ms
@@ -15,37 +14,37 @@ var Group := load("res://scripts/constants/groups.gd")
 var NameGenerator := load("res://scripts/utils/name_generator.gd")
 
 var _rotation_camera = null
-var _fly_camera = null
-var _focus_camera = null
+var _cinematic_camera = null
 var _mode: int = State.MODE_START
 var _current_marble_index := 0
 var _time := 0.0
 var _explosion_enabled := false
 var _need_new_chunk := false
+var _race_has_started := false
 
 # There are limited places to ensure equality among the marbles.
 # TODO : remove this limit
 var _positions := []
 
-onready var _player_spawn := get_node("%PlayerSpawn") as Spatial
 onready var _pause_menu := get_node("%Menu") as Menu
 onready var _race := get_node("%Race") as Race
-onready var _crosshair := get_node("%CrosshairContainer") as CenterContainer
 onready var _overlay := get_node("%Overlay") as Overlay
 onready var _marble_pool := get_node("%MarblePool") as Spatial
 onready var _timer := get_node("%Timer") as Timer
 onready var _ranking := get_tree().get_nodes_in_group("Ranking")[0] as Ranking
 onready var _explosion := get_node("%Explosion") as Particles
 onready var _marbles = _marble_pool.get_children()
+onready var _panel_timer := _overlay.get_node("Panel2") as ColorRect
+onready var _label_timer = _overlay.get_node("Panel2/CenterContainer3/VBoxContainer/LabelTimer")
+onready var _transition := get_node("%Transition/ColorRect") as ColorRect
+onready var _countdown := get_node("%Countdown")
 
 
 func _ready() -> void:
-	_rotation_camera = RotationCamera.instance()
-	_fly_camera = FlyCamera.instance()
-	_focus_camera = FocusCamera.instance()
+	_countdown.connect("start", self, "_start_race")
 
-	_fly_camera.translation = _player_spawn.translation
-	_fly_camera.rotate_y(90.0 * PI / 180.0)
+	_rotation_camera = RotationCamera.instance()
+	_cinematic_camera = CinematicCamera.instance()
 
 	reset_position()
 
@@ -55,10 +54,8 @@ func _ready() -> void:
 func _exit_tree():
 	if not _rotation_camera.is_inside_tree():
 		_rotation_camera.free()
-	if not _fly_camera.is_inside_tree():
-		_fly_camera.free()
-	if not _focus_camera.is_inside_tree():
-		_focus_camera.free()
+	if not _cinematic_camera.is_inside_tree():
+		_cinematic_camera.free()
 
 
 func _unhandled_input(event):
@@ -66,7 +63,7 @@ func _unhandled_input(event):
 		if event.pressed:
 			match event.scancode:
 				KEY_TAB:
-					if _mode == State.MODE_MARBLE or _mode == State.MODE_FOCUS:
+					if _mode == State.MODE_MARBLE:
 						var visible_marbles := []
 						for marble in _marbles:
 							if marble.visible:
@@ -76,15 +73,19 @@ func _unhandled_input(event):
 						if marble_count != 0:
 							if _current_marble_index >= marble_count:
 								_current_marble_index = 0
-								set_mode(State.MODE_MARBLE)
 							else:
-								set_mode(State.MODE_FOCUS, visible_marbles[_current_marble_index])
 								_current_marble_index += 1
+							_cinematic_camera.set_target(
+								visible_marbles[_current_marble_index % marble_count]
+							)
+
 						else:
 							print("Could not place start marble")
+
 				KEY_ESCAPE:
 					if _mode != State.MODE_START and _mode != State.MODE_PAUSE:
 						set_mode(State.MODE_PAUSE)
+
 				# Debug command to spawn a new marble
 				KEY_T:
 					if _mode == State.MODE_MARBLE:
@@ -104,6 +105,7 @@ func _unhandled_input(event):
 						if marble != null:
 							marble.set_name(NameGenerator.generate())
 							_overlay.add_marble_rank(marble)
+
 				# Debug command to generate a new race
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
@@ -168,17 +170,13 @@ func replace_camera(new_camera, old_cameras) -> void:
 		add_child(new_camera)
 
 
-func set_mode(mode, target_marble = null):
+func set_mode(mode):
 	var start_a_new_race = false
 	var marbles = _marble_pool.get_children()
 	var marble_count = 0
 	for marble in marbles:
 		if marble.visible:
 			marble_count += 1
-
-	if mode == State.MODE_FOCUS and _mode != State.MODE_MARBLE and _mode != State.MODE_FOCUS:
-		print("Cannot switch to focus mode, you need to be in marble mode first")
-		return
 
 	if mode != _mode:
 		if _mode == State.MODE_PAUSE or _mode == State.MODE_START:
@@ -189,58 +187,75 @@ func set_mode(mode, target_marble = null):
 					marble.pause()
 				marble_count = 0
 
+				# Ensure timer is reset
+				_race_has_started = false
+				_timer.set_wait_time(10)
+				_timer.stop()
+
 			# Ensure that the pause menu is close
 			if _pause_menu.visible:
 				_pause_menu.close()
 
-	if mode == State.MODE_FOCUS:
-		if marble_count == 0:
-			print("Cannot switch to focus mode, there are no marbles")
-			return
-
 	_mode = mode
 
-	if _mode == State.MODE_FOCUS:
-		_crosshair.hide()
-		replace_camera(_focus_camera, [_fly_camera, _rotation_camera])
-		_focus_camera.set_target(target_marble)
-
-	elif _mode == State.MODE_MARBLE:
-		_overlay.show()
-		_crosshair.show()
+	if _mode == State.MODE_MARBLE:
 		# If no marbles exists
 		if start_a_new_race:
+			_transition.show()
+			yield(_transition.tween, "tween_completed")
+
 			_explosion_enabled = SettingsManager.get_value("marbles", "explosion_enabled") as bool
 			_race.call_deferred("generate_race", !_explosion_enabled)
 
 			_overlay.reset()
 			reset_position()
 
+			# Show HUD
+			_overlay.show()
+
+			# Put the camera at the right place for the start
+#			_cinematic_camera.set_curve(_race._curve)
+			replace_camera(_cinematic_camera, [_rotation_camera])
+
 			var names = _pause_menu.get_names()
 			if len(names) > 0:
 				# Stop SceneTree, to make all the marbles leave at the same time
 				get_tree().set_pause(true)
+
 				# Create one marble for each name
 				for name in _pause_menu.get_names():
 					var marble = try_place_start_marble()
+					if marble == null:
+						break
 					marble.set_name(name)
 					_overlay.add_marble_rank(marble)
-				# Release SceneTree
-				get_tree().set_pause(false)
-				_timer.start()
+					_cinematic_camera.set_target(marble)
 
-		replace_camera(_fly_camera, [_focus_camera, _rotation_camera])
+			_transition.hide()
+			yield(_transition.tween, "tween_completed")
+
+			_countdown.start()
+
+		else:
+			_overlay.show()
+
+			replace_camera(_cinematic_camera, [_rotation_camera])
 
 	elif _mode == State.MODE_START:
 		_overlay.hide()
 		_pause_menu.open_start_menu()
-		_crosshair.hide()
-		replace_camera(_rotation_camera, [_focus_camera, _fly_camera])
+		replace_camera(_rotation_camera, [_cinematic_camera])
 
 	elif _mode == State.MODE_PAUSE:
 		_pause_menu.open_pause_menu()
-		_crosshair.hide()
-		replace_camera(_rotation_camera, [_focus_camera, _fly_camera])
+		replace_camera(_rotation_camera, [_cinematic_camera])
+
+
+func _start_race():
+	# Release SceneTree
+	get_tree().set_pause(false)
+	_timer.start()
+	_race_has_started = true
 
 
 static func remove_from_tree(node):
@@ -257,7 +272,12 @@ func _process(delta):
 			_time = 0
 
 	if _mode != State.MODE_START and _explosion_enabled:
-		if _timer.get_time_left() == 0.0:
+		var time_left := _timer.get_time_left()
+
+		_panel_timer.show()
+		_label_timer.set_text("%d:%02d" % [floor((time_left + 1) / 60), int(time_left + 1) % 60])
+
+		if time_left == 0.0 and _race_has_started:
 			_timer.start()
 
 			if _ranking._last_marble != null:
@@ -269,14 +289,17 @@ func _process(delta):
 					_explosion.global_translation = _ranking._last_marble.global_translation
 					_explosion.set_emitting(true)
 
-		if (
-			_need_new_chunk
-			and (_ranking._first_marble._checkpoint_count + 2) % _race._step_count == 0
-		):
-			_race.generate_chunk()
-			_need_new_chunk = false
-		elif (_ranking._first_marble._checkpoint_count + 3) % _race._step_count == 0:
-			_need_new_chunk = true
+		if _ranking._first_marble:
+			if (
+				_need_new_chunk
+				and (_ranking._first_marble._checkpoint_count + 2) % _race._step_count == 0
+			):
+				_race.generate_chunk()
+				_need_new_chunk = false
+			elif (_ranking._first_marble._checkpoint_count + 3) % _race._step_count == 0:
+				_need_new_chunk = true
+	else:
+		_panel_timer.hide()
 
 	if not _pause_menu.visible:
 		if _mode == State.MODE_PAUSE or _mode == State.MODE_START:
@@ -285,9 +308,15 @@ func _process(delta):
 		if _mode == State.MODE_PAUSE and _pause_menu.is_quit():
 			set_mode(State.MODE_START)
 
-	if not _focus_camera.has_target() or not _focus_camera.get_target().visible:
-		if _mode == State.MODE_FOCUS:
-			set_mode(State.MODE_MARBLE)
+	if not _cinematic_camera.has_target() or not _cinematic_camera.get_target().visible:
+		var found = false
+		for marble in _marbles:
+			if marble.visible:
+				found = true
+				_cinematic_camera.set_target(marble)
+				break
+		if not found:
+			replace_camera(_rotation_camera, [_cinematic_camera])
 
 
 func explosion_victory(_last_marble: Marble) -> bool:
@@ -308,7 +337,7 @@ func explosion_victory(_last_marble: Marble) -> bool:
 		tmp_marble.finish()
 
 	if marble_exploded_count == 1:
-		_last_marble.finish()
+#		_last_marble.finish()
 		return true
 
 	if marble_exploded_count == 0:

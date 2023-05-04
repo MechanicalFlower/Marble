@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1.25, 2, 0.1 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Window/Viewport")
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+albedo_texture = SubResource( 2 )
+
+[sub_resource type="QuadMesh" id=4]
+resource_local_to_scene = true
+material = SubResource( 3 )
+
+[sub_resource type="CubeMesh" id=5]
+flip_faces = true
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SphereMesh" id=6]
+radius = 0.25
+height = 0.5
+
+[node name="Card" type="MeshInstance"]
+mesh = SubResource( 1 )
+
+[node name="Window" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.051 )
+mesh = SubResource( 4 )
+
+[node name="Viewport" type="Viewport" parent="Window"]
+size = Vector2( 600, 600 )
+
+[node name="Camera" type="Camera" parent="Window/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.370214, 0.588491 )
+cull_mask = 1024
+
+[node name="Room" type="MeshInstance" parent="Window"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.465 )
+layers = 1024
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance" type="MeshInstance" parent="Window/Room"]
+layers = 1024
+mesh = SubResource( 6 )

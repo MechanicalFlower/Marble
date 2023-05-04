@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/marble.gd" type="Script" id=1]
 [ext_resource path="res://resources/materials/xray_marble.tres" type="Material" id=2]
 [ext_resource path="res://assets/sounds/roll.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/roll_sound.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/bomb.ogg" type="AudioStream" id=6]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.3
@@ -36,6 +37,11 @@ script = ExtResource( 4 )
 stream = ExtResource( 5 )
 unit_size = 3.0
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="BombSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 6 )
+unit_db = 20.0
 
 [node name="Name" type="Label3D" parent="."]
 unique_name_in_owner = true

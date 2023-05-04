@@ -34,7 +34,7 @@ shape = SubResource( 2 )
 [node name="EndArea" type="Area" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 2 )
-collision_layer = 2
+collision_layer = 3
 collision_mask = 0
 script = ExtResource( 5 )
 
@@ -43,3 +43,14 @@ shape = SubResource( 2 )
 
 [node name="TubeVerticalToHorizontal" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+
+[node name="Positions" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09029, 1.96006 )
+
+[node name="Position3D3" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.87745, 3.94573 )
+
+[node name="Position3D2" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.171754, 4 )

@@ -45,7 +45,7 @@ const PIECES := [
 	# 	"resource": preload("res://scenes/blocks/tube_vertical_to_horizontal.tscn"),
 	# 	"next_piece_orientation": FORWARD
 	# },
-	# {"resource": preload("res://scenes/blocks/bumper.tscn"), "next_piece_orientation": FORWARD},
+	{"resource": preload("res://scenes/blocks/bumper.tscn"), "next_piece_orientation": FORWARD},
 	{"resource": preload("res://scenes/blocks/start_line.tscn"), "next_piece_orientation": FORWARD},
 	{
 		"resource": preload("res://scenes/blocks/finish_line.tscn"),

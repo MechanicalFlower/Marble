@@ -32,7 +32,7 @@ shape = SubResource( 2 )
 [node name="EndArea" type="Area" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2 )
-collision_layer = 2
+collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]

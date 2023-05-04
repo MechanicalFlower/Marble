@@ -2,7 +2,7 @@ class_name Marble
 
 extends RigidBody
 
-enum State { PAUSED, ROLL, EXPLODED, FINISH }
+enum State { PAUSED, ROLL, EXPLODED, FINISH, OOB }
 
 const CollisionLayers := preload("res://scripts/constants/collision_layers.gd")
 
@@ -12,6 +12,7 @@ var _state = State.PAUSED
 var _checkpoint_count := 0
 
 onready var _name := get_node("%Name") as Label3D
+onready var _bomb_sound = get_node("%BombSound")
 
 
 func _ready() -> void:
@@ -66,9 +67,16 @@ func has_explode() -> bool:
 	return _state == State.EXPLODED
 
 
+func has_oob() -> bool:
+	return _state == State.OOB
+
+
 func _process(_delta: float) -> void:
 	var offset := global_transform.origin + Vector3(0, 0.5, 0)
 	_name.global_transform.origin = offset
+
+	if global_transform.origin.y < -10000:
+		out_of_bound()
 
 
 func reset() -> void:
@@ -93,6 +101,12 @@ func finish() -> void:
 
 func explode() -> void:
 	_state = State.EXPLODED
+	_bomb_sound.play()
+	_stop()
+
+
+func out_of_bound() -> void:
+	_state = State.OOB
 	_stop()
 
 

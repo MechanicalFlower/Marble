@@ -9,6 +9,7 @@ const SETTINGS_FILE_NAME := "user://settings.cfg"
 
 # Each entry contains: section name, key name, default value
 var default_values := [
+	["marbles", "marble_names", ""],
 	["marbles", "collision_enabled", true],
 	["marbles", "explosion_enabled", false],
 ]

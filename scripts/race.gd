@@ -11,6 +11,9 @@ var _step_count := 10
 var _previous_piece: Piece = null
 var _piece_orientation = null
 var _previous_rotation_index := 0
+var _curve: Curve3D
+
+onready var path := get_node("Path") as Path
 
 
 static func umod(x: int, d: int) -> int:
@@ -20,11 +23,16 @@ static func umod(x: int, d: int) -> int:
 
 
 func _ready() -> void:
+	_curve = Curve3D.new()
+	path.set_curve(_curve)
+
 	var explosion_enabled = SettingsManager.get_value("marbles", "explosion_enabled") as bool
 	call_deferred("generate_race", !explosion_enabled)
 
 
 func generate_race(with_end: bool = true) -> void:
+	_curve.clear_points()
+
 	for piece in get_children():
 		if piece.is_in_group(Group.PIECES):
 			piece.call_deferred("queue_free")
@@ -81,3 +89,8 @@ func place_piece(piece_index: int) -> void:
 	_previous_piece = piece
 	_piece_orientation = piece_data["next_piece_orientation"]
 	_previous_rotation_index = rotation_index
+
+	var positions = piece.get_node("Positions")
+	if positions:
+		for pos in positions.get_children():
+			_curve.add_point(pos.global_translation)

@@ -33,9 +33,17 @@ shape = SubResource( 2 )
 [node name="EndArea" type="Area" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 3 )
-collision_layer = 2
+collision_layer = 3
 collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]
 shape = SubResource( 2 )
+
+[node name="Positions" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19041, 0.386973, -0.872911 )
+
+[node name="Position3D2" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.386973, 1.10967 )

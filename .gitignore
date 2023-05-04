@@ -9,5 +9,12 @@ export.cfg
 .mono/
 data_*/
 
+# Flatpack-specific ignors
+.flatpak-builder/
+
+# Snap-specific ignores
+build-dir/
+*.snap
+
 .vscode/
 build/

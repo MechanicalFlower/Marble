@@ -19,14 +19,12 @@ onready var _explosion_toggle := get_node("%ExplosionToggle") as CheckButton
 
 
 func _ready() -> void:
+	_input.set_text(SettingsManager.get_value("marbles", "marble_names"))
 	_collision_toggle.pressed = SettingsManager.get_value("marbles", "collision_enabled")
 	_explosion_toggle.pressed = SettingsManager.get_value("marbles", "explosion_enabled")
 
 	_is_web_export = OS.get_name() == "HTML5"
 	set_mode(_mode)
-
-	if OS.is_debug_build():
-		_input.set_text("quentin,augustin,antoine,maxime,geoffrey,jacques")
 
 
 func _on_StartButton_pressed() -> void:
@@ -117,3 +115,7 @@ func is_resume() -> bool:
 
 func is_quit() -> bool:
 	return _last_action == Action.ACTION_QUIT
+
+
+func _on_Input_text_changed(new_text):
+	SettingsManager.set_value("marbles", "marble_names", new_text)
