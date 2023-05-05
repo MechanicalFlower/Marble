@@ -23,6 +23,6 @@ jobs:
         sudo apt install -y mesa-utils libgl1-mesa-dri libglx-mesa0
 
     - name: Test marble launch
-      uses: GabrielBB/xvfb-action@v1.5
+      uses: GabrielBB/xvfb-action@v1.6
       with:
         run: /bin/bash public/packaging/snap/snap-xvfb-launch.sh
