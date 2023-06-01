@@ -136,6 +136,7 @@ _global_script_class_icons={
 
 config/name="Marble"
 run/main_scene="res://scenes/main.tscn"
+config/project_settings_override="override.cfg"
 config/icon="res://assets/icon.png"
 
 [audio]
@@ -144,7 +145,6 @@ default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-ModLoader="*res://addons/mod_loader/mod_loader.gd"
 SettingsManager="*res://scripts/framework/settings_manager.gd"
 FPSGraphOverlay="*res://addons/fps_graph_overlay/FPSGraphOverlay.tscn"
 Shake="*res://scripts/shake.gd"
