@@ -6,147 +6,65 @@ on:
   workflow_dispatch:
 
 env:
-  GODOT_VERSION: 3.5
-  GAME_NAME: Marble
-  GAME_VERSION: 1.3.0
+  version: 0.1.0
+  godot_version: 3.5
 
 jobs:
-  export-windows:
-    name: Windows Export
+  release-packaging:
     runs-on: ubuntu-20.04
-
     container:
       image: barichello/godot-ci:3.5
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows
+            output: Marble.exe
+            preset: Windows Desktop
+
+          - platform: linux
+            output: Marble.x86_64
+            preset: Linux/X11
+
+          - platform: web
+            output: index.html
+            preset: HTML5
+
+          - platform: mac
+            output: Marble.zip
+            preset: Mac OSX
+
+    name: ${{ matrix.preset }} Export
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Add Build Info
-        uses: robpc/godot-build-info-action@v1
+      - name: Export Marble
+        uses: ./.github/actions/export-game
         with:
-          version: ${{ env.GAME_VERSION }}
+          platform: ${{ matrix.platform }}
+          output: ${{ matrix.output }}
+          preset: ${{ matrix.preset }}
+          version: ${{ env.version }}
+          godot_version: ${{ env.godot_version }}
 
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-
-      - name: Windows Build
-        run: |
-          mkdir -v -p build/windows
-          godot -v --export "Windows Desktop" ./build/windows/$GAME_NAME.exe
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: ./.github/actions/upload-artifact
         with:
-          name: windows-v${{ env.GAME_VERSION }}
-          path: build/windows
-
-  export-linux:
-    name: Linux Export
-    runs-on: ubuntu-20.04
-
-    container:
-      image: barichello/godot-ci:3.5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Add Build Info
-        uses: robpc/godot-build-info-action@v1
-        with:
-          version: ${{ env.GAME_VERSION }}
-
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-
-      - name: Linux Build
-        run: |
-          mkdir -v -p build/linux
-          godot -v --export "Linux/X11" ./build/linux/$GAME_NAME.x86_64
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: linux-v${{ env.GAME_VERSION }}
-          path: build/linux
-
-  export-web:
-    name: Web Export
-    runs-on: ubuntu-20.04
-
-    container:
-      image: barichello/godot-ci:3.5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Add Build Info
-        uses: robpc/godot-build-info-action@v1
-        with:
-          version: ${{ env.GAME_VERSION }}
-
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-
-      - name: Web Build
-        run: |
-          mkdir -v -p build/web
-          godot -v --export "HTML5" ./build/web/index.html
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: web-v${{ env.GAME_VERSION }}
-          path: build/web
+          name: Marble-${{ matrix.platform }}-v${{ env.version }}
+          path: build/${{ matrix.platform }}
 
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
       - name: Install rsync
+        if: ${{ matrix.platform == 'web' }}
         run: |
           apt-get update && apt-get install -y rsync
+          ls
 
       - name: Deploy to GitHub Pages
+        if: ${{ matrix.platform == 'web' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
           folder: build/web # The folder the action should deploy.
-
-  export-mac:
-    name: Mac Export
-    runs-on: ubuntu-20.04
-
-    container:
-      image: barichello/godot-ci:3.5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Add Build Info
-        uses: robpc/godot-build-info-action@v1
-        with:
-          version: ${{ env.GAME_VERSION }}
-
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-
-      - name: Mac Build
-        run: |
-          mkdir -v -p build/mac
-          godot -v --export "Mac OSX" ./build/mac/$GAME_NAME.zip
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: mac-v${{ env.GAME_VERSION }}
-          path: build/mac

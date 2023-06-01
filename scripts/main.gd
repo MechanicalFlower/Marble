@@ -111,6 +111,14 @@ func _unhandled_input(event):
 					if _mode == State.MODE_MARBLE:
 						_race.call_deferred("generate_race", !_explosion_enabled)
 
+				KEY_SPACE:
+					for marble in _marbles:
+						var marble_name = marble.get_name().to_lower()
+						if marble_name == "maxime" or marble_name == "max":
+							marble.set_linear_velocity(-marble.linear_velocity * 2)
+							break
+					
+
 
 func reset_position() -> void:
 	_positions = []
