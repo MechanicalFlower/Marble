@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/lod/lod_particles.gd" type="Script" id=1]
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -31,3 +33,5 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 4 )
+script = ExtResource( 1 )
+max_emit_distance = 100.0

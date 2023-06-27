@@ -63,7 +63,7 @@ unique_name_in_owner = true
 [node name="Race" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 
-[node name="MarblePool" type="Spatial" parent="."]
+[node name="MarblePool" type="Spatial" parent="." groups=["marble_pool"]]
 unique_name_in_owner = true
 
 [node name="Marble1" parent="MarblePool" instance=ExtResource( 5 )]
@@ -109,6 +109,7 @@ visible = false
 visible = false
 
 [node name="Explosion" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -39,7 +39,8 @@
       "tasks": [
         0,
         4,
-        5
+        5,
+        6
       ]
     },
     {
@@ -86,6 +87,11 @@
     {
       "category": 1,
       "title": "Fix bad performance on 4k screen",
+      "details": ""
+    },
+    {
+      "category": 1,
+      "title": "Invisible marble (obstacles)",
       "details": ""
     }
   ]

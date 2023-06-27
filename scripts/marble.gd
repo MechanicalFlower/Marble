@@ -13,6 +13,7 @@ var _checkpoint_count := 0
 
 onready var _name := get_node("%Name") as Label3D
 onready var _bomb_sound = get_node("%BombSound")
+onready var _score = get_node("%Score")
 
 
 func _ready() -> void:
@@ -22,12 +23,12 @@ func _ready() -> void:
 
 	# Set material color
 	var color = Color(randf(), randf(), randf())
-	var x_ray_material = get_node("MeshInstance").get_active_material(0)
+	var x_ray_material = get_node("LODSpatial/Ball-0").get_active_material(0)
 	x_ray_material.set_albedo(color)
 	var toon_material = x_ray_material.get_next_pass()
 	toon_material.set_shader_param("albedo", color)
 	x_ray_material.set_next_pass(toon_material)
-	get_node("MeshInstance").set_surface_material(0, x_ray_material)
+	get_node("LODSpatial/Ball-0").set_surface_material(0, x_ray_material)
 
 	# Set collision mask
 	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool
@@ -37,6 +38,18 @@ func _ready() -> void:
 		collision_mask = 1 << CollisionLayers.PROPS
 
 	pause()
+
+
+func _unhandled_input(event):
+	if OS.is_debug_build():
+		if event is InputEventKey:
+			if event.pressed:
+				match event.scancode:
+					KEY_F1:
+						if _score.visible:
+							_score.hide()
+						else:
+							_score.show()
 
 
 func set_name(name: String) -> void:
@@ -49,6 +62,8 @@ func get_name() -> String:
 
 func incr_checkpoint_count() -> void:
 	_checkpoint_count += 1
+	if OS.is_debug_build():
+		_score.set_text(str(_checkpoint_count))
 
 
 func get_checkpoint_count() -> int:
@@ -74,24 +89,20 @@ func has_oob() -> bool:
 func _process(_delta: float) -> void:
 	var offset := global_transform.origin + Vector3(0, 0.5, 0)
 	_name.global_transform.origin = offset
+	_score.global_transform.origin = offset + Vector3(-0.4, -0.2, 0)
 
 	if global_transform.origin.y < -10000:
 		out_of_bound()
 
 
 func reset() -> void:
-	show()
-	set_process(true)
-	set_physics_process(true)
-	set_sleeping(false)
-	set_linear_velocity(Vector3.ZERO)
-
+	_start()
 	_checkpoint_count = 0
 
 
 func roll() -> void:
 	_state = State.ROLL
-	_start()
+	reset()
 
 
 func finish() -> void:

@@ -20,9 +20,9 @@ margin_bottom = 355.0
 
 [node name="LabelTimer" type="Label" parent="CenterContainer"]
 unique_name_in_owner = true
-margin_left = 412.0
+margin_left = 540.0
 margin_top = 77.0
-margin_right = 612.0
+margin_right = 740.0
 margin_bottom = 277.0
 rect_min_size = Vector2( 200, 200 )
 custom_fonts/font = SubResource( 1 )

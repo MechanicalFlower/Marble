@@ -117,7 +117,6 @@ func _unhandled_input(event):
 						if marble_name == "maxime" or marble_name == "max":
 							marble.set_linear_velocity(-marble.linear_velocity * 2)
 							break
-					
 
 
 func reset_position() -> void:
@@ -300,7 +299,7 @@ func _process(delta):
 		if _ranking._first_marble:
 			if (
 				_need_new_chunk
-				and (_ranking._first_marble._checkpoint_count + 2) % _race._step_count == 0
+				and (_ranking._first_marble._checkpoint_count + 3) % _race._step_count != 0
 			):
 				_race.generate_chunk()
 				_need_new_chunk = false

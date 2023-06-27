@@ -7,7 +7,7 @@ const Participant := preload("res://scenes/gui/participant.tscn")
 var Group := load("res://scripts/constants/groups.gd")
 
 onready var _ranking := get_node("%Ranking") as Ranking
-onready var _marble_pool := get_parent().get_node("MarblePool") as Node
+onready var _marble_pool = get_tree().get_nodes_in_group("marble_pool")[0]
 
 
 func _process(_delta):
