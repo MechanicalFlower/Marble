@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2022-2023 HolonProduction
+#
+# SPDX-License-Identifier: MIT
+#
+# Source: https://github.com/HolonProduction/godot_kanban_tasks
+
 tool
 extends AcceptDialog
 

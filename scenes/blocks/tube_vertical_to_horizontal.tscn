@@ -1,3 +1,7 @@
+; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+;
+; SPDX-License-Identifier: MIT
+
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/blocks/piece.gd" type="Script" id=1]

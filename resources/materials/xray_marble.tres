@@ -1,3 +1,7 @@
+; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+;
+; SPDX-License-Identifier: MIT
+
 [gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
 [ext_resource path="res://resources/materials/toon_marble.tres" type="Material" id=1]

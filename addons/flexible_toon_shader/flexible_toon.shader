@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2021 John Wigg
+//
+// SPDX-License-Identifier: MIT
+//
+// Source: https://github.com/CaptainProton42/FlexibleToonShaderGD
+
 shader_type spatial;
 
 //render_mode ambient_light_disabled;

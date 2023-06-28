@@ -1,3 +1,9 @@
+; SPDX-FileCopyrightText: 2021 John Wigg
+;
+; SPDX-License-Identifier: MIT
+;
+; Source: https://github.com/CaptainProton42/FlexibleToonShaderGD
+
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
 [ext_resource path="res://addons/flexible_toon_shader/flexible_toon.shader" type="Shader" id=1]

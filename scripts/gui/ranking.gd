@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+#
+# SPDX-License-Identifier: MIT
+
 # List of participants, which is updated every frame until the end of the race
 class_name Ranking
 

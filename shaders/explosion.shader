@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+//
+// SPDX-License-Identifier: MIT
+
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded;
 uniform vec4 fire_color : hint_color = vec4(0.99, 0.31, 0.01, 1.0);

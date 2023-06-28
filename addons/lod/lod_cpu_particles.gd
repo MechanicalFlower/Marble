@@ -1,5 +1,9 @@
-# Copyright © 2020 Hugo Locurcio and contributors - MIT License
-# See `LICENSE.md` included in the source distribution for details.
+# SPDX-FileCopyrightText: 2020 Hugo Locurcio and contributors
+#
+# SPDX-License-Identifier: MIT
+#
+# Source: https://github.com/godot-extended-libraries/godot-lod
+
 extends CPUParticles
 class_name LODCPUParticles, "lod_cpu_particles.svg"
 

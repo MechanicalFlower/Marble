@@ -1,7 +1,8 @@
-# Copyright © 2020 Hugo Locurcio and contributors - MIT License
-# See `LICENSE.md` included in the source distribution for details.
+# SPDX-FileCopyrightText: 2020 Hugo Locurcio and contributors
 #
-# This script is needed to make the `class_name` script visible in the Create New Node dialog
-# once the plugin is enabled.
+# SPDX-License-Identifier: MIT
+#
+# Source: https://github.com/godot-extended-libraries/godot-lod
+
 tool
 extends EditorPlugin

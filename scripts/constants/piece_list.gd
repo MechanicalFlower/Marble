@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+#
+# SPDX-License-Identifier: MIT
+
 const FORWARD := 1
 const TURN_LEFT := 2
 const TURN_RIGHT := 3

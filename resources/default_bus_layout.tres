@@ -1,3 +1,7 @@
+; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+;
+; SPDX-License-Identifier: MIT
+
 [gd_resource type="AudioBusLayout" format=2]
 
 [resource]

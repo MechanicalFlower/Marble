@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+#
+# SPDX-License-Identifier: MIT
+
 # Helps with handling Godot Engine settings relevant to GOAT.
 tool
 

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
+
+SPDX-License-Identifier: MIT
+-->
 
 <div align="center">
 
@@ -44,7 +49,3 @@ Marble is an open source mini-game about marble racing.
 We welcome community contributions to this project.
 
 Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
-
-## References
-
-- [marbles](https://github.com/Zylann/marbles) by [Zylann](https://github.com/Zylann)
