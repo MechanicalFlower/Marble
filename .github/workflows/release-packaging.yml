@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
 
 env:
-  version: 1.4.0
-  godot_version: 4.1.1
+  version: '1.4.0'
+  godot_version: '4.1'
 
 jobs:
   release-packaging:
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.1.1
+      image: barichello/godot-ci:4.1
 
     strategy:
       fail-fast: false
