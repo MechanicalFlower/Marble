@@ -25,20 +25,19 @@ def main():
 
     with open(".reuse/dep5", "r") as file:
         for line in file:
-            if line.startswith("Files: "):
-                if "addons/" in line:
-                    last_section = ADDON
-                elif "assets/" in line:
-                    if "models/" in line:
-                        last_section = MODEL
-                    elif "textures/" in line or "icons/" in line:
-                        last_section = TEXTURE
-                    elif "fonts/" in line:
-                        last_section = FONT
-                else:
-                    last_section = None
-                    continue
+            if "# Addons" in line:
+                last_section = ADDON
+            elif "# Models" in line:
+                last_section = MODEL
+            elif "# Textures" in line:
+                last_section = TEXTURE
+            elif "# Fonts" in line:
+                last_section = FONT
 
+            if last_section is None:
+                continue
+
+            if line.startswith("Files: "):
                 deps[last_section].append({"files": line[len("Files: "):-1]})
 
             elif last_section and line.startswith("Copyright: "):
