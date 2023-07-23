@@ -30,11 +30,11 @@ jobs:
 
           - platform: web
             output: index.html
-            preset: HTML5
+            preset: Web
 
           - platform: mac
             output: Marble.zip
-            preset: Mac OSX
+            preset: macOS
 
     name: ${{ matrix.preset }} Export
     steps:

@@ -37,6 +37,11 @@ window/size/height=720
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
 [importer_defaults]
 
 wav={

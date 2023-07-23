@@ -49,6 +49,8 @@ func _process(delta):
 	# Maybe your game has two cameras, maybe it has 10, who knows?
 	# Do what you like
 	var camera := get_viewport().get_camera_3d() as Camera3D
+	if not is_instance_valid(camera):
+		return
 
 	# Stop shaking if the camera_shake_duration timer is down to zero
 	if camera_shake_duration <= 0:

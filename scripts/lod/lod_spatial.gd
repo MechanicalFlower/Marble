@@ -1,5 +1,5 @@
 class_name LODSpatial
-extends Spatial
+extends Node3D
 
 # If `false`, LOD won't update anymore. This can be used for performance comparison
 # purposes.
@@ -41,7 +41,7 @@ func _ready() -> void:
 
 	# Add random jitter to the timer to ensure LODs don't all swap at the same time.
 	randomize()
-	_timer += rand_range(0, _refresh_rate)
+	_timer += randf_range(0, _refresh_rate)
 
 
 # Despite LOD not being related to physics, we chose to run in `_physics_process()`
