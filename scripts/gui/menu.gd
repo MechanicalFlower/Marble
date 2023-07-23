@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name Menu
 
 extends Control
@@ -13,19 +9,19 @@ var _mode: int = State.MODE_START
 var _last_action: int = Action.ACTION_NOOP
 var _is_web_export := false
 
-onready var _open_sound := get_node("%OpenSound") as AudioStreamPlayer
-onready var _input := get_node("%Input") as LineEdit
-onready var _start_button := get_node("%StartMenu") as Control
-onready var _pause_menu := get_node("%PauseMenu") as Control
-onready var _quit_button := _start_button.get_node("VBoxContainer/QuitButton") as Button
-onready var _collision_toggle := get_node("%CollisionToggle") as CheckButton
-onready var _explosion_toggle := get_node("%ExplosionToggle") as CheckButton
+@onready var _open_sound := get_node(^"%OpenSound") as AudioStreamPlayer
+@onready var _input := get_node(^"%Input") as LineEdit
+@onready var _start_button := get_node(^"%StartMenu") as Control
+@onready var _pause_menu := get_node(^"%PauseMenu") as Control
+@onready var _quit_button := _start_button.get_node(^"VBoxContainer/QuitButton") as Button
+@onready var _collision_toggle := get_node(^"%CollisionToggle") as CheckButton
+@onready var _explosion_toggle := get_node(^"%ExplosionToggle") as CheckButton
 
 
 func _ready() -> void:
-	_input.set_text(SettingsManager.get_value("marbles", "marble_names"))
-	_collision_toggle.pressed = SettingsManager.get_value("marbles", "collision_enabled")
-	_explosion_toggle.pressed = SettingsManager.get_value("marbles", "explosion_enabled")
+	_input.set_text(SettingsManager.get_value(&"marbles", &"marble_names"))
+	_collision_toggle.button_pressed = SettingsManager.get_value(&"marbles", &"collision_enabled")
+	_explosion_toggle.button_pressed = SettingsManager.get_value(&"marbles", &"explosion_enabled")
 
 	_is_web_export = OS.get_name() == "HTML5"
 	set_mode(_mode)
@@ -50,27 +46,27 @@ func _on_QuitButton_pressed() -> void:
 
 
 func _on_CollisionToggle_toggled(pressed: bool):
-	_collision_toggle.pressed = pressed
-	SettingsManager.set_value("marbles", "collision_enabled", pressed)
+	_collision_toggle.button_pressed = pressed
+	SettingsManager.set_value(&"marbles", &"collision_enabled", pressed)
 
 
 func _on_ExplosionToggle_toggled(pressed: bool):
-	_explosion_toggle.pressed = pressed
-	SettingsManager.set_value("marbles", "explosion_enabled", pressed)
+	_explosion_toggle.button_pressed = pressed
+	SettingsManager.set_value(&"marbles", &"explosion_enabled", pressed)
 
 
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_VISIBILITY_CHANGED:
-			if visible:
+			if visible and _open_sound:
 				_open_sound.play()
 
 
-func get_names() -> PoolStringArray:
+func get_names() -> PackedStringArray:
 	var input_text = _input.get_text()
 	if input_text:
 		return input_text.split(",")
-	return PoolStringArray()
+	return PackedStringArray()
 
 
 func set_mode(mode: int) -> void:
@@ -122,4 +118,4 @@ func is_quit() -> bool:
 
 
 func _on_Input_text_changed(new_text):
-	SettingsManager.set_value("marbles", "marble_names", new_text)
+	SettingsManager.set_value(&"marbles", &"marble_names", new_text)

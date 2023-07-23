@@ -1,10 +1,6 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name Marble
 
-extends RigidBody
+extends RigidBody3D
 
 enum State { PAUSED, ROLL, EXPLODED, FINISH, OOB }
 
@@ -15,9 +11,9 @@ var Group = load("res://scripts/constants/groups.gd")
 var _state = State.PAUSED
 var _checkpoint_count := 0
 
-onready var _name := get_node("%Name") as Label3D
-onready var _bomb_sound = get_node("%BombSound")
-onready var _score = get_node("%Score")
+@onready var _name := get_node(^"%Name") as Label3D
+@onready var _bomb_sound = get_node(^"%BombSound")
+@onready var _score = get_node(^"%Score")
 
 
 func _ready() -> void:
@@ -27,15 +23,19 @@ func _ready() -> void:
 
 	# Set material color
 	var color = Color(randf(), randf(), randf())
-	var x_ray_material = get_node("LODSpatial/Ball-0").get_active_material(0)
-	x_ray_material.set_albedo(color)
-	var toon_material = x_ray_material.get_next_pass()
-	toon_material.set_shader_param("albedo", color)
-	x_ray_material.set_next_pass(toon_material)
-	get_node("LODSpatial/Ball-0").set_surface_material(0, x_ray_material)
+	for i in range(3):
+		var x_ray_material: StandardMaterial3D = (
+			get_node("LODSpatial/Ball-%d" % i).get_active_material(0)
+		)
+		x_ray_material.set_albedo(color)
+		var toon_material: StandardMaterial3D = x_ray_material.get_next_pass()
+		toon_material.set_albedo(color)
+#		toon_material.set_shader_parameter(&"albedo", color)
+		x_ray_material.set_next_pass(toon_material)
+		get_node("LODSpatial/Ball-%d" % i).set_surface_override_material(0, x_ray_material)
 
 	# Set collision mask
-	var collision_enabled = SettingsManager.get_value("marbles", "collision_enabled") as bool
+	var collision_enabled = SettingsManager.get_value(&"marbles", &"collision_enabled") as bool
 	if collision_enabled:
 		collision_mask = 1 << CollisionLayers.PROPS | 1 << CollisionLayers.MARBLES
 	else:
@@ -48,7 +48,7 @@ func _unhandled_input(event):
 	if OS.is_debug_build():
 		if event is InputEventKey:
 			if event.pressed:
-				match event.scancode:
+				match event.keycode:
 					KEY_F1:
 						if _score.visible:
 							_score.hide()
@@ -56,11 +56,11 @@ func _unhandled_input(event):
 							_score.show()
 
 
-func set_name(name: String) -> void:
-	_name.set_text(name)
+func set_marble_name(marble_name: StringName) -> void:
+	_name.set_text(marble_name)
 
 
-func get_name() -> String:
+func get_marble_name() -> StringName:
 	return _name.get_text()
 
 
@@ -136,6 +136,7 @@ func _start() -> void:
 	set_physics_process(true)
 	set_sleeping(false)
 	set_linear_velocity(Vector3.ZERO)
+	collision_layer = 1 << CollisionLayers.MARBLES
 
 
 func _stop() -> void:
@@ -144,3 +145,4 @@ func _stop() -> void:
 	set_physics_process(false)
 	set_sleeping(true)
 	set_linear_velocity(Vector3.ZERO)
+	collision_layer = 0

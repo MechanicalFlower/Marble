@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
 ; since the parameters that go here are not all obvious.
@@ -10,137 +6,15 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Area",
-"class": "Bumper",
-"language": "GDScript",
-"path": "res://scripts/blocks/bumper.gd"
-}, {
-"base": "Area",
-"class": "Checkpoint",
-"language": "GDScript",
-"path": "res://scripts/blocks/checkpoint.gd"
-}, {
-"base": "Spatial",
-"class": "CinematicCamera",
-"language": "GDScript",
-"path": "res://scripts/camera/cinematic_camera.gd"
-}, {
-"base": "Area",
-"class": "FinishLine",
-"language": "GDScript",
-"path": "res://scripts/blocks/finish_line.gd"
-}, {
-"base": "CPUParticles",
-"class": "LODCPUParticles",
-"language": "GDScript",
-"path": "res://addons/lod/lod_cpu_particles.gd"
-}, {
-"base": "Particles",
-"class": "LODParticles",
-"language": "GDScript",
-"path": "res://addons/lod/lod_particles.gd"
-}, {
-"base": "Spatial",
-"class": "LODSpatial",
-"language": "GDScript",
-"path": "res://addons/lod/lod_spatial.gd"
-}, {
-"base": "Node",
-"class": "Main",
-"language": "GDScript",
-"path": "res://scripts/main.gd"
-}, {
-"base": "RigidBody",
-"class": "Marble",
-"language": "GDScript",
-"path": "res://scripts/marble.gd"
-}, {
-"base": "Spatial",
-"class": "MarbleCamera",
-"language": "GDScript",
-"path": "res://scripts/camera/marble_camera.gd"
-}, {
-"base": "Control",
-"class": "Menu",
-"language": "GDScript",
-"path": "res://scripts/gui/menu.gd"
-}, {
-"base": "Spatial",
-"class": "MouseLook",
-"language": "GDScript",
-"path": "res://scripts/mouse_look.gd"
-}, {
-"base": "Control",
-"class": "Overlay",
-"language": "GDScript",
-"path": "res://scripts/gui/overlay.gd"
-}, {
-"base": "HBoxContainer",
-"class": "Participant",
-"language": "GDScript",
-"path": "res://scripts/gui/participant.gd"
-}, {
-"base": "StaticBody",
-"class": "Piece",
-"language": "GDScript",
-"path": "res://scripts/blocks/piece.gd"
-}, {
-"base": "Node",
-"class": "Race",
-"language": "GDScript",
-"path": "res://scripts/race.gd"
-}, {
-"base": "VBoxContainer",
-"class": "Ranking",
-"language": "GDScript",
-"path": "res://scripts/gui/ranking.gd"
-}, {
-"base": "AudioStreamPlayer3D",
-"class": "RollSound",
-"language": "GDScript",
-"path": "res://scripts/roll_sound.gd"
-}, {
-"base": "Spatial",
-"class": "RotationCamera",
-"language": "GDScript",
-"path": "res://scripts/camera/rotation_camera.gd"
-}, {
-"base": "Spatial",
-"class": "SpectatorCamera",
-"language": "GDScript",
-"path": "res://scripts/camera/spectator_camera.gd"
-} ]
-_global_script_class_icons={
-"Bumper": "",
-"Checkpoint": "",
-"CinematicCamera": "",
-"FinishLine": "",
-"LODCPUParticles": "res://addons/lod/lod_cpu_particles.svg",
-"LODParticles": "res://addons/lod/lod_particles.svg",
-"LODSpatial": "res://addons/lod/lod_spatial.svg",
-"Main": "",
-"Marble": "",
-"MarbleCamera": "",
-"Menu": "",
-"MouseLook": "",
-"Overlay": "",
-"Participant": "",
-"Piece": "",
-"Race": "",
-"Ranking": "",
-"RollSound": "",
-"RotationCamera": "",
-"SpectatorCamera": ""
-}
+config_version=5
 
 [application]
 
 config/name="Marble"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
+config/features=PackedStringArray("4.1")
+run/max_fps=60
 config/icon="res://assets/icon.png"
 
 [audio]
@@ -150,19 +24,18 @@ default_bus_layout="res://resources/default_bus_layout.tres"
 [autoload]
 
 SettingsManager="*res://scripts/framework/settings_manager.gd"
-FPSGraphOverlay="*res://addons/fps_graph_overlay/FPSGraphOverlay.tscn"
 Shake="*res://scripts/shake.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
+window/stretch/mode="viewport"
 window/size/width=1280
 window/size/height=720
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/fps_graph_overlay/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/lod/plugin.cfg" )
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
 [importer_defaults]
 
@@ -179,17 +52,22 @@ wav={
 
 [layer_names]
 
+3d_render/layer_1="props"
+3d_render/layer_2="connection_areas"
+3d_render/layer_3="marbless"
 3d_physics/layer_1="Props"
 3d_physics/layer_2="ConnectAreas"
 3d_physics/layer_3="Marbles"
 
 [physics]
 
-common/enable_pause_aware_picking=true
 common/enable_object_picking=false
+common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
+environment/defaults/default_environment="res://resources/default_env.tres"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
-environment/default_environment="res://default_env.tres"
+environment/default_environment=""

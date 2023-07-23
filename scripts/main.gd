@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name Main
 
 extends Node
@@ -30,25 +26,22 @@ var _race_has_started := false
 # TODO : remove this limit
 var _positions := []
 
-onready var _pause_menu := get_node("%Menu") as Menu
-onready var _race := get_node("%Race") as Race
-onready var _overlay := get_node("%Overlay") as Overlay
-onready var _marble_pool := get_node("%MarblePool") as Spatial
-onready var _timer := get_node("%Timer") as Timer
-onready var _ranking := get_tree().get_nodes_in_group("Ranking")[0] as Ranking
-onready var _explosion := get_node("%Explosion") as Particles
-onready var _marbles = _marble_pool.get_children()
-onready var _panel_timer := _overlay.get_node("Panel2") as ColorRect
-onready var _label_timer = _overlay.get_node("Panel2/CenterContainer3/VBoxContainer/LabelTimer")
-onready var _transition := get_node("%Transition/ColorRect") as ColorRect
-onready var _countdown := get_node("%Countdown")
+@onready var _pause_menu := get_node(^"%Menu") as Menu
+@onready var _race := get_node(^"%Race") as Race
+@onready var _overlay := get_node(^"%Overlay") as Overlay
+@onready var _marble_pool := get_node(^"%MarblePool") as Node3D
+@onready var _timer := get_node(^"%Timer") as Timer
+@onready var _ranking := get_tree().get_nodes_in_group(&"Ranking")[0] as Ranking
+@onready var _explosion := get_node(^"%Explosion") as GPUParticles3D
+@onready var _marbles = _marble_pool.get_children()
+@onready var _panel_timer := _overlay.get_node(^"Panel2") as ColorRect
+@onready var _label_timer = _overlay.get_node(^"Panel2/CenterContainer3/VBoxContainer/LabelTimer")
+@onready var _countdown := get_node(^"%Countdown")
 
 
 func _ready() -> void:
-	_countdown.connect("start", self, "_start_race")
-
-	_rotation_camera = RotationCamera.instance()
-	_cinematic_camera = CinematicCamera.instance()
+	_rotation_camera = RotationCamera.instantiate()
+	_cinematic_camera = CinematicCamera.instantiate()
 
 	reset_position()
 
@@ -65,7 +58,7 @@ func _exit_tree():
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed:
-			match event.scancode:
+			match event.keycode:
 				KEY_TAB:
 					if _mode == State.MODE_MARBLE:
 						var visible_marbles := []
@@ -93,10 +86,8 @@ func _unhandled_input(event):
 				# Debug command to spawn a new marble
 				KEY_T:
 					if _mode == State.MODE_MARBLE:
-						var marbles = _marble_pool.get_children()
-
 						var all_marble_has_finish = true
-						for marble in marbles:
+						for marble in _marbles:
 							all_marble_has_finish = marble.has_finish()
 							if not all_marble_has_finish:
 								break
@@ -107,18 +98,18 @@ func _unhandled_input(event):
 
 						var marble = try_place_start_marble()
 						if marble != null:
-							marble.set_name(NameGenerator.generate())
+							marble.set_marble_name(NameGenerator.generate())
 							_overlay.add_marble_rank(marble)
 
 				# Debug command to generate a new race
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
-						_race.call_deferred("generate_race", !_explosion_enabled)
+						_race.call_deferred(&"generate_race", !_explosion_enabled)
 
 				KEY_SPACE:
 					for marble in _marbles:
-						var marble_name = marble.get_name().to_lower()
-						if marble_name == "maxime" or marble_name == "max":
+						var marble_name = marble.get_marble_name().to_lower()
+						if marble_name == &"maxime" or marble_name == &"max":
 							marble.set_linear_velocity(-marble.linear_velocity * 2)
 							break
 
@@ -139,10 +130,9 @@ func try_place_start_marble() -> Marble:
 		return null
 	randomize()
 	var position = _positions.pop_at(randi() % len(_positions))
-	var marbles = _marble_pool.get_children()
 
 	var new_marble = null
-	for marble in marbles:
+	for marble in _marbles:
 		if not marble.visible:
 			new_marble = marble
 			break
@@ -150,9 +140,9 @@ func try_place_start_marble() -> Marble:
 	if new_marble == null:
 		return null
 
-	new_marble.translation = (
-		piece.translation
-		+ Vector3.UP * 5.0
+	new_marble.position = (
+		piece.position
+		+ Vector3.UP * 5
 		+ Vector3.FORWARD * (position[0] - 3)
 		+ Vector3.RIGHT * (position[1] - 1)
 	)
@@ -166,7 +156,7 @@ func get_highest_piece() -> Piece:
 		return null
 	var highest_piece = pieces[0]
 	for piece in pieces:
-		if piece.translation.y > highest_piece.translation.y:
+		if piece.position.y > highest_piece.position.y:
 			highest_piece = piece
 	return highest_piece
 
@@ -183,20 +173,14 @@ func replace_camera(new_camera, old_cameras) -> void:
 
 func set_mode(mode):
 	var start_a_new_race = false
-	var marbles = _marble_pool.get_children()
-	var marble_count = 0
-	for marble in marbles:
-		if marble.visible:
-			marble_count += 1
 
 	if mode != _mode:
 		if _mode == State.MODE_PAUSE or _mode == State.MODE_START:
 			# For each start action, delete all marbles
 			if _pause_menu.is_start() or _pause_menu.is_quit():
 				start_a_new_race = true
-				for marble in marbles:
+				for marble in _marbles:
 					marble.pause()
-				marble_count = 0
 
 				# Ensure timer is reset
 				_race_has_started = false
@@ -212,11 +196,10 @@ func set_mode(mode):
 	if _mode == State.MODE_MARBLE:
 		# If no marbles exists
 		if start_a_new_race:
-			_transition.show()
-			yield(_transition.tween, "tween_completed")
+			await Fade.fade_out(1, Color.BLACK, "Diamond", false, false).finished
 
-			_explosion_enabled = SettingsManager.get_value("marbles", "explosion_enabled") as bool
-			_race.call_deferred("generate_race", !_explosion_enabled)
+			_explosion_enabled = SettingsManager.get_value(&"marbles", &"explosion_enabled") as bool
+			_race.call_deferred(&"generate_race", !_explosion_enabled)
 
 			_overlay.reset()
 			reset_position()
@@ -225,8 +208,7 @@ func set_mode(mode):
 			_overlay.show()
 
 			# Put the camera at the right place for the start
-#			_cinematic_camera.set_curve(_race._curve)
-			replace_camera(_cinematic_camera, [_rotation_camera])
+			replace_camera(_rotation_camera, [_cinematic_camera])
 
 			var names = _pause_menu.get_names()
 			if len(names) > 0:
@@ -234,18 +216,24 @@ func set_mode(mode):
 				get_tree().set_pause(true)
 
 				# Create one marble for each name
-				for name in _pause_menu.get_names():
+				for marble_name in _pause_menu.get_names():
 					var marble = try_place_start_marble()
 					if marble == null:
 						break
-					marble.set_name(name)
+					marble.set_marble_name(marble_name)
 					_overlay.add_marble_rank(marble)
 					_cinematic_camera.set_target(marble)
 
-			_transition.hide()
-			yield(_transition.tween, "tween_completed")
+			await Fade.fade_in(1, Color.BLACK, "Diamond", false, false).finished
+			await _countdown.start()
 
-			_countdown.start()
+			# Release SceneTree
+			get_tree().set_pause(false)
+			_timer.start()
+			_race_has_started = true
+
+			# Put the camera at the right place for the start
+			replace_camera(_cinematic_camera, [_rotation_camera])
 
 		else:
 			_overlay.show()
@@ -262,13 +250,6 @@ func set_mode(mode):
 		replace_camera(_rotation_camera, [_cinematic_camera])
 
 
-func _start_race():
-	# Release SceneTree
-	get_tree().set_pause(false)
-	_timer.start()
-	_race_has_started = true
-
-
 static func remove_from_tree(node):
 	node.get_parent().remove_child(node)
 
@@ -278,7 +259,7 @@ func _process(delta):
 
 	if _time > TIME_PERIOD:
 		if _mode == State.MODE_START:
-			_race.call_deferred("generate_race", true)
+			_race.call_deferred(&"generate_race", true)
 			# Reset timer
 			_time = 0
 
@@ -297,7 +278,7 @@ func _process(delta):
 				if !skip:
 					_ranking._last_marble.explode()
 
-					_explosion.global_translation = _ranking._last_marble.global_translation
+					_explosion.global_position = _ranking._last_marble.global_position
 					_explosion.set_emitting(true)
 
 		if _ranking._first_marble:
@@ -333,9 +314,8 @@ func _process(delta):
 func explosion_victory(_last_marble: Marble) -> bool:
 	var marble_exploded_count := 0
 	var tmp_marble = null
-	var marbles = _marble_pool.get_children()
 
-	for marble in marbles:
+	for marble in _marbles:
 		if !marble.has_explode() and marble.visible:
 			marble_exploded_count += 1
 			if _last_marble != marble:

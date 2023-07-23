@@ -1,110 +1,98 @@
-; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-;
-; SPDX-License-Identifier: MIT
+[gd_scene load_steps=6 format=3 uid="uid://1ni00kklpf4b"]
 
-[gd_scene load_steps=6 format=2]
+[ext_resource type="Script" path="res://scripts/gui/ranking.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2_8us2t"]
+[ext_resource type="Script" path="res://scripts/gui/overlay.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bph3mheo28yg4" path="res://assets/icons/icons8-dynamite-100.png" id="4"]
 
-[ext_resource path="res://scripts/gui/ranking.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/box_pixies.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://scripts/gui/overlay.gd" type="Script" id=3]
-[ext_resource path="res://assets/icons/icons8-dynamite-100.png" type="Texture" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 35
-font_data = ExtResource( 2 )
+[sub_resource type="LabelSettings" id="LabelSettings_ecb06"]
+font = ExtResource("2_8us2t")
+font_size = 50
 
 [node name="Overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
 
 [node name="Panel" type="ColorRect" parent="."]
 unique_name_in_owner = true
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 216.0
-margin_bottom = 704.0
-color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
-__meta__ = {
-"_edit_group_": true
-}
+custom_minimum_size = Vector2(228, 608)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 270.0
+offset_bottom = 520.0
+color = Color(0.109804, 0.109804, 0.109804, 0.45098)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -22.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
-margin_right = 168.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
 text = "Ranking"
-align = 1
+label_settings = SubResource("LabelSettings_ecb06")
 uppercase = true
 
 [node name="Spacer" type="Control" parent="Panel/VBoxContainer"]
-margin_top = 36.0
-margin_right = 168.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 0, 8 )
+layout_mode = 2
 
 [node name="Ranking" type="VBoxContainer" parent="Panel/VBoxContainer" groups=["Ranking"]]
 unique_name_in_owner = true
-margin_top = 48.0
-margin_right = 168.0
-margin_bottom = 48.0
+layout_mode = 2
 alignment = 1
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
-margin_top = 52.0
-margin_right = 168.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 8 )
+layout_mode = 2
 
 [node name="Panel2" type="ColorRect" parent="."]
-margin_left = 1164.0
-margin_top = 16.0
-margin_right = 1264.0
-margin_bottom = 66.0
-color = Color( 0.109804, 0.109804, 0.109804, 0.45098 )
-__meta__ = {
-"_edit_group_": true
-}
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 95.0
+grow_horizontal = 0
+color = Color(0.109804, 0.109804, 0.109804, 0.45098)
 
 [node name="CenterContainer3" type="CenterContainer" parent="Panel2"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 6
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Panel2/CenterContainer3"]
-margin_left = 12.0
-margin_top = 10.0
-margin_right = 87.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 75, 25 )
+layout_mode = 2
 alignment = 1
 
 [node name="Clock" type="NinePatchRect" parent="Panel2/CenterContainer3/VBoxContainer"]
-margin_left = 3.0
-margin_right = 33.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 4 )
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4")
+region_rect = Rect2(0, 0, 100, 100)
 
 [node name="Control" type="Control" parent="Panel2/CenterContainer3/VBoxContainer"]
-margin_left = 37.0
-margin_right = 37.0
-margin_bottom = 30.0
+layout_mode = 2
 
 [node name="LabelTimer" type="Label" parent="Panel2/CenterContainer3/VBoxContainer"]
-margin_left = 41.0
-margin_right = 71.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 text = "0:00"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1

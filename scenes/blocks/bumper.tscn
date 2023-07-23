@@ -1,128 +1,135 @@
-; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-;
-; SPDX-License-Identifier: MIT
+[gd_scene load_steps=16 format=3 uid="uid://kpsvshil6d4q"]
 
-[gd_scene load_steps=15 format=2]
+[ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/blocks/bumper.gd" id="2"]
+[ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="3"]
+[ext_resource type="AudioStream" uid="uid://d1ov0uhwvty5i" path="res://assets/sounds/bump.wav" id="4"]
+[ext_resource type="PackedScene" uid="uid://h3dbn48vuyv4" path="res://scenes/blocks/forward_down.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/blocks/hopper2.tscn" id="6"]
+[ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="7"]
 
-[ext_resource path="res://scripts/blocks/piece.gd" type="Script" id=1]
-[ext_resource path="res://scripts/blocks/bumper.gd" type="Script" id=2]
-[ext_resource path="res://resources/materials/piece.tres" type="Material" id=3]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=4]
-[ext_resource path="res://scenes/blocks/forward_down.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/blocks/hopper2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scripts/blocks/checkpoint.gd" type="Script" id=7]
+[sub_resource type="CylinderMesh" id="1"]
 
-[sub_resource type="CylinderMesh" id=1]
-
-[sub_resource type="CylinderMesh" id=2]
+[sub_resource type="CylinderMesh" id="2"]
 height = 0.2
 
-[sub_resource type="CylinderMesh" id=3]
+[sub_resource type="CylinderMesh" id="3"]
 top_radius = 0.2
 bottom_radius = 0.2
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape3D" id="4"]
 height = 2.44273
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "bump"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Top:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.00613901, 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0.00613901, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0, -0.1, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, -0.1, 0 ) ]
+"values": [Vector3(0, -0.1, 0), Vector3(0, 1, 0), Vector3(0, -0.1, 0)]
 }
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_on4sg"]
+_data = {
+"bump": SubResource("6")
+}
 
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 0.7, 0.50035, 0.7 )
+[sub_resource type="BoxShape3D" id="5"]
 
-[node name="Bumper" type="StaticBody"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 1 )
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(1.4, 1.0007, 1.4)
 
-[node name="Base" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41963, 0 )
-material_override = ExtResource( 3 )
-mesh = SubResource( 1 )
+[node name="Bumper" type="StaticBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_mask = 0
+script = ExtResource("1")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41963, 0)
+material_override = ExtResource("3")
+mesh = SubResource("1")
 skeleton = NodePath("")
 
-[node name="Top" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
-material_override = ExtResource( 3 )
-mesh = SubResource( 2 )
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+material_override = ExtResource("3")
+mesh = SubResource("2")
 skeleton = NodePath("")
 
-[node name="Piston" type="MeshInstance" parent="Top"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00042, 0 )
-material_override = ExtResource( 3 )
-mesh = SubResource( 3 )
+[node name="Piston" type="MeshInstance3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00042, 0)
+material_override = ExtResource("3")
+mesh = SubResource("3")
 skeleton = NodePath("")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24834, 0 )
-shape = SubResource( 4 )
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24834, 0)
+shape = SubResource("4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-anims/bump = SubResource( 6 )
+libraries = {
+"": SubResource("AnimationLibrary_on4sg")
+}
 
-[node name="BeginArea" type="Area" parent="."]
+[node name="BeginArea" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform( 1, 0, -1.7411e-09, 0, 1, 0, 1.7411e-09, 0, 1, 5.70947e-09, 2.5, 5 )
+transform = Transform3D(1, 0, -1.7411e-09, 0, 1, 0, 1.7411e-09, 0, 1, 5.70947e-09, 2.5, 5)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="BeginArea"]
-shape = SubResource( 5 )
+[node name="CollisionShape" type="CollisionShape3D" parent="BeginArea"]
+shape = SubResource("5")
 
-[node name="EndArea" type="Area" parent="."]
+[node name="EndArea" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -9 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 7 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -9)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("7")
 
-[node name="CollisionShape" type="CollisionShape" parent="EndArea"]
-shape = SubResource( 5 )
+[node name="CollisionShape" type="CollisionShape3D" parent="EndArea"]
+shape = SubResource("5")
 
-[node name="Area" type="Area" parent="."]
-script = ExtResource( 2 )
+[node name="Area" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2")
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494116, 0 )
-shape = SubResource( 7 )
+[node name="CollisionShape" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494116, 0)
+shape = SubResource("7")
 
 [node name="BumpSound" type="AudioStreamPlayer3D" parent="Area"]
 unique_name_in_owner = true
-stream = ExtResource( 4 )
-unit_size = 10.0
+stream = ExtResource("4")
 
-[node name="ForwardDown" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.999273, 0, 0.0381262, 0, 1, 0, -0.0381262, 0, -0.999273, 0, 2.5, 4 )
+[node name="ForwardDown" parent="." instance=ExtResource("5")]
+transform = Transform3D(-0.999273, 0, 0.0381262, 0, 1, 0, -0.0381262, 0, -0.999273, 0, 2.5, 4)
+collision_mask = 0
 
-[node name="Hopper2" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, -7 )
+[node name="Hopper2" parent="." instance=ExtResource("6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, -7)
+collision_mask = 0
 
-[node name="Positions" type="Spatial" parent="."]
+[node name="Positions" type="Node3D" parent="."]
 
-[node name="Position3D" type="Position3D" parent="Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14271e-07, 6.29654, 3.73871 )
+[node name="Position3D" type="Marker3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14271e-07, 6.29654, 3.73871)
 
-[node name="Position3D2" type="Position3D" parent="Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45491e-07, 3.93717, -3.80809 )
+[node name="Position3D2" type="Marker3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45491e-07, 3.93717, -3.80809)
 
-[node name="Position3D3" type="Position3D" parent="Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09669e-06, 2.28895, -13.5447 )
+[node name="Position3D3" type="Marker3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09669e-06, 2.28895, -13.5447)
 
-[node name="Position3D4" type="Position3D" parent="Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09669e-06, -4.0702, -13.5447 )
+[node name="Position3D4" type="Marker3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09669e-06, -4.0702, -13.5447)
 
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]

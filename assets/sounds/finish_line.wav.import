@@ -1,17 +1,14 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/finish_line.wav-09a07f3827d4d92321e49b6ca959743c.sample"
+type="AudioStreamWAV"
+uid="uid://bdttmbobiy344"
+path="res://.godot/imported/finish_line.wav-09a07f3827d4d92321e49b6ca959743c.sample"
 
 [deps]
 
 source_file="res://assets/sounds/finish_line.wav"
-dest_files=[ "res://.import/finish_line.wav-09a07f3827d4d92321e49b6ca959743c.sample" ]
+dest_files=["res://.godot/imported/finish_line.wav-09a07f3827d4d92321e49b6ca959743c.sample"]
 
 [params]
 

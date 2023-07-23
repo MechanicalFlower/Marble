@@ -1,14 +1,10 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name SpectatorCamera
 
-extends Spatial
+extends Node3D
 
-export var speed := 10.0
+@export var speed := 10.0
 
-onready var _camera := get_node("%Camera") as Camera
+@onready var _camera := get_node(^"%Camera") as Camera3D
 
 
 func _physics_process(delta: float) -> void:

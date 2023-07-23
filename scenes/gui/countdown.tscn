@@ -1,43 +1,43 @@
-; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-;
-; SPDX-License-Identifier: MIT
+[gd_scene load_steps=6 format=3 uid="uid://cr0ipqbbhw6fv"]
 
-[gd_scene load_steps=6 format=2]
+[ext_resource type="Script" path="res://scripts/gui/countdown.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2_5qytn"]
+[ext_resource type="AudioStream" uid="uid://nau0cerdcaga" path="res://assets/sounds/countdown/countdown-b.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://c8qsejp3fxb6y" path="res://assets/sounds/countdown/countdown-a.ogg" id="4"]
 
-[ext_resource path="res://scripts/gui/countdown.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/box_pixies.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/sounds/countdown/countdown-b.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/sounds/countdown/countdown-a.ogg" type="AudioStream" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 60
-font_data = ExtResource( 2 )
+[sub_resource type="LabelSettings" id="LabelSettings_42o2s"]
+font = ExtResource("2_5qytn")
+font_size = 50
 
 [node name="Countdown" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
-margin_bottom = 355.0
+offset_bottom = 26.0
+grow_horizontal = 2
 
 [node name="LabelTimer" type="Label" parent="CenterContainer"]
 unique_name_in_owner = true
-margin_left = 540.0
-margin_top = 77.0
-margin_right = 740.0
-margin_bottom = 277.0
-rect_min_size = Vector2( 200, 200 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
 text = "3"
-align = 1
-valign = 1
+label_settings = SubResource("LabelSettings_42o2s")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Countdown1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -20.0
 
 [node name="Countdown2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 volume_db = -20.0

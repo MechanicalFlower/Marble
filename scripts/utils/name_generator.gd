@@ -1,11 +1,7 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 const MIN_LENGTH = 3
 const MAX_LENGTH = 7
 const LETTERS = {
-	"VOYELLE":
+	&"VOYELLE":
 	[
 		"a",
 		"e",
@@ -33,8 +29,8 @@ const LETTERS = {
 		"i",
 		"y"
 	],
-	"DOUBLE_VOYELLE": ["oi", "ai", "ou", "ei", "ae", "eu", "ie", "ea"],
-	"CONSONNE":
+	&"DOUBLE_VOYELLE": ["oi", "ai", "ou", "ei", "ae", "eu", "ie", "ea"],
+	&"CONSONNE":
 	[
 		"b",
 		"c",
@@ -80,21 +76,21 @@ const LETTERS = {
 		"x",
 		"z"
 	],
-	"DOUBLE_CONSONNE": ["mm", "nn", "st", "ch", "ll", "tt", "ss"],
-	"COMPOSE": ["qu", "gu", "cc", "sc", "tr", "fr", "pr", "br", "cr", "ch", "ll", "tt", "ss", "gn"]
+	&"DOUBLE_CONSONNE": ["mm", "nn", "st", "ch", "ll", "tt", "ss"],
+	&"COMPOSE": ["qu", "gu", "cc", "sc", "tr", "fr", "pr", "br", "cr", "ch", "ll", "tt", "ss", "gn"]
 }
 
 const TRANSITION = {
-	"INITIAL": ["VOYELLE", "CONSONNE", "COMPOSE"],
-	"VOYELLE": ["CONSONNE", "DOUBLE_CONSONNE", "COMPOSE"],
-	"DOUBLE_VOYELLE": ["CONSONNE", "DOUBLE_CONSONNE", "COMPOSE"],
-	"CONSONNE": ["VOYELLE", "DOUBLE_VOYELLE"],
-	"DOUBLE_CONSONNE": ["VOYELLE", "DOUBLE_VOYELLE"],
-	"COMPOSE": ["VOYELLE"]
+	&"INITIAL": [&"VOYELLE", &"CONSONNE", &"COMPOSE"],
+	&"VOYELLE": [&"CONSONNE", &"DOUBLE_CONSONNE", &"COMPOSE"],
+	&"DOUBLE_VOYELLE": [&"CONSONNE", &"DOUBLE_CONSONNE", &"COMPOSE"],
+	&"CONSONNE": [&"VOYELLE", &"DOUBLE_VOYELLE"],
+	&"DOUBLE_CONSONNE": [&"VOYELLE", &"DOUBLE_VOYELLE"],
+	&"COMPOSE": [&"VOYELLE"]
 }
 
 
-static func pick_random_number(max_value, min_value = 0):
+static func pick_random_number(max_value: int, min_value: int = 0):
 	randomize()
 
 	return round(randi() % (max_value - min_value) + min_value)
@@ -113,9 +109,9 @@ static func get_letter(state, _last_letter, max_length):
 	var transitions = clone_array(TRANSITION[state])
 
 	if max_length < 3:
-		transitions.erase("COMPOSE")
-		transitions.erase("DOUBLE_CONSONNE")
-		transitions.erase("DOUBLE_VOYELLE")
+		transitions.erase(&"COMPOSE")
+		transitions.erase(&"DOUBLE_CONSONNE")
+		transitions.erase(&"DOUBLE_VOYELLE")
 
 	var state_index = pick_random_number(transitions.size())
 
@@ -127,12 +123,12 @@ static func get_letter(state, _last_letter, max_length):
 	return [state, letters_list[letter_index]]
 
 
-static func generate(min_length = MIN_LENGTH, max_length = MAX_LENGTH):
+static func generate(min_length: int = MIN_LENGTH, max_length: int = MAX_LENGTH):
 	var length = pick_random_number(max_length, min_length)
 	var name = ""
 	var last_letter = ""
 	var index = 0
-	var state = "INITIAL"
+	var state = &"INITIAL"
 
 	while index < length:
 		var obj = get_letter(state, last_letter, length - index)

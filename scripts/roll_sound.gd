@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name RollSound
 
 extends AudioStreamPlayer3D
@@ -14,12 +10,15 @@ var _last_hit_time := 0.0
 var _last_body_enter_time := 0.0
 var _last_body_exit_time := 0.0
 
-onready var _marble := get_parent() as Marble
-onready var _hit_sound := get_node("HitSound") as AudioStreamPlayer3D
+@onready var _marble := get_parent() as Marble
+@onready var _hit_sound := get_node(^"HitSound") as AudioStreamPlayer3D
 
 
 func _ready():
-	var now := OS.get_ticks_msec()
+	_marble.connect(&"body_entered", _on_Marble_body_entered)
+	_marble.connect(&"body_exited", _on_Marble_body_exited)
+
+	var now := Time.get_ticks_msec()
 	_last_body_exit_time = now + 500.0
 
 
@@ -37,13 +36,13 @@ func _physics_process(delta: float) -> void:
 
 	# TODO : dicked around for 10min, needs improvements
 	pitch_scale = clamp(_speed * 0.5, 0.1, 10.0)
-	var linear_vol := clamp(_speed * 0.5 - 2.0, 0.0, 1.0)
-	unit_db = linear2db(linear_vol)
+	var linear_vol := clamp(_speed * 0.5 - 2.0, 0.0, 1.0) as float
+	volume_db = linear_to_db(linear_vol)
 
 
-func _on_Marble_body_entered(_body: Node) -> void:
+func _on_Marble_body_entered(_body: PhysicsBody3D) -> void:
 	if _marble.in_race():
-		var now := OS.get_ticks_msec()
+		var now := Time.get_ticks_msec()
 		_last_body_enter_time = now
 		if now - _last_body_exit_time > 500.0:
 			if now - _last_hit_time > 500.0:
@@ -51,6 +50,6 @@ func _on_Marble_body_entered(_body: Node) -> void:
 				_last_hit_time = now
 
 
-func _on_Marble_body_exited(_body: Node) -> void:
-	var now := OS.get_ticks_msec()
+func _on_Marble_body_exited(_body: PhysicsBody3D) -> void:
+	var now := Time.get_ticks_msec()
 	_last_body_exit_time = now

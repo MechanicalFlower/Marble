@@ -1,26 +1,21 @@
-# SPDX-FileCopyrightText: 2019 Zylann
-#
-# SPDX-License-Identifier: MIT
-#
-# Source: https://github.com/Zylann/marbles
-
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh"
+uid="uid://biur4wlr2tf7i"
+path="res://.godot/imported/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh"
 
 [deps]
 
-files=[ "res://.import/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh" ]
+files=["res://.godot/imported/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh"]
 
 source_file="res://assets/blocks/start_line.obj"
-dest_files=[ "res://.import/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh", "res://.import/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh" ]
+dest_files=["res://.godot/imported/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh", "res://.godot/imported/start_line.obj-892c20103a4fa50cd54f3b56ecf1f3e4.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
-octahedral_compression=true
-optimize_mesh_flags=4286
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

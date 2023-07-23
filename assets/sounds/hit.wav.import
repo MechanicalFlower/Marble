@@ -1,17 +1,14 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/hit.wav-b122da9ae3f69dfbe7a6d1bf9e1b423e.sample"
+type="AudioStreamWAV"
+uid="uid://b7ga03rbxi6qs"
+path="res://.godot/imported/hit.wav-b122da9ae3f69dfbe7a6d1bf9e1b423e.sample"
 
 [deps]
 
 source_file="res://assets/sounds/hit.wav"
-dest_files=[ "res://.import/hit.wav-b122da9ae3f69dfbe7a6d1bf9e1b423e.sample" ]
+dest_files=["res://.godot/imported/hit.wav-b122da9ae3f69dfbe7a6d1bf9e1b423e.sample"]
 
 [params]
 

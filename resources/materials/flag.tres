@@ -1,8 +1,5 @@
-; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-;
-; SPDX-License-Identifier: MIT
-
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8rgiyhrayedw"]
 
 [resource]
-params_cull_mode = 2
+resource_local_to_scene = true
+cull_mode = 2

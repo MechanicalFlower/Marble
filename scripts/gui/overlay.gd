@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name Overlay
 
 extends Control
@@ -10,8 +6,8 @@ const Participant := preload("res://scenes/gui/participant.tscn")
 
 var Group := load("res://scripts/constants/groups.gd")
 
-onready var _ranking := get_node("%Ranking") as Ranking
-onready var _marble_pool = get_tree().get_nodes_in_group("marble_pool")[0]
+@onready var _ranking := get_node(^"%Ranking") as Ranking
+@onready var _marble_pool = get_tree().get_nodes_in_group(&"marble_pool")[0]
 
 
 func _process(_delta):
@@ -23,14 +19,15 @@ func _process(_delta):
 
 func add_marble_rank(marble: Marble) -> void:
 	# Add the marble to the list of participants
-	var participant = Participant.instance()
+	var participant = Participant.instantiate()
 	participant.set_marble(marble)
 	_ranking.add_child(participant)
 	_ranking.add_child(HSeparator.new())
 
 
 func reset() -> void:
-	_ranking.reset()
+	if _ranking:
+		_ranking.reset()
 
 
 func _notification(what: int) -> void:

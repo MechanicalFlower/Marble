@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
 
 LIBGL_DEBUG=verbose glxinfo
 

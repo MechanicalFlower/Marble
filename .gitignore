@@ -1,10 +1,7 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 # Godot-specific ignores
+.godot/
 .import/
-export.cfg
+gfxrecon_capture_*
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -13,12 +10,10 @@ export.cfg
 .mono/
 data_*/
 
-# Flatpack-specific ignors
-.flatpak-builder/
+# gd-plug
+.plugged/
+addons/*
+!addons/gd-plug/
 
-# Snap-specific ignores
-build-dir/
-*.snap
-
-.vscode/
-build/
+# Python-specific ignores
+venv/

@@ -1,11 +1,6 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
-tool
+@tool
 
 class_name Race
-
 extends Node
 
 var PieceList = load("res://scripts/constants/piece_list.gd")
@@ -17,7 +12,7 @@ var _piece_orientation = null
 var _previous_rotation_index := 0
 var _curve: Curve3D
 
-onready var path := get_node("Path") as Path
+@onready var path := get_node(^"Path") as Path3D
 
 
 static func umod(x: int, d: int) -> int:
@@ -30,8 +25,8 @@ func _ready() -> void:
 	_curve = Curve3D.new()
 	path.set_curve(_curve)
 
-	var explosion_enabled = SettingsManager.get_value("marbles", "explosion_enabled") as bool
-	call_deferred("generate_race", !explosion_enabled)
+	var explosion_enabled = SettingsManager.get_value(&"marbles", &"explosion_enabled") as bool
+	generate_race(!explosion_enabled)
 
 
 func generate_race(with_end: bool = true) -> void:
@@ -39,7 +34,7 @@ func generate_race(with_end: bool = true) -> void:
 
 	for piece in get_children():
 		if piece.is_in_group(Group.PIECES):
-			piece.call_deferred("queue_free")
+			piece.queue_free()
 
 	randomize()
 
@@ -67,7 +62,7 @@ func generate_chunk():
 
 func place_piece(piece_index: int) -> void:
 	var piece_data = PieceList.PIECES[piece_index]
-	var piece = piece_data["resource"].instance()
+	var piece = piece_data[&"resource"].instantiate()
 
 	# Add the piece to the main Node
 	add_child(piece)
@@ -91,10 +86,10 @@ func place_piece(piece_index: int) -> void:
 
 	# Store data for next piece
 	_previous_piece = piece
-	_piece_orientation = piece_data["next_piece_orientation"]
+	_piece_orientation = piece_data[&"next_piece_orientation"]
 	_previous_rotation_index = rotation_index
 
-	var positions = piece.get_node("Positions")
+	var positions := piece.get_node(^"Positions") as Marker3D
 	if positions:
 		for pos in positions.get_children():
-			_curve.add_point(pos.global_translation)
+			_curve.add_point(pos.global_position)

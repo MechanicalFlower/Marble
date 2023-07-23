@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name Participant
 
 extends HBoxContainer
@@ -16,18 +12,18 @@ var Group := load("res://scripts/constants/groups.gd")
 var _marble: Marble = null
 var _last_rank := -1
 
-onready var _rank_label := get_node("%Rank") as Label
-onready var _name_label := get_node("%Name") as Label
-onready var _state := get_node("%State") as NinePatchRect
+@onready var _rank_label := get_node(^"%Rank") as Label
+@onready var _name_label := get_node(^"%Name") as Label
+@onready var _state := get_node(^"%State") as NinePatchRect
 
 
 func _ready() -> void:
-	_name_label.set_text(_marble.get_name().to_upper())
+	_name_label.set_text(_marble.get_marble_name().to_upper())
 
 
 func set_rank(rank: int) -> void:
 	_last_rank = rank
-	_rank_label.set_text(String(rank))
+	_rank_label.set_text(String.num_int64(rank))
 
 	if _marble.has_finish():
 		if rank == 1:

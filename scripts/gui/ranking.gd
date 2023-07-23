@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 # List of participants, which is updated every frame until the end of the race
 class_name Ranking
 
@@ -19,7 +15,7 @@ func update() -> void:
 		if child is Participant:
 			arr.append(child)
 
-	arr.sort_custom(self, "more_checkpoint")
+	arr.sort_custom(more_checkpoint)
 
 	if len(arr) > 0:
 		_first_marble = arr[0].get_marble()
@@ -63,4 +59,4 @@ func more_checkpoint(a: Participant, b: Participant) -> bool:
 
 func reset() -> void:
 	for child in get_children():
-		child.call_deferred("queue_free")
+		child.call_deferred(&"queue_free")

@@ -1,15 +1,24 @@
-; SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-;
-; SPDX-License-Identifier: MIT
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://5gxm1ehx7waa"]
 
-[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+[ext_resource type="Texture2D" uid="uid://8dp5yxgnqaqv" path="res://assets/marble/marble_albedo.jpg" id="1_eohvc"]
+[ext_resource type="Texture2D" uid="uid://60dl3bvlmlx" path="res://assets/marble/marble_normal.jpg" id="2_u75ua"]
+[ext_resource type="Texture2D" uid="uid://bcwf8u32r3bwe" path="res://assets/marble/marble_oughness.jpg" id="3_t2pmv"]
 
-[ext_resource path="res://resources/materials/toon_marble.tres" type="Material" id=1]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_didtf"]
+resource_local_to_scene = true
+render_priority = 1
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("1_eohvc")
+roughness_texture = ExtResource("3_t2pmv")
+normal_enabled = true
+normal_texture = ExtResource("2_u75ua")
 
 [resource]
 resource_local_to_scene = true
-render_priority = -1
-next_pass = ExtResource( 1 )
-flags_transparent = true
-flags_unshaded = true
-flags_no_depth_test = true
+next_pass = SubResource("StandardMaterial3D_didtf")
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0.47451, 0.47451, 1)

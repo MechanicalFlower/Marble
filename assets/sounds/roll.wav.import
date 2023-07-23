@@ -1,17 +1,14 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/roll.wav-8f7f4762203d270e4a3716fc59dd35ce.sample"
+type="AudioStreamWAV"
+uid="uid://3hc6gfblh3gf"
+path="res://.godot/imported/roll.wav-8f7f4762203d270e4a3716fc59dd35ce.sample"
 
 [deps]
 
 source_file="res://assets/sounds/roll.wav"
-dest_files=[ "res://.import/roll.wav-8f7f4762203d270e4a3716fc59dd35ce.sample" ]
+dest_files=["res://.godot/imported/roll.wav-8f7f4762203d270e4a3716fc59dd35ce.sample"]
 
 [params]
 

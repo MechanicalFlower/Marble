@@ -1,19 +1,19 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/countdown-b.ogg-661c88071082323e685053c5ab0cff8e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nau0cerdcaga"
+path="res://.godot/imported/countdown-b.ogg-661c88071082323e685053c5ab0cff8e.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/countdown/countdown-b.ogg"
-dest_files=[ "res://.import/countdown-b.ogg-661c88071082323e685053c5ab0cff8e.oggstr" ]
+dest_files=["res://.godot/imported/countdown-b.ogg-661c88071082323e685053c5ab0cff8e.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

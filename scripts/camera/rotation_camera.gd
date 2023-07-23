@@ -1,18 +1,14 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name RotationCamera
 
-extends Spatial
+extends Node3D
 
 const RADIUS := 50.0
 
-export var rotation_speed := 0.5
+@export var rotation_speed := 0.5
 
 var _current_angle := 0.0
 
-onready var _camera := get_node("%Camera") as Camera
+@onready var _camera := get_node(^"%Camera") as Camera3D
 
 
 func _process(delta: float) -> void:

@@ -1,16 +1,12 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name MouseLook
 
-extends Spatial
+extends Node3D
 
-export var sensitivity := 0.4
-export var min_angle := -90
-export var max_angle := 90
-export var capture_mouse := true
-export var distance := 5.0
+@export var sensitivity := 0.4
+@export var min_angle := -90
+@export var max_angle := 90
+@export var capture_mouse := true
+@export var distance := 5.0
 
 var _yaw := 0.0
 var _pitch := 0.0
@@ -49,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func update_rotations() -> void:
-	set_translation(Vector3.ZERO)
-	set_rotation(Vector3(0, deg2rad(_yaw), 0))
-	rotate(get_transform().basis.x.normalized(), -deg2rad(_pitch))
-	set_translation(get_transform().basis.z * distance)
+	set_position(Vector3.ZERO)
+	set_rotation(Vector3(0, deg_to_rad(_yaw), 0))
+	rotate(get_transform().basis.x.normalized(), -deg_to_rad(_pitch))
+	set_position(get_transform().basis.z * distance)

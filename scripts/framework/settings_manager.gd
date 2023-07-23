@@ -1,9 +1,5 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 # Helps with handling Godot Engine settings relevant to GOAT.
-tool
+@tool
 
 extends Node
 
@@ -13,9 +9,9 @@ const SETTINGS_FILE_NAME := "user://settings.cfg"
 
 # Each entry contains: section name, key name, default value
 var default_values := [
-	["marbles", "marble_names", ""],
-	["marbles", "collision_enabled", true],
-	["marbles", "explosion_enabled", false],
+	[&"marbles", &"marble_names", ""],
+	[&"marbles", &"collision_enabled", true],
+	[&"marbles", &"explosion_enabled", false],
 ]
 
 # If enabled, settings will be saved to file when changed
@@ -41,19 +37,19 @@ func _ready():
 	_settings_file.save(SETTINGS_FILE_NAME)
 
 
-func get_value(section: String, key: String):
+func get_value(section: StringName, key: StringName):
 	var value = _settings_file.get_value(section, key)
 	assert(value != null)
 	return value
 
 
-func set_value(section: String, key: String, value) -> void:
+func set_value(section: StringName, key: StringName, value) -> void:
 	var previous_value = _settings_file.get_value(section, key)
 	if previous_value != value:
 		_settings_file.set_value(section, key, value)
 		if autosave:
 			_settings_file.save(SETTINGS_FILE_NAME)
-		emit_signal("value_changed", section, key)
+		emit_signal(&"value_changed", section, key)
 		emit_signal("value_changed_{}_{}".format([section, key], "{}"))
 
 
@@ -68,7 +64,7 @@ func find_matching_loaded_locale() -> String:
 	"""
 	var current_locale = TranslationServer.get_locale()
 	var loaded_locales = TranslationServer.get_loaded_locales()
-	var fallback_locale = ProjectSettings.get("locale/fallback")
+	var fallback_locale = ProjectSettings.get(&"locale/fallback")
 
 	# If no translations are provided, return ""
 	if not loaded_locales:
@@ -85,5 +81,5 @@ func find_matching_loaded_locale() -> String:
 			if locale.substr(0, 2) == loaded_locale.substr(0, 2):
 				return loaded_locale
 
-	# If nothing matches, return first provided translation
+	# If nothing matches, return first provided position
 	return loaded_locales[0]

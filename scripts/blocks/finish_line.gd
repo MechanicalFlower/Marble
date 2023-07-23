@@ -1,17 +1,13 @@
-# SPDX-FileCopyrightText: 2023 Florian Vazelle <florian.vazelle@vivaldi.net>
-#
-# SPDX-License-Identifier: MIT
-
 class_name FinishLine
 
-extends Area
+extends Area3D
 
 var Group := load("res://scripts/constants/groups.gd")
 
-onready var _player := get_node("%Sound") as AudioStreamPlayer3D
+@onready var _player := get_node(^"%Sound") as AudioStreamPlayer3D
 
 
-func _on_Area_body_entered(body: PhysicsBody) -> void:
+func _on_Area_body_entered(body: PhysicsBody3D) -> void:
 	# If a marble collide
 	if body.is_in_group(Group.MARBLES):
 		# Play the final sound

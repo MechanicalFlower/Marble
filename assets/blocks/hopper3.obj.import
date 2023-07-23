@@ -1,26 +1,21 @@
-# SPDX-FileCopyrightText: 2019 Zylann
-#
-# SPDX-License-Identifier: MIT
-#
-# Source: https://github.com/Zylann/marbles
-
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh"
+uid="uid://clo7cja12a1aw"
+path="res://.godot/imported/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh"
 
 [deps]
 
-files=[ "res://.import/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh" ]
+files=["res://.godot/imported/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh"]
 
 source_file="res://assets/blocks/hopper3.obj"
-dest_files=[ "res://.import/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh", "res://.import/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh" ]
+dest_files=["res://.godot/imported/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh", "res://.godot/imported/hopper3.obj-76ebc29ceecc3591fdb2a0635f164ab9.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
-octahedral_compression=true
-optimize_mesh_flags=4286
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

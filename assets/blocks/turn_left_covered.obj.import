@@ -1,26 +1,21 @@
-# SPDX-FileCopyrightText: 2019 Zylann
-#
-# SPDX-License-Identifier: MIT
-#
-# Source: https://github.com/Zylann/marbles
-
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh"
+uid="uid://d3vf3v6taxkej"
+path="res://.godot/imported/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh"
 
 [deps]
 
-files=[ "res://.import/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh" ]
+files=["res://.godot/imported/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh"]
 
 source_file="res://assets/blocks/turn_left_covered.obj"
-dest_files=[ "res://.import/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh", "res://.import/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh" ]
+dest_files=["res://.godot/imported/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh", "res://.godot/imported/turn_left_covered.obj-6fc39e478ebbc1fcccc1a3f83ad0b2b8.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
-octahedral_compression=true
-optimize_mesh_flags=4286
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

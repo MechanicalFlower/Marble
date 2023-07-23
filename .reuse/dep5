@@ -3,8 +3,54 @@ Upstream-Name: Marble
 Upstream-Contact: Florian Vazelle <florian.vazelle@vivaldi.net>
 Source: https://github.com/MechanicalFlower/Marble
 
-# Sample paragraph, commented out:
-#
-# Files: src/*
-# Copyright: $YEAR $NAME <$CONTACT>
-# License: ...
+Files: *
+Copyright: 2022-present Florian Vazelle
+License: MIT
+
+# Addons
+
+Files: addons/flexible_toon_shader/*
+Copyright: 2021 John Wigg
+License: MIT
+Source: https://github.com/CaptainProton42/FlexibleToonShaderGD
+
+Files: addons/fps_graph_overlay/*
+Copyright: 2023 Sander Vanhove
+License: MIT
+Source: https://github.com/SanderVanhove/godot-fps-graph-overlay
+
+Files: addons/kanban_tasks/*
+Copyright: 2022-2023 HolonProduction
+License: MIT
+Source: https://github.com/HolonProduction/godot_kanban_tasks
+
+Files: addons/lod/*
+Copyright: 2020 Hugo Locurcio and contributors
+License: MIT
+Source: https://github.com/godot-extended-libraries/godot-lod
+
+# Models
+
+Files: assets/blocks/*
+Copyright: 2019 Zylann
+License: MIT
+Source: https://github.com/Zylann/marbles
+
+# Textures
+
+Files: assets/icons/*
+Copyright: 2023 Icons8
+License: LicenseRef-linksware
+Source: https://icons8.com/
+
+Files: assets/marble/*
+Copyright: 2017-2023 Lennart Demes
+License: CC0-1.0
+Source: https://ambientcg.com/view?id=Ground037
+
+# Fonts
+
+Files: assets/fonts/box_pixies.ttf
+Copyright: 2020 Heaven Castro
+License: CC0-1.0
+Source: https://www.fontspace.com/boxpixies-font-f27657
