@@ -3,14 +3,14 @@
 
 # ⚽ Marble
 
-![Godot Badge](https://img.shields.io/badge/godot-4.1-blue?logo=Godot-Engine&logoColor=white) ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white) ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
+![Godot Badge](https://img.shields.io/badge/godot-4.1-blue?logo=Godot-Engine&logoColor=white) ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white) ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white) ![reuse](./.reuse/REUSE-compliant.svg)
 
 A marble race minigame, made with [Godot Engine](https://godotengine.org/).
 
 <a href="https://github.com/mechanicalflower/Marble/releases/" target="_blank"><img src="public/publishing/store/github.webp" alt="Download on  Github" height="40px" ></a>
 <a href="https://mechanical-flower.itch.io/marble" target="_blank"><img src="public/publishing/store/itchio.webp" alt="Download on  itch.io" height="40px" ></a>
-<a href="https://flathub.org/apps/details/org.mechanicalflower.Marble" target="_blank"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub"  height="40px"></a>
-<a href="https://snapcraft.io/Marble" target="_blank"><img src="https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-black.png" alt="Download on Snap Store" height="40px"></a>
+<!-- <a href="https://flathub.org/apps/details/org.mechanicalflower.Marble" target="_blank"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub"  height="40px"></a> -->
+<!-- <a href="https://snapcraft.io/Marble" target="_blank"><img src="https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-black.png" alt="Download on Snap Store" height="40px"></a> -->
 
 </div>
 
@@ -20,16 +20,19 @@ Marble is an open source mini-game about marble racing.
 
 ### Controls
 
-- `WASD` to move.
-- `Mouse` to move the camera around.
-- `Tab` to follow a marble.
-- `ESC` to open and close pause menu.
+- `Tab` to follow an other marble.
+- `ESC` to open and close menu.
 
 ### Features
 
 - Name your marbles.
 - Start procedural races.
 - Watch the real-time ranking.
+
+There are two racing modes: **normal** and **explosion**.
+
+In **explosion**, a timer starts, and when it reaches zero the last marble explodes.
+The race is infinite, and the game ends when only one marble remains.
 
 ### Screenshots
 

@@ -9,25 +9,20 @@ License: MIT
 
 # Addons
 
-Files: addons/flexible_toon_shader/*
-Copyright: 2021 John Wigg
+Files: addons/gd-plug/*
+Copyright: 2021 Tan Jian Ping
 License: MIT
-Source: https://github.com/CaptainProton42/FlexibleToonShaderGD
+Source: https://github.com/imjp94/gd-plug
 
-Files: addons/fps_graph_overlay/*
-Copyright: 2023 Sander Vanhove
+Files: addons/debug_menu/*
+Copyright: 2023-present Hugo Locurcio and contributors
 License: MIT
-Source: https://github.com/SanderVanhove/godot-fps-graph-overlay
+Source: https://github.com/godot-extended-libraries/godot-debug-menu
 
-Files: addons/kanban_tasks/*
-Copyright: 2022-2023 HolonProduction
+Files: addons/UniversalFade/*
+Copyright: 2019 Tomek
 License: MIT
-Source: https://github.com/HolonProduction/godot_kanban_tasks
-
-Files: addons/lod/*
-Copyright: 2020 Hugo Locurcio and contributors
-License: MIT
-Source: https://github.com/godot-extended-libraries/godot-lod
+Source: https://github.com/KoBeWi/Godot-Universal-Fade
 
 # Models
 

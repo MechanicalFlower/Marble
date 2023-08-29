@@ -46,8 +46,10 @@ repos:
     files: '[^a-z0-9._/-]'
     exclude: |
       (?x)^(
+          .reuse/|
           LICENSES/|
           public/|
+          Makefile|
           CONTRIBUTING.md|
           CREDITS.md|
           LICENSE.md|
@@ -70,7 +72,7 @@ repos:
       - --style=file
       - -Werror
     language: system
-    files: \.shader$
+    files: \.gdshader$
     exclude: ^addons/
   - id: lint-gdscript
     name: lint gdscript
