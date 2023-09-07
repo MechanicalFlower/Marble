@@ -62,7 +62,12 @@ func generate_chunk():
 
 func place_piece(piece_index: int) -> void:
 	var piece_data = PieceList.PIECES[piece_index]
-	var piece = piece_data[&"resource"].instantiate()
+	var piece: Node = piece_data[&"resource"].instantiate()
+
+	# naive hlod
+	for child in piece.get_children():
+		if child is MeshInstance3D:
+			child.visibility_range_end = 150
 
 	# Add the piece to the main Node
 	add_child(piece)
