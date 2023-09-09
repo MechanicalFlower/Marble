@@ -8,7 +8,7 @@ inputs:
     description: The game platform.
     required: true
     type: choice
-    options: 
+    options:
     - windows
     - linux
     - mac
@@ -55,11 +55,5 @@ runs:
       run: |
         [ -d build ] && rm -r build
         mkdir -v -p build/${{ inputs.platform }}
-
-        declare -A outputs
-        outputs['windows'] = '${{ inputs.name }}.exe'
-        outputs['linux'] = '${{ inputs.name }}.x86_64'
-        outputs['mac'] = '${{ inputs.name }}.zip'
-        outputs['web'] = 'index.html'
-
-        timeout 60 godot --export-release "${{ inputs.preset }}" --headless ./build/${{ inputs.platform }}/outputs[${{ inputs.platform }}] || true
+        declare -A outputs=(["windows"]="${{ inputs.name }}.exe" ["linux"]="${{ inputs.name }}.x86_64" ["mac"]="${{ inputs.name }}.zip" ["web"]="index.html")
+        timeout 60 godot --export-release "${{ inputs.preset }}" --headless ./build/${{ inputs.platform }}/${outputs[${{ inputs.platform }}]} || true

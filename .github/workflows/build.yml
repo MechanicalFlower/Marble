@@ -7,21 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pre_check:
-    runs-on: ubuntu-22.04
-
-    name: Pre-check
-    steps:
-      - name: Ensure version is bump for tag
-        run: |
-          game_version=$(cat .version)
-          if [[ "${{ github.ref }}" =~ ^refs/tags/* ]]; then
-            echo "A tag is pushed"
-            [ "$game_version" == "$GITHUB_REF_NAME" ] && echo "The version file is correct" || exit 2
-          fi
-
   build:
-    needs: pre_check
     runs-on: ubuntu-20.04
     timeout-minutes: 30
 
@@ -50,6 +36,11 @@ jobs:
           echo "game_version=$(cat .version)" >> $GITHUB_ENV
           echo "godot_version=$(cat .godot_version)" >> $GITHUB_ENV
           ./bump_version.sh
+
+      - name: Ensure version is equal to tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          [ "${{ env.game_version }}" == "$GITHUB_REF_NAME" ] || exit 2
 
       - name: Export Marble
         uses: ./.github/actions/export-game
