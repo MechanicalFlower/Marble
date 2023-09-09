@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/marble.gd" id="1"]
 [ext_resource type="Material" uid="uid://5gxm1ehx7waa" path="res://resources/materials/xray_marble.tres" id="2"]
 [ext_resource type="Script" path="res://scripts/lod/lod_spatial.gd" id="2_5e2c6"]
-[ext_resource type="AudioStream" uid="uid://3hc6gfblh3gf" path="res://assets/sounds/roll.wav" id="3"]
 [ext_resource type="Script" path="res://scripts/roll_sound.gd" id="4"]
-[ext_resource type="AudioStream" uid="uid://b7ga03rbxi6qs" path="res://assets/sounds/hit.wav" id="5"]
-[ext_resource type="AudioStream" uid="uid://c44julexev4dj" path="res://assets/sounds/bomb.ogg" id="6"]
+[ext_resource type="AudioStream" uid="uid://3hc6gfblh3gf" path="res://assets/sounds/sfx/roll.wav" id="4_d1o80"]
+[ext_resource type="AudioStream" uid="uid://b7ga03rbxi6qs" path="res://assets/sounds/sfx/hit.wav" id="6_iicuw"]
+[ext_resource type="AudioStream" uid="uid://c44julexev4dj" path="res://assets/sounds/explosion/bomb.ogg" id="7_1gve1"]
 
 [sub_resource type="SphereMesh" id="1"]
 radius = 0.3
@@ -57,19 +57,19 @@ surface_material_override/0 = ExtResource("2")
 shape = SubResource("3")
 
 [node name="RollSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3")
+stream = ExtResource("4_d1o80")
 unit_size = 3.0
 attenuation_filter_cutoff_hz = 20500.0
 script = ExtResource("4")
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="RollSound"]
-stream = ExtResource("5")
+stream = ExtResource("6_iicuw")
 unit_size = 3.0
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="BombSound" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("6")
+stream = ExtResource("7_1gve1")
 
 [node name="Name" type="Label3D" parent="."]
 unique_name_in_owner = true

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/blocks/bumper.gd" id="2"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="3"]
-[ext_resource type="AudioStream" uid="uid://d1ov0uhwvty5i" path="res://assets/sounds/bump.wav" id="4"]
 [ext_resource type="PackedScene" uid="uid://h3dbn48vuyv4" path="res://scenes/blocks/forward_down.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://d1ov0uhwvty5i" path="res://assets/sounds/sfx/bump.wav" id="5_wrpvs"]
 [ext_resource type="PackedScene" path="res://scenes/blocks/hopper2.tscn" id="6"]
 [ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="7"]
 
@@ -108,7 +108,7 @@ shape = SubResource("7")
 
 [node name="BumpSound" type="AudioStreamPlayer3D" parent="Area"]
 unique_name_in_owner = true
-stream = ExtResource("4")
+stream = ExtResource("5_wrpvs")
 
 [node name="ForwardDown" parent="." instance=ExtResource("5")]
 transform = Transform3D(-0.999273, 0, 0.0381262, 0, 1, 0, -0.0381262, 0, -0.999273, 0, 2.5, 4)

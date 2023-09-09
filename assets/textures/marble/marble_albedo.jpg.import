@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcwf8u32r3bwe"
-path.s3tc="res://.godot/imported/marble_oughness.jpg-4299cab4aa4f86051b8b14d18cfbacc7.s3tc.ctex"
+uid="uid://8dp5yxgnqaqv"
+path.s3tc="res://.godot/imported/marble_albedo.jpg-8292e2c469ab97b231b5257b8930c8e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/marble/marble_oughness.jpg"
-dest_files=["res://.godot/imported/marble_oughness.jpg-4299cab4aa4f86051b8b14d18cfbacc7.s3tc.ctex"]
+source_file="res://assets/textures/marble/marble_albedo.jpg"
+dest_files=["res://.godot/imported/marble_albedo.jpg-8292e2c469ab97b231b5257b8930c8e2.s3tc.ctex"]
 
 [params]
 

@@ -38,10 +38,32 @@ Copyright: 2023 Icons8
 License: LicenseRef-linksware
 Source: https://icons8.com/
 
-Files: assets/marble/*
+Files: assets/textures/marble/*
 Copyright: 2017-2023 Lennart Demes
 License: CC0-1.0
 Source: https://ambientcg.com/view?id=Ground037
+
+Files: assets/textures/wood.jpg
+Copyright: 2019 Zylann
+License: MIT
+Source: https://github.com/Zylann/marbles
+
+# Sounds
+
+Files: assets/sounds/countdown/*
+Copyright: 2011 Destructavator
+License: CC-BY-3.0
+Source: https://opengameart.org/content/countdown
+
+Files: assets/sounds/countdown/*
+Copyright: 2011 Destructavator
+License: CC-BY-3.0
+Source: https://opengameart.org/content/countdown
+
+Files: assets/sounds/sfx/*
+Copyright: 2019 Zylann
+License: CC-BY-NC-ND-1.0
+Source: https://github.com/Zylann/marbles
 
 # Fonts
 
@@ -49,3 +71,10 @@ Files: assets/fonts/box_pixies.ttf
 Copyright: 2020 Heaven Castro
 License: CC0-1.0
 Source: https://www.fontspace.com/boxpixies-font-f27657
+
+# Shaders
+
+Files: shaders/sky.gdshader
+Copyright: 2023 krzmig
+License: MIT
+Source: https://godotshaders.com/shader/stylized-sky-with-procedural-sun-and-moon/
