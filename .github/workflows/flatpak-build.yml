@@ -13,7 +13,7 @@ jobs:
       options: --privileged
     steps:
     - uses: actions/checkout@v4
-    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.2
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
       with:
         bundle: marble.flatpak
         manifest-path: public/packaging/flatpak/org.mechanicalflower.Marble.yml
