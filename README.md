@@ -3,7 +3,9 @@
 
 # ⚽ Marble
 
-![Godot Badge](https://img.shields.io/badge/godot-4.1-blue?logo=Godot-Engine&logoColor=white) ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white) ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white) ![reuse](./.reuse/REUSE-compliant.svg)
+![Godot Badge](https://img.shields.io/badge/godot-4.1-blue?logo=Godot-Engine&logoColor=white)
+![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
+![reuse](./.reuse/REUSE-compliant.svg)
 
 A marble race minigame, made with [Godot Engine](https://godotengine.org/).
 
@@ -43,6 +45,8 @@ The race is infinite, and the game ends when only one marble remains.
 </div>
 
 ## Contributing
+
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)
 
 We welcome community contributions to this project.
 

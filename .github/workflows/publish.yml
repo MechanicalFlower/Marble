@@ -5,7 +5,9 @@ on:
   workflow_run:
     workflows: ["Build"]
     types: [completed]
-    tags: ['[0-9]+.[0-9]+.[0-9]+']
+
+env:
+  tag_name: ${{ github.event.workflow_run.head_branch }}
 
 jobs:
   create_release:
@@ -14,18 +16,24 @@ jobs:
 
     name: Create Release
     steps:
+      - name: Check Tag
+        run: |
+          if [[ ! ${{ env.tag_name }} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            exit 1
+          fi
+
       - name: Create Draft release
         run: |
-          gh release create "$GITHUB_REF_NAME" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="v$GITHUB_REF_NAME" \
+          gh release create "${{ env.tag_name }}" \
+              --repo="${{ github.repository }}" \
+              --title="v${{ env.tag_name }}" \
               --draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     needs: create_release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     strategy:
       fail-fast: false
@@ -46,17 +54,19 @@ jobs:
     name: ${{ matrix.preset }} Publish
     steps:
       - name: Download artifact
-        uses: ./.github/actions/upload-artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-          name: Marble-${{ matrix.platform }}-v$GITHUB_REF_NAME
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          name: Marble-${{ matrix.platform }}-v${{ env.tag_name }}
           path: dist/${{ matrix.platform }}
+          skip_unpack: true
 
       - name: Upload to release
         run: |
-          gh release upload "$GITHUB_REF_NAME" \
-              --repo="$GITHUB_REPOSITORY" \
-              --clobber \
-              dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v$GITHUB_REF_NAME.zip
+          gh release upload "${{ env.tag_name }}" \
+            --repo="${{ github.repository }}" \
+            --clobber \
+            dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.tag_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -64,8 +74,8 @@ jobs:
         uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: ${{ matrix.platform }}-v$GITHUB_REF_NAME
-          ITCH_GAME: marble
+          CHANNEL: ${{ matrix.platform }}
+          ITCH_GAME: Marble
           ITCH_USER: mechanical-flower
-          PACKAGE: dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v$GITHUB_REF_NAME.zip
-          VERSION: $GITHUB_REF_NAME
+          PACKAGE: dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.tag_name }}.zip
+          VERSION: ${{ env.tag_name }}

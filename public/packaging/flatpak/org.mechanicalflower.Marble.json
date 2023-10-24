@@ -29,28 +29,28 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/MechanicalFlower/marble/releases/download/v0.1.0/Marble_v0.1.0_Linux_64.zip",
+                    "url": "https://github.com/MechanicalFlower/Marble/releases/download/1.4.1/Marble-linux-v1.4.1.zip",
                     "sha512": "bf1fee8b8b86941ea289a287db65cdeaca729c675c148d9b0c2a851a0ab0b2dddd7106a2975518c6cedb515b5d084e07f9e8f39a65e52ffbe29d84c99a2f4e51",
                     "strip-components": 0
                 },
                 {
                     "type": "file",
-                    "path": "https://raw.githubusercontent.com/MechanicalFlower/marble/master/public/packaging/flatpak/marble-wrapper.sh",
+                    "path": "https://raw.githubusercontent.com/MechanicalFlower/marble/1.4.1/public/packaging/flatpak/marble-wrapper.sh",
                     "sha512": "f1fac6f1e154f935df9aaf6b554cc7d4e12692e3d29f3d6c502170cd84055c5392a37f1d58ab70355248b445a6285fd77cfa49f0ec498dd43d912cae75190653"
                 },
                 {
                     "type": "file",
-                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/master/public/publishing/marble_cover.png",
+                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/1.4.1/public/publishing/marble_cover.png",
                     "sha512": "85176d840093ff9dc4782067c1f30ea5b512406a6ab7b7c76a0ee010fbb7c34771bffdfbe30665192ed685769883a67ef460116f20da0f1b56f270b6e5ab2e4e"
                 },
                 {
                     "type": "file",
-                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/master/public/packaging/flatpak/org.mechanicalflower.Marble.metainfo.xml",
+                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/1.4.1/public/packaging/flatpak/org.mechanicalflower.Marble.metainfo.xml",
                     "sha512": "c738849b274775ebf499926de6bac177c5185cd96ab7d90fa4ad0a4281f07a584181d0f95ea8bade5e49389bf9ded7fce3f3a153c27c65e2266d2fd6ef6750ee"
                 },
                 {
                     "type": "file",
-                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/master/public/packaging/org.mechanicalflower.Marble.desktop",
+                    "url": "https://raw.githubusercontent.com/MechanicalFlower/marble/1.4.1/public/packaging/org.mechanicalflower.Marble.desktop",
                     "sha512": "f76c170e71658316b72c614e0112a04880d4d0e1acca280d8d07ce9ab6014f8b9ba3456defb848a41da8310fef19f304e368de83fc7f79eac2d67861f4871e2b"
                 }
             ]

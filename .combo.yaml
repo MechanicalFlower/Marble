@@ -1,0 +1,5 @@
+godot:
+  version: '4.1.2'
+game:
+  name: Marble
+  version: '1.4.1'
