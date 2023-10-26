@@ -17,26 +17,26 @@ jobs:
     name: Create Release
     steps:
       - name: Check Tag
+        id: tag
         run: |
           if [[ ${{ env.BRANCH_NAME }} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "tag_name=${{ env.BRANCH_NAME }}" >> "$GITHUB_ENV"
+            echo "tag_name=${{ env.BRANCH_NAME }}" >> "$GITHUB_OUTPUT"
           else
-            echo "tag_name=null" >> "$GITHUB_ENV"
+            echo "tag_name=null" >> "$GITHUB_OUTPUT"
           fi
 
   create_release:
     needs: set_tag_name
-
-    if: ${{ env.tag_name != 'null' }}
+    if: ${{ needs.set_tag_name.outputs.tag != 'null' }}
     runs-on: ubuntu-22.04
 
     name: Create Release
     steps:
       - name: Create release
         run: |
-          gh release create "${{ env.tag_name }}" \
+          gh release create "${{ env.BRANCH_NAME }}" \
               --repo="${{ github.repository }}" \
-              --title="v${{ env.tag_name }}" \
+              --title="v${{ env.BRANCH_NAME }}" \
               --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,16 +67,16 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
-          name: Marble-${{ matrix.platform }}-v${{ env.tag_name }}
+          name: Marble-${{ matrix.platform }}-v${{ env.BRANCH_NAME }}
           path: dist/${{ matrix.platform }}
           skip_unpack: true
 
       - name: Upload to release
         run: |
-          gh release upload "${{ env.tag_name }}" \
+          gh release upload "${{ env.BRANCH_NAME }}" \
             --repo="${{ github.repository }}" \
             --clobber \
-            dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.tag_name }}.zip
+            dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.BRANCH_NAME }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -87,5 +87,5 @@ jobs:
           CHANNEL: ${{ matrix.platform }}
           ITCH_GAME: marble
           ITCH_USER: mechanical-flower
-          PACKAGE: dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.tag_name }}.zip
-          VERSION: ${{ env.tag_name }}
+          PACKAGE: dist/${{ matrix.platform }}/Marble-${{ matrix.platform }}-v${{ env.BRANCH_NAME }}.zip
+          VERSION: ${{ env.BRANCH_NAME }}
