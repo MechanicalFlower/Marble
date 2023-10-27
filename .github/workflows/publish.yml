@@ -14,7 +14,8 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-22.04
 
-    name: Create Release
+    outputs:
+      tag_name: ${{ steps.tag.outputs.tag_name }}
     steps:
       - name: Check Tag
         id: tag
@@ -27,7 +28,7 @@ jobs:
 
   create_release:
     needs: set_tag_name
-    if: ${{ needs.set_tag_name.outputs.tag != 'null' }}
+    if: ${{ needs.set_tag_name.outputs.tag_name != 'null' }}
     runs-on: ubuntu-22.04
 
     name: Create Release
