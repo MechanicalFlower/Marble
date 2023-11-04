@@ -4,7 +4,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 ### Added
 ### Changed
-- Use Justfile as command runner ([#18](https://github.com/MechanicalFlower/godot-template/pull/18))
+- Use Justfile as command runner ([#18](https://github.com/MechanicalFlower/Marble/pull/18))
 ### Deprecated
 ### Removed
 ### Fixed
