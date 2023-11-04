@@ -10,6 +10,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
+- Bump `godot` from 1.4.2 to 1.4.3 ([#19](https://github.com/MechanicalFlower/Marble/pull/19))
 
 ## [1.4.2]
 ### Added
