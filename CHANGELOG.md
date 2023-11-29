@@ -3,7 +3,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
-- Add web deploy ([#19](https://github.com/MechanicalFlower/Marble/pull/19))
+- Add web deploy ([#20](https://github.com/MechanicalFlower/Marble/pull/20))
 ### Changed
 - Use Justfile as command runner ([#18](https://github.com/MechanicalFlower/Marble/pull/18))
 ### Deprecated
