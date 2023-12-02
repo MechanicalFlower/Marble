@@ -18,7 +18,8 @@ jobs:
 
       - name: Build snap package
         uses: snapcore/action-build@v1
-        working-directory: public/packaging
+        with:
+          path: public/packaging
         id: snapcraft
 
       # Push, on each commit of the main branch, to the edge channel
