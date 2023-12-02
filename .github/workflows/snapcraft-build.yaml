@@ -40,7 +40,7 @@ jobs:
       - uses: snapcore/action-publish@v1
         if: startsWith(github.ref, 'refs/tags/')
         env:
-            SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAP_STORE_LOGIN }}
-          with:
-            snap: ${{ steps.snapcraft.outputs.snap }}
-            release: stable
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAP_STORE_LOGIN }}
+        with:
+          snap: ${{ steps.snapcraft.outputs.snap }}
+          release: stable

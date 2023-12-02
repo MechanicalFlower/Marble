@@ -28,10 +28,10 @@ parts:
     source: https://github.com/MechanicalFlower/Marble/archive/refs/tags/1.4.2.tar.gz
     override-build: |
       snapcraftctl build
-      
+
       # Icon paths in the desktop file will be rewritten to use ${SNAP}/<file> if specified as desktop file in snapcraft.yaml
       sed -i.bak -e "s|Icon=org.mechanicalflower.Marble$|Icon=gui/icon.png|g" ${SNAPCRAFT_PART_SRC}/public/packaging/org.mechanicalflower.Marble.desktop
-      
+
       cp ${SNAPCRAFT_PART_SRC}/public/packaging/org.mechanicalflower.Marble.desktop ${SNAPCRAFT_PART_INSTALL}/org.mechanicalflower.Marble.desktop
     plugin: nil
     override-prime: |
