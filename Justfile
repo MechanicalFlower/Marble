@@ -111,6 +111,12 @@ import-resources:
     sed -i "s,application/version=.*$,application/version=\"{{ game_version }}\",g" ./export_presets.cfg
     sed -i "s,application/short_version=.*$,application/short_version=\"{{ short_version }}\",g" ./export_presets.cfg
 
+    echo "Update version in public/packaging"
+    sed -i "s,version:\ '.*'$,version:\ '{{ game_version }}',g" ./public/packaging/snap/snapcraft.yaml
+    sed -i "s,archive/refs/tags/.*\.tar\.gz$,archive/refs/tags/{{ game_version }}\.tar\.gz,g" ./public/packaging/snap/snapcraft.yaml
+    sed -i "s,releases/download/.*/Marble-linux-v.*\.zip$,releases/download/{{ game_version }}/Marble-linux-v{{ game_version }}\.zip,g" ./public/packaging/snap/snapcraft.yaml
+    sed -i "s,Version=.*$,Version={{ game_version }},g" ./public/packaging/org.mechanicalflower.Marble.desktop
+
     echo "Create the override.cfg"
     touch override.cfg
     echo '[build_info]\npackage/version="{{ game_version }}"\npackage/build_date="{{ build_date }}"\nsource/commit="{{ commit_hash }}"' > override.cfg
