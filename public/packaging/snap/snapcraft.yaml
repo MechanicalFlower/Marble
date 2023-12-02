@@ -1,6 +1,6 @@
 
 ---
-name: marble
+name: marble-race
 base: core20
 version: '1.4.2'
 summary: A marble race minigame
