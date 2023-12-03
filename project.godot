@@ -8,12 +8,16 @@
 
 config_version=5
 
+[addons]
+
+universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
+
 [application]
 
 config/name="Marble"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 run/max_fps=60
 config/icon="res://assets/icon.png"
 
@@ -35,7 +39,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg","res://addons/coi_serviceworker/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg")
 
 [filesystem]
 

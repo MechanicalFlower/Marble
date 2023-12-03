@@ -12,7 +12,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
-- Bump `godot` from 4.1.2 to 4.1.3
+- Bump `godot` from 4.1.2 to 4.2
 
 ## [1.4.2]
 ### Added
