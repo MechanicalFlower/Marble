@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjxasmc0r1qhd"]
 
 [ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
-[ext_resource type="Material" path="res://resources/materials/piece.tres" id="2"]
+[ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="2"]
 [ext_resource type="ArrayMesh" uid="uid://4akktlckcuc0" path="res://assets/blocks/turn_right_covered.obj" id="3"]
 [ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="4"]
 

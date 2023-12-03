@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh0nd3c40wf75"]
+[gd_scene load_steps=5 format=3 uid="uid://bh0nd3c40wf75"]
 
 [ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2"]

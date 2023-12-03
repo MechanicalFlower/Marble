@@ -3,7 +3,7 @@
 
 # ⚽ Marble
 
-![Godot Badge](https://img.shields.io/badge/godot-4.1-blue?logo=Godot-Engine&logoColor=white)
+![Godot Badge](https://img.shields.io/badge/godot-4.2-blue?logo=Godot-Engine&logoColor=white)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
 ![reuse](./.reuse/REUSE-compliant.svg)
 
@@ -11,8 +11,8 @@ A marble race minigame, made with [Godot Engine](https://godotengine.org/).
 
 <a href="https://github.com/mechanicalflower/Marble/releases/" target="_blank"><img src="public/publishing/store/github.webp" alt="Download on  Github" height="40px" ></a>
 <a href="https://mechanical-flower.itch.io/marble" target="_blank"><img src="public/publishing/store/itchio.webp" alt="Download on  itch.io" height="40px" ></a>
+<a href="https://snapcraft.io/marble-race"><img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="40px"/></a>
 <!-- <a href="https://flathub.org/apps/details/org.mechanicalflower.Marble" target="_blank"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub"  height="40px"></a> -->
-<a href="https://snapcraft.io/marble-race" target="_blank"><img src="https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-black.png" alt="Download on Snap Store" height="40px"></a>
 
 </div>
 
