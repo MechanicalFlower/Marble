@@ -10,6 +10,16 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Security
 ### Dependencies
 
+## [1.4.4]
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+- Publish only to the stable channel for snap ([#25](https://github.com/MechanicalFlower/Marble/pull/25))
+### Security
+### Dependencies
+
 ## [1.4.3]
 ### Added
 - Add web deploy ([#20](https://github.com/MechanicalFlower/Marble/pull/20))
@@ -35,6 +45,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `ubuntu` from v20 to v22 ([#15](https://github.com/MechanicalFlower/Marble/pull/15))
 - Bump `kobewi/godot-universal-fade` from ddab6c2 to f091514 ([#12](https://github.com/MechanicalFlower/Marble/pull/12))
 
-[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.2...HEAD
+[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.4...HEAD
+[1.4.4]: https://github.com/MechanicalFlower/Marble/compare/1.4.3...1.4.4
 [1.4.3]: https://github.com/MechanicalFlower/Marble/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/MechanicalFlower/Marble/compare/1.4.1...1.4.2
