@@ -3,6 +3,15 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+### Dependencies
+
+## [1.4.3]
+### Added
 - Add web deploy ([#20](https://github.com/MechanicalFlower/Marble/pull/20))
 - Add snapcraft packaging ([#22](https://github.com/MechanicalFlower/Marble/pull/22))
 ### Changed
@@ -12,7 +21,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
-- Bump `godot` from 4.1.2 to 4.2
+- Bump `godot` from 4.1.2 to 4.2 ([#24](https://github.com/MechanicalFlower/Marble/pull/24))
 
 ## [1.4.2]
 ### Added
@@ -27,4 +36,5 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `kobewi/godot-universal-fade` from ddab6c2 to f091514 ([#12](https://github.com/MechanicalFlower/Marble/pull/12))
 
 [Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.2...HEAD
+[1.4.3]: https://github.com/MechanicalFlower/Marble/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/MechanicalFlower/Marble/compare/1.4.1...1.4.2
