@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="2"]
 [ext_resource type="ArrayMesh" uid="uid://df1w7nuqk33wy" path="res://assets/blocks/hopper.obj" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/blocks/tube_vertical_to_horizontal.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://v6ynkmksptpa" path="res://scenes/blocks/tube_vertical_to_horizontal.tscn" id="4"]
 [ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="5"]
 
 [sub_resource type="ConcavePolygonShape3D" id="3"]
