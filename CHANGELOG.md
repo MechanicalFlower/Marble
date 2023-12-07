@@ -7,6 +7,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Deprecated
 ### Removed
 ### Fixed
+- Correct loading of sound effects for the menu ([#27](https://github.com/MechanicalFlower/Marble/pull/27))
 ### Security
 ### Dependencies
 
