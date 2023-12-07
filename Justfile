@@ -133,7 +133,7 @@ import-resources:
 
     echo "Create the override.cfg"
     touch override.cfg
-    echo '[build_info]\npackage/version="{{ game_version }}"\npackage/build_date="{{ build_date }}"\nsource/commit="{{ commit_hash }}"' > override.cfg
+    echo -e '[build_info]\npackage/version="{{ game_version }}"\npackage/build_date="{{ build_date }}"\nsource/commit="{{ commit_hash }}"' > override.cfg
 
 # Godot binary wrapper
 @godot *ARGS: makedirs install-godot install-templates
