@@ -317,7 +317,7 @@ var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 33554432;
 
 legacyModuleProp("INITIAL_MEMORY", "INITIAL_MEMORY");
 
-assert(INITIAL_MEMORY >= 65536, "INITIAL_MEMORY should be larger than STACK_SIZE, was " + INITIAL_MEMORY + "! (STACK_SIZE=" + 65536 + ")");
+assert(INITIAL_MEMORY >= 5242880, "INITIAL_MEMORY should be larger than STACK_SIZE, was " + INITIAL_MEMORY + "! (STACK_SIZE=" + 5242880 + ")");
 
 if (ENVIRONMENT_IS_PTHREAD) {
  wasmMemory = Module["wasmMemory"];
@@ -3626,7 +3626,7 @@ function handleException(e) {
  checkStackCookie();
  if (e instanceof WebAssembly.RuntimeError) {
   if (_emscripten_stack_get_current() <= 0) {
-   err("Stack overflow detected.  You can try increasing -sSTACK_SIZE (currently set to 65536)");
+   err("Stack overflow detected.  You can try increasing -sSTACK_SIZE (currently set to 5242880)");
   }
  }
  quit_(1, e);
@@ -3940,7 +3940,7 @@ function ___dlsym(handle, symbol) {
 }
 
 function ___emscripten_init_main_thread_js(tb) {
- __emscripten_thread_init(tb, !ENVIRONMENT_IS_WORKER, 1, !ENVIRONMENT_IS_WEB, 65536);
+ __emscripten_thread_init(tb, !ENVIRONMENT_IS_WORKER, 1, !ENVIRONMENT_IS_WEB, 2097152);
  PThread.threadInitTLS();
 }
 
