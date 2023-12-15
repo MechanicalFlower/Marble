@@ -11,6 +11,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Include `override.cfg` in each export presets ([#28](https://github.com/MechanicalFlower/Marble/pull/28))
 ### Security
 ### Dependencies
+- Bump `actions/upload-artifact` from 3 to 4 ([#32](https://github.com/MechanicalFlower/Marble/pull/32))
 
 ## [1.4.4]
 ### Added
