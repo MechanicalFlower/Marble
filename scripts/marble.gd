@@ -14,6 +14,7 @@ var _checkpoint_count := 0
 @onready var _name := get_node(^"%Name") as Label3D
 @onready var _bomb_sound = get_node(^"%BombSound")
 @onready var _score = get_node(^"%Score")
+@onready var _ball_mesh := get_node(^"%Ball")
 
 
 func _ready() -> void:
@@ -23,16 +24,15 @@ func _ready() -> void:
 
 	# Set material color
 	var color = Color(randf(), randf(), randf())
-	for i in range(3):
-		var x_ray_material: StandardMaterial3D = (
-			get_node("LODSpatial/Ball-%d" % i).get_active_material(0)
-		)
-		x_ray_material.set_albedo(color)
-		var toon_material: StandardMaterial3D = x_ray_material.get_next_pass()
-		toon_material.set_albedo(color)
+	var x_ray_material: StandardMaterial3D = (
+		_ball_mesh.get_active_material(0)
+	)
+	x_ray_material.set_albedo(color)
+	var toon_material: StandardMaterial3D = x_ray_material.get_next_pass()
+	toon_material.set_albedo(color)
 #		toon_material.set_shader_parameter(&"albedo", color)
-		x_ray_material.set_next_pass(toon_material)
-		get_node("LODSpatial/Ball-%d" % i).set_surface_override_material(0, x_ray_material)
+	x_ray_material.set_next_pass(toon_material)
+	_ball_mesh.set_surface_override_material(0, x_ray_material)
 
 	# Set collision mask
 	var collision_enabled = SettingsManager.get_value(&"marbles", &"collision_enabled") as bool
