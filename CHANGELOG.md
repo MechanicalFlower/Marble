@@ -9,6 +9,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 - Correct loading of sound effects for the menu ([#27](https://github.com/MechanicalFlower/Marble/pull/27))
 - Include `override.cfg` in each export presets ([#28](https://github.com/MechanicalFlower/Marble/pull/28))
+- Remove the old collision shape use for the start line mesh ([#36](https://github.com/MechanicalFlower/Marble/pull/36))
 ### Security
 ### Dependencies
 - Bump `actions/upload-artifact` from 3 to 4 ([#32](https://github.com/MechanicalFlower/Marble/pull/32))
