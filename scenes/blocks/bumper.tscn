@@ -112,11 +112,9 @@ stream = ExtResource("5_wrpvs")
 
 [node name="ForwardDown" parent="." instance=ExtResource("5")]
 transform = Transform3D(-0.999273, 0, 0.0381262, 0, 1, 0, -0.0381262, 0, -0.999273, 0, 2.5, 4)
-collision_mask = 0
 
 [node name="Hopper2" parent="." instance=ExtResource("6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, -7)
-collision_mask = 0
 
 [node name="Positions" type="Node3D" parent="."]
 
