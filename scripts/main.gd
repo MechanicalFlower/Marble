@@ -1,5 +1,4 @@
 class_name Main
-
 extends Node
 
 enum State { MODE_START, MODE_PAUSE, MODE_MARBLE }
@@ -77,7 +76,7 @@ func _unhandled_input(event):
 							)
 
 						else:
-							print("Could not place start marble")
+							printerr("No marble to focus on!")
 
 				KEY_ESCAPE:
 					if _mode != State.MODE_START and _mode != State.MODE_PAUSE:
@@ -114,6 +113,7 @@ func _unhandled_input(event):
 							break
 
 
+# Reset marble positions
 func reset_position() -> void:
 	_positions = []
 	for i in range(7):
@@ -121,12 +121,13 @@ func reset_position() -> void:
 			_positions.append([i, j])
 
 
+# Try placing a new marble on the start line
 func try_place_start_marble() -> Marble:
 	var piece = get_highest_piece()
 	if piece == null:
 		return null
 	if len(_positions) == 0:
-		print("There are limited places to ensure equality among the marbles.")
+		printerr("There are limited places to ensure equality among the marbles.")
 		return null
 	randomize()
 	var position = _positions.pop_at(randi() % len(_positions))
@@ -150,6 +151,7 @@ func try_place_start_marble() -> Marble:
 	return new_marble
 
 
+# Get the highest piece in the race
 func get_highest_piece() -> Piece:
 	var pieces = _race.get_children()
 	if len(pieces) == 0:
@@ -161,8 +163,9 @@ func get_highest_piece() -> Piece:
 	return highest_piece
 
 
+# Replace cameras with a new one
 func replace_camera(new_camera, old_cameras) -> void:
-	# Ensure old cameras are remove from the current scene
+	# Ensure old cameras are removed from the current scene
 	for camera in old_cameras:
 		if camera.is_inside_tree():
 			remove_from_tree(camera)
@@ -171,6 +174,7 @@ func replace_camera(new_camera, old_cameras) -> void:
 		add_child(new_camera)
 
 
+# Set the game mode
 func set_mode(mode):
 	var start_a_new_race = false
 
@@ -182,19 +186,19 @@ func set_mode(mode):
 				for marble in _marbles:
 					marble.pause()
 
-				# Ensure timer is reset
+				# Ensure the timer is reset
 				_race_has_started = false
 				_timer.set_wait_time(10)
 				_timer.stop()
 
-			# Ensure that the pause menu is close
+			# Ensure that the pause menu is closed
 			if _pause_menu.visible:
 				_pause_menu.close()
 
 	_mode = mode
 
 	if _mode == State.MODE_MARBLE:
-		# If no marbles exists
+		# If no marbles exist
 		if start_a_new_race:
 			await Fade.fade_out(1, Color.BLACK, "Diamond", false, false).finished
 
@@ -250,6 +254,7 @@ func set_mode(mode):
 		replace_camera(_rotation_camera, [_cinematic_camera])
 
 
+# Remove a node from the scene tree
 static func remove_from_tree(node):
 	node.get_parent().remove_child(node)
 
@@ -311,6 +316,7 @@ func _process(delta):
 			replace_camera(_rotation_camera, [_cinematic_camera])
 
 
+# Handle victory conditions on explosion mode
 func explosion_victory(_last_marble: Marble) -> bool:
 	var marble_exploded_count := 0
 	var tmp_marble = null

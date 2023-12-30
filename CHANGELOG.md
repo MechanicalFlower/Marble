@@ -7,6 +7,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Use a cleaner game icon ([#34](https://github.com/MechanicalFlower/Marble/pull/34))
 ### Deprecated
 ### Removed
+- Remove LOD scripts ([#35](https://github.com/MechanicalFlower/Marble/pull/35))
 ### Fixed
 - Correct loading of sound effects for the menu ([#27](https://github.com/MechanicalFlower/Marble/pull/27))
 - Include `override.cfg` in each export presets ([#28](https://github.com/MechanicalFlower/Marble/pull/28))
