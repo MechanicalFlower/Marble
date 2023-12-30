@@ -11,6 +11,7 @@ data = PackedVector3Array(-0.7391, -0.3061, -1, -0.9239, -0.3827, -1, -0.6652, -
 [sub_resource type="BoxShape3D" id="2"]
 
 [node name="ForwardDown" type="StaticBody3D"]
+collision_mask = 0
 script = ExtResource("1")
 
 [node name="forward_down" type="MeshInstance3D" parent="."]
@@ -24,7 +25,7 @@ shape = SubResource("1")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape3D" parent="BeginArea"]
 shape = SubResource("2")
@@ -32,8 +33,8 @@ shape = SubResource("2")
 [node name="EndArea" type="Area3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 3)
-collision_layer = 3
-collision_mask = 0
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("4")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="EndArea"]
