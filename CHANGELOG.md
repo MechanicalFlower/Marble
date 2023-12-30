@@ -4,6 +4,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 ### Added
 ### Changed
+- Use a cleaner game icon ([#34](https://github.com/MechanicalFlower/Marble/pull/34))
 ### Deprecated
 ### Removed
 ### Fixed
