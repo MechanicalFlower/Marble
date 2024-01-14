@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/camera/cinematic_camera.gd" id="1"]
 
 [node name="MarbleCamera" type="Node3D"]
+process_mode = 3
 script = ExtResource("1")
 
 [node name="Camera" type="Camera3D" parent="."]
