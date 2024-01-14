@@ -24,9 +24,7 @@ func _ready() -> void:
 
 	# Set material color
 	var color = Color(randf(), randf(), randf())
-	var x_ray_material: StandardMaterial3D = (
-		_ball_mesh.get_active_material(0)
-	)
+	var x_ray_material: StandardMaterial3D = _ball_mesh.get_active_material(0)
 	x_ray_material.set_albedo(color)
 	var toon_material: StandardMaterial3D = x_ray_material.get_next_pass()
 	toon_material.set_albedo(color)

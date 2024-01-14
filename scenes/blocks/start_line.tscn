@@ -102,7 +102,6 @@ shape = SubResource("2")
 
 [node name="TubeVerticalToHorizontal" parent="." instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.6, 0)
-collision_mask = 0
 
 [node name="Positions" type="Node3D" parent="."]
 

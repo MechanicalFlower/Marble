@@ -41,9 +41,7 @@ var _positions := []
 func _ready() -> void:
 	_rotation_camera = RotationCamera.instantiate()
 	_cinematic_camera = CinematicCamera.instantiate()
-
 	reset_position()
-
 	set_mode(_mode)
 
 
@@ -174,6 +172,16 @@ func replace_camera(new_camera, old_cameras) -> void:
 		add_child(new_camera)
 
 
+func _on_timer_timeout():
+	# Release SceneTree
+	get_tree().set_pause(false)
+	_timer.start()
+	_race_has_started = true
+
+	# Put the camera at the right place for the start
+	replace_camera(_cinematic_camera, [_rotation_camera])
+
+
 # Set the game mode
 func set_mode(mode):
 	var start_a_new_race = false
@@ -214,6 +222,10 @@ func set_mode(mode):
 			# Put the camera at the right place for the start
 			replace_camera(_rotation_camera, [_cinematic_camera])
 
+			# Focus the rotation camera on the marble start line
+			_rotation_camera.target = get_highest_piece().global_position + Vector3.UP * 5
+			_rotation_camera.distance_to_target = 10.0
+
 			var names = _pause_menu.get_names()
 			if len(names) > 0:
 				# Stop SceneTree, to make all the marbles leave at the same time
@@ -229,15 +241,8 @@ func set_mode(mode):
 					_cinematic_camera.set_target(marble)
 
 			await Fade.fade_in(1, Color.BLACK, "Diamond", false, false).finished
-			await _countdown.start()
-
-			# Release SceneTree
-			get_tree().set_pause(false)
-			_timer.start()
-			_race_has_started = true
-
-			# Put the camera at the right place for the start
-			replace_camera(_cinematic_camera, [_rotation_camera])
+			_countdown.connect("countdown_finished", _on_timer_timeout, CONNECT_ONE_SHOT)
+			_countdown.start()
 
 		else:
 			_overlay.show()
@@ -248,10 +253,16 @@ func set_mode(mode):
 		_overlay.hide()
 		_pause_menu.open_start_menu()
 		replace_camera(_rotation_camera, [_cinematic_camera])
+		# Focus the rotation camera on race
+		_rotation_camera.target = Vector3.ZERO
+		_rotation_camera.distance_to_target = 50.0
 
 	elif _mode == State.MODE_PAUSE:
 		_pause_menu.open_pause_menu()
 		replace_camera(_rotation_camera, [_cinematic_camera])
+		# Focus the rotation camera on race
+		_rotation_camera.target = Vector3.ZERO
+		_rotation_camera.distance_to_target = 50.0
 
 
 # Remove a node from the scene tree
@@ -264,7 +275,9 @@ func _process(delta):
 
 	if _time > TIME_PERIOD:
 		if _mode == State.MODE_START:
+			# Regenerate race
 			_race.call_deferred(&"generate_race", true)
+
 			# Reset timer
 			_time = 0
 

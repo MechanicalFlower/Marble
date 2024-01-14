@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/camera/rotation_camera.gd" id="1"]
 
 [node name="RotationCamera" type="Node3D"]
+process_mode = 3
 script = ExtResource("1")
-rotation_speed = 0.25
 
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true

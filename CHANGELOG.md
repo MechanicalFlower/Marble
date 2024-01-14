@@ -10,6 +10,18 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Security
 ### Dependencies
 
+## [1.4.6]
+### Added
+### Changed
+- Better countdown timer ([#38](https://github.com/MechanicalFlower/Marble/pull/38))
+- Better rotation camera ([#38](https://github.com/MechanicalFlower/Marble/pull/38))
+### Deprecated
+### Removed
+### Fixed
+- Don't block the entire scene on countdown ([#38](https://github.com/MechanicalFlower/Marble/pull/38))
+### Security
+### Dependencies
+
 ## [1.4.5]
 ### Added
 ### Changed
@@ -60,7 +72,8 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `ubuntu` from v20 to v22 ([#15](https://github.com/MechanicalFlower/Marble/pull/15))
 - Bump `kobewi/godot-universal-fade` from ddab6c2 to f091514 ([#12](https://github.com/MechanicalFlower/Marble/pull/12))
 
-[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.5...HEAD
+[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.6...HEAD
+[1.4.6]: https://github.com/MechanicalFlower/Marble/compare/1.4.5...1.4.6
 [1.4.5]: https://github.com/MechanicalFlower/Marble/compare/1.4.4...1.4.5
 [1.4.4]: https://github.com/MechanicalFlower/Marble/compare/1.4.3...1.4.4
 [1.4.3]: https://github.com/MechanicalFlower/Marble/compare/1.4.2...1.4.3

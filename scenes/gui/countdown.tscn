@@ -10,6 +10,7 @@ font = ExtResource("2_5qytn")
 font_size = 50
 
 [node name="Countdown" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,3 +42,6 @@ volume_db = -20.0
 [node name="Countdown2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3")
 volume_db = -20.0
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
