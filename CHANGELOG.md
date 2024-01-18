@@ -9,6 +9,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
+- Bump `actions/cache` from 3 to 4 ([#40](https://github.com/MechanicalFlower/Marble/pull/40))
 
 ## [1.4.6]
 ### Added
