@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2"]
 [ext_resource type="AudioStream" uid="uid://befsdykgrnt25" path="res://assets/sounds/sfx/ui_open.wav" id="3"]
-[ext_resource type="Script" path="res://scripts/gui/build_info.gd" id="4"]
+[ext_resource type="Script" path="res://addons/export-build-info/label.gd" id="3_3g7a0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wpgwf"]
 font = ExtResource("2")
@@ -95,13 +95,14 @@ text = "Quit"
 [node name="Spacer3" type="Control" parent="StartMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="StartMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="BuildInfo" type="Label" parent="StartMenu/VBoxContainer/CenterContainer"]
+[node name="BuildInfo" type="Label" parent="StartMenu/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-script = ExtResource("4")
+text = "v1.4.6 @ 8ae31e8
+2024/02/04"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_3g7a0")
 
 [node name="PauseMenu" type="ColorRect" parent="."]
 unique_name_in_owner = true
