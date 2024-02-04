@@ -7,6 +7,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Deprecated
 ### Removed
 ### Fixed
+- Use a custom `EditorExportPlugin` to set build info ([#41](https://github.com/MechanicalFlower/Marble/pull/41))
 ### Security
 ### Dependencies
 - Bump `actions/cache` from 3 to 4 ([#40](https://github.com/MechanicalFlower/Marble/pull/40))

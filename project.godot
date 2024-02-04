@@ -32,6 +32,11 @@ SettingsManager="*res://scripts/framework/settings_manager.gd"
 Shake="*res://scripts/shake.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
+[custom_options]
+
+build_info/commit="8ae31e80beb2a3f9b2f8682c2e6488e90aa01de9"
+build_info/date="2024/02/04"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -40,7 +45,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg")
+enabled=PackedStringArray("res://addons/coi_serviceworker/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/export-build-info/plugin.cfg")
 
 [filesystem]
 

@@ -24,6 +24,11 @@ Copyright: 2019 Tomek
 License: MIT
 Source: https://github.com/KoBeWi/Godot-Universal-Fade
 
+Files: addons/coi_serviceworker/*
+Copyright: 2023 nisovin
+License: MIT
+Source: https://github.com/nisovin/godot-coi-serviceworker
+
 # Models
 
 Files: assets/blocks/*
