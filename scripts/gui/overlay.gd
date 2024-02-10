@@ -3,8 +3,7 @@ class_name Overlay
 extends Control
 
 const Participant := preload("res://scenes/gui/participant.tscn")
-
-var Group := load("res://scripts/constants/groups.gd")
+const Group := preload("res://scripts/constants/groups.gd")
 
 @onready var _ranking := get_node(^"%Ranking") as Ranking
 @onready var _marble_pool = get_tree().get_nodes_in_group(&"marble_pool")[0]

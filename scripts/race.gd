@@ -107,6 +107,8 @@ func place_piece(piece_index: int) -> void:
 	rotate_piece(piece)
 	translate_piece(piece)
 
+	randomize_boost(piece)
+
 	# Store data for next piece and positions for the race path
 	store_piece_data(piece, piece_data)
 	store_piece_positions(piece)
@@ -150,6 +152,13 @@ func calculate_translation_offset(piece: Piece) -> Vector3:
 			- piece.get_begin().global_transform.origin
 		)
 	return offset
+
+
+# Function to enable randomly boost on the piece
+func randomize_boost(piece: Piece) -> void:
+	var boost = piece.get_node_or_null("Boost")
+	if boost and randf() > 0.5:
+		boost.activate(true)
 
 
 # Function to store data for the next piece

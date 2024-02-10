@@ -32,10 +32,16 @@ SettingsManager="*res://scripts/framework/settings_manager.gd"
 Shake="*res://scripts/shake.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
+[build_info]
+
+package/version="1.4.6"
+package/build_date="2024/01/14"
+source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
+
 [custom_options]
 
-build_info/commit="8ae31e80beb2a3f9b2f8682c2e6488e90aa01de9"
-build_info/date="2024/02/04"
+build_info/commit="e3b934bf067266c1a8ca09db07e5e6308e89346e"
+build_info/date="2024/02/10"
 
 [display]
 
@@ -73,6 +79,7 @@ wav={
 3d_physics/layer_1="Props"
 3d_physics/layer_2="ConnectAreas"
 3d_physics/layer_3="Marbles"
+3d_physics/layer_4="Boosts"
 
 [physics]
 

@@ -2,7 +2,7 @@ class_name Bumper
 
 extends Area3D
 
-var Group := load("res://scripts/constants/groups.gd")
+const Group := preload("res://scripts/constants/groups.gd")
 
 @onready var _animation_player := get_node(^"%AnimationPlayer") as AnimationPlayer
 @onready var _bump_sound := get_node(^"%BumpSound") as AudioStreamPlayer3D

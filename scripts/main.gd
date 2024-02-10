@@ -6,11 +6,10 @@ enum State { MODE_START, MODE_PAUSE, MODE_MARBLE }
 const RotationCamera := preload("res://scenes/camera/rotation_camera.tscn")
 const CinematicCamera := preload("res://scenes/camera/marble_camera.tscn")
 const Race := preload("res://scenes/race.tscn")
+const Group := preload("res://scripts/constants/groups.gd")
+const NameGenerator := preload("res://scripts/utils/name_generator.gd")
 
 const TIME_PERIOD := 5  # 500ms
-
-var Group := load("res://scripts/constants/groups.gd")
-var NameGenerator := load("res://scripts/utils/name_generator.gd")
 
 var _rotation_camera = null
 var _cinematic_camera = null
