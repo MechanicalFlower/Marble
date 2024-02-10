@@ -78,7 +78,7 @@ func clear_previous_pieces() -> void:
 
 # Function to select a random piece index
 func randomize_piece_index() -> int:
-	return umod(randi(), len(PieceList.PIECES) - 2)
+	return Race.umod(randi(), len(PieceList.PIECES) - 2)
 
 
 # Function to place the start line
@@ -107,7 +107,7 @@ func place_piece(piece_index: int) -> void:
 	rotate_piece(piece)
 	translate_piece(piece)
 
-	randomize_boost(piece)
+	randomize_power(piece)
 
 	# Store data for next piece and positions for the race path
 	store_piece_data(piece, piece_data)
@@ -154,11 +154,13 @@ func calculate_translation_offset(piece: Piece) -> Vector3:
 	return offset
 
 
-# Function to enable randomly boost on the piece
-func randomize_boost(piece: Piece) -> void:
-	var boost = piece.get_node_or_null("Boost")
-	if boost and randf() > 0.5:
-		boost.activate(true)
+# Function to enable randomly power on the piece
+func randomize_power(piece: Piece) -> void:
+	var power = piece.get_node_or_null("Power")
+	var r := randf()
+	if power and r > 0.5:
+		power.toggle(true)
+		power.set_type(power.PowerType.BOOST)
 
 
 # Function to store data for the next piece
