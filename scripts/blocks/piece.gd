@@ -6,10 +6,9 @@ extends StaticBody3D
 
 const CollisionLayers := preload("res://scripts/constants/collision_layers.gd")
 const DefaultPieceMaterial := preload("res://resources/materials/piece.tres")
+const Group := preload("res://scripts/constants/groups.gd")
 
 @export var empty_material_override := false
-
-var Group := load("res://scripts/constants/groups.gd")
 
 @onready var _begin_area := get_node(^"%BeginArea") as Area3D
 @onready var _end_area := get_node(^"%EndArea") as Area3D

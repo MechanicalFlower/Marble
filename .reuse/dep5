@@ -65,6 +65,11 @@ Copyright: 2019 Zylann
 License: CC-BY-NC-ND-1.0
 Source: https://github.com/Zylann/marbles
 
+Files: assets/sounds/boost.ogg
+Copyright: 2018 rubberduck
+License: CC0-1.0
+Source: https://opengameart.org/content/50-cc0-retro-synth-sfx
+
 # Fonts
 
 Files: assets/fonts/box_pixies.ttf
@@ -78,3 +83,8 @@ Files: shaders/sky.gdshader
 Copyright: 2023 krzmig
 License: MIT
 Source: https://godotshaders.com/shader/stylized-sky-with-procedural-sun-and-moon/
+
+Files: shaders/ernergy_shield.gdshader
+Copyright: 2023 Daniel Bologna
+License: MIT
+Source: https://godotshaders.com/shader/energy-shield-with-impact-effect/

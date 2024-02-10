@@ -6,8 +6,7 @@ const IconConfetti := preload("res://assets/icons/icons8-confetti-100.png")
 const IconTrophy := preload("res://assets/icons/icons8-trophy-100.png")
 const IconBang := preload("res://assets/icons/icons8-bang-100.png")
 const IconSkull := preload("res://assets/icons/icons8-skull-100.png")
-
-var Group := load("res://scripts/constants/groups.gd")
+const Group := preload("res://scripts/constants/groups.gd")
 
 var _marble: Marble = null
 var _last_rank := -1

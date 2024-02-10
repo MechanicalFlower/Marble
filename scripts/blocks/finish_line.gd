@@ -2,7 +2,7 @@ class_name FinishLine
 
 extends Area3D
 
-var Group := load("res://scripts/constants/groups.gd")
+const Group := preload("res://scripts/constants/groups.gd")
 
 @onready var _player := get_node(^"%Sound") as AudioStreamPlayer3D
 

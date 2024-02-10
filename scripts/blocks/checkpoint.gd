@@ -2,7 +2,7 @@ class_name Checkpoint
 
 extends Area3D
 
-var Group := load("res://scripts/constants/groups.gd")
+const Group := preload("res://scripts/constants/groups.gd")
 
 var _marbles: PackedStringArray = []
 
