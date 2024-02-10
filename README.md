@@ -51,3 +51,7 @@ The race is infinite, and the game ends when only one marble remains.
 We welcome community contributions to this project.
 
 Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
+
+## Releasing
+
+Please read our [Release Guide](RELEASING.md) for more information on how we manage our releases.
