@@ -5,7 +5,7 @@ on:
   # Ensure the build works on main
   push:
     branches: [main]
-    tags:
+    tags: ['*']
   # Ensure the build works on each pull request
   pull_request:
 
