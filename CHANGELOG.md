@@ -3,6 +3,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+- Add speed boost areas in races ([#43](https://github.com/MechanicalFlower/Marble/pull/43))
 ### Changed
 ### Deprecated
 ### Removed
