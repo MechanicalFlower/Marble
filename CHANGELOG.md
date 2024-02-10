@@ -3,6 +3,15 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+### Dependencies
+
+## [1.5.0]
+### Added
 - Add speed boost areas in races ([#43](https://github.com/MechanicalFlower/Marble/pull/43))
 ### Changed
 ### Deprecated
@@ -76,7 +85,8 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `ubuntu` from v20 to v22 ([#15](https://github.com/MechanicalFlower/Marble/pull/15))
 - Bump `kobewi/godot-universal-fade` from ddab6c2 to f091514 ([#12](https://github.com/MechanicalFlower/Marble/pull/12))
 
-[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.4.6...HEAD
+[Unreleased]: https://github.com/MechanicalFlower/Marble/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/MechanicalFlower/Marble/compare/1.4.6...1.5.0
 [1.4.6]: https://github.com/MechanicalFlower/Marble/compare/1.4.5...1.4.6
 [1.4.5]: https://github.com/MechanicalFlower/Marble/compare/1.4.4...1.4.5
 [1.4.4]: https://github.com/MechanicalFlower/Marble/compare/1.4.3...1.4.4
