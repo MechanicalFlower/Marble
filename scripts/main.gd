@@ -3,16 +3,15 @@ extends Node
 
 enum State { MODE_START, MODE_PAUSE, MODE_MARBLE }
 
-const RotationCamera := preload("res://scenes/camera/rotation_camera.tscn")
-const CinematicCamera := preload("res://scenes/camera/marble_camera.tscn")
-const Race := preload("res://scenes/race.tscn")
+const RotationCameraScene := preload("res://scenes/camera/rotation_camera.tscn")
+const MarbleCameraScene := preload("res://scenes/camera/marble_camera.tscn")
 const Group := preload("res://scripts/constants/groups.gd")
 const NameGenerator := preload("res://scripts/utils/name_generator.gd")
 
 const TIME_PERIOD := 5  # 500ms
 
 var _rotation_camera = null
-var _cinematic_camera = null
+var _marble_camera = null
 var _mode: int = State.MODE_START
 var _current_marble_index := 0
 var _time := 0.0
@@ -42,8 +41,8 @@ var _positions := []
 
 
 func _ready() -> void:
-	_rotation_camera = RotationCamera.instantiate()
-	_cinematic_camera = CinematicCamera.instantiate()
+	_rotation_camera = RotationCameraScene.instantiate()
+	_marble_camera = MarbleCameraScene.instantiate()
 	reset_position()
 	set_mode(_mode)
 
@@ -51,8 +50,8 @@ func _ready() -> void:
 func _exit_tree():
 	if not _rotation_camera.is_inside_tree():
 		_rotation_camera.free()
-	if not _cinematic_camera.is_inside_tree():
-		_cinematic_camera.free()
+	if not _marble_camera.is_inside_tree():
+		_marble_camera.free()
 
 
 func _unhandled_input(event):
@@ -72,7 +71,7 @@ func _unhandled_input(event):
 								_current_marble_index = 0
 							else:
 								_current_marble_index += 1
-							_cinematic_camera.set_target(
+							_marble_camera.set_target(
 								visible_marbles[_current_marble_index % marble_count]
 							)
 
@@ -169,7 +168,7 @@ func replace_camera(new_camera, old_cameras) -> void:
 	# Ensure old cameras are removed from the current scene
 	for camera in old_cameras:
 		if camera.is_inside_tree():
-			remove_from_tree(camera)
+			Main.remove_from_tree(camera)
 	# And create a new one
 	if not new_camera.is_inside_tree():
 		add_child(new_camera)
@@ -182,7 +181,7 @@ func _on_timer_timeout():
 	_race_has_started = true
 
 	# Put the camera at the right place for the start
-	replace_camera(_cinematic_camera, [_rotation_camera])
+	replace_camera(_marble_camera, [_rotation_camera])
 
 
 # Set the game mode
@@ -223,7 +222,7 @@ func set_mode(mode):
 			_overlay.show()
 
 			# Put the camera at the right place for the start
-			replace_camera(_rotation_camera, [_cinematic_camera])
+			replace_camera(_rotation_camera, [_marble_camera])
 
 			# Focus the rotation camera on the marble start line
 			_rotation_camera.target = get_highest_piece().global_position + Vector3.UP * 5
@@ -241,7 +240,7 @@ func set_mode(mode):
 						break
 					marble.set_marble_name(marble_name)
 					_overlay.add_marble_rank(marble)
-					_cinematic_camera.set_target(marble)
+					_marble_camera.set_target(marble)
 
 			await Fade.fade_in(1, Color.BLACK, "Diamond", false, false).finished
 			_countdown.connect("countdown_finished", _on_timer_timeout, CONNECT_ONE_SHOT)
@@ -250,19 +249,19 @@ func set_mode(mode):
 		else:
 			_overlay.show()
 
-			replace_camera(_cinematic_camera, [_rotation_camera])
+			replace_camera(_marble_camera, [_rotation_camera])
 
 	elif _mode == State.MODE_START:
 		_overlay.hide()
 		_pause_menu.open_start_menu()
-		replace_camera(_rotation_camera, [_cinematic_camera])
+		replace_camera(_rotation_camera, [_marble_camera])
 		# Focus the rotation camera on race
 		_rotation_camera.target = Vector3.ZERO
 		_rotation_camera.distance_to_target = 50.0
 
 	elif _mode == State.MODE_PAUSE:
 		_pause_menu.open_pause_menu()
-		replace_camera(_rotation_camera, [_cinematic_camera])
+		replace_camera(_rotation_camera, [_marble_camera])
 		# Focus the rotation camera on race
 		_rotation_camera.target = Vector3.ZERO
 		_rotation_camera.distance_to_target = 50.0
@@ -309,7 +308,7 @@ func _process(delta):
 				_max_checkpoint_count = _ranking._first_marble._checkpoint_count
 
 				# Compute the lap (1 lap equals  to one chunk)
-				var lap_count: int = ceil((_max_checkpoint_count + 3) / _race._step_count)
+				var lap_count := ceili(_max_checkpoint_count / (_race._step_count - 3.0))
 				# If one more lap was done
 				if lap_count > _old_lap_count:
 					# Generate a chunk
@@ -325,15 +324,15 @@ func _process(delta):
 		if _mode == State.MODE_PAUSE and _pause_menu.is_quit():
 			set_mode(State.MODE_START)
 
-	if not _cinematic_camera.has_target() or not _cinematic_camera.get_target().visible:
+	if not _marble_camera.has_target() or not _marble_camera.get_target().visible:
 		var found = false
 		for marble in _marbles:
 			if marble.visible:
 				found = true
-				_cinematic_camera.set_target(marble)
+				_marble_camera.set_target(marble)
 				break
 		if not found:
-			replace_camera(_rotation_camera, [_cinematic_camera])
+			replace_camera(_rotation_camera, [_marble_camera])
 
 
 # Handle victory conditions on explosion mode

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://768qm8vsl1un"]
 
-[ext_resource type="Shader" path="res://shaders/energy_shield.gdshader" id="1_gmgfm"]
-[ext_resource type="Script" path="res://scripts/boost.gd" id="1_rrijl"]
-[ext_resource type="AudioStream" uid="uid://5o2mnxsagwq1" path="res://assets/sounds/boost.ogg" id="3_serww"]
+[ext_resource type="Script" path="res://scripts/power.gd" id="1_cvq4u"]
+[ext_resource type="Shader" path="res://shaders/energy_shield.gdshader" id="2_fwh4g"]
+[ext_resource type="AudioStream" uid="uid://5o2mnxsagwq1" path="res://assets/sounds/boost.ogg" id="3_wdakx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yntlh"]
 radial_segments = 8
@@ -10,7 +10,7 @@ rings = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfirf"]
 render_priority = 0
-shader = ExtResource("1_gmgfm")
+shader = ExtResource("2_fwh4g")
 shader_parameter/_shield_color = Color(0, 0, 1, 1)
 shader_parameter/_shield_color_brightness = 10.0
 shader_parameter/_shield_intensity = 2.0
@@ -31,8 +31,10 @@ shader_parameter/_impact_anim = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hmxdj"]
 
-[node name="Boost" type="Node3D"]
-script = ExtResource("1_rrijl")
+[node name="Power" type="Node3D"]
+visible = false
+script = ExtResource("1_cvq4u")
+type = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_yntlh")
@@ -41,13 +43,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_nfirf")
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 4
+monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_hmxdj")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_serww")
+stream = ExtResource("3_wdakx")
 unit_size = 1.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
