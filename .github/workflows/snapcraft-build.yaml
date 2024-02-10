@@ -9,7 +9,7 @@ on:
   pull_request:
   # Build and publish on release
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   build:
