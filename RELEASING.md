@@ -32,6 +32,6 @@ We use [Github Actions](https://docs.github.com/en/actions) to automate the rele
     4. Create a pull request targeting the `main` branch
     5. Review the changes in the pull request and ensure they meet the release criteria
     6. Merge the pull request into the `main` branch
-3. Tag the `main` branch 
+3. Tag the `main` branch
     1. Tag the `main` branch with the release version
     2. Push the tags to the remote repository
