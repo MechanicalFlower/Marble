@@ -5,6 +5,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Added
 ### Changed
 - Downgrade rendering settings of Godot ([#49](https://github.com/MechanicalFlower/Marble/pull/49))
+- Refactor boost to define multiple power types ([#48](https://github.com/MechanicalFlower/Marble/pull/48))
 ### Deprecated
 ### Removed
 ### Fixed
