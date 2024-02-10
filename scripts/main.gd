@@ -18,8 +18,12 @@ var _mode: int = State.MODE_START
 var _current_marble_index := 0
 var _time := 0.0
 var _explosion_enabled := false
-var _need_new_chunk := false
 var _race_has_started := false
+
+# Variables used in explosion mode to check
+# if we need to generate another chunk of the race
+var _max_checkpoint_count := -1
+var _old_lap_count := 0
 
 # There are limited places to ensure equality among the marbles.
 # TODO : remove this limit
@@ -101,7 +105,7 @@ func _unhandled_input(event):
 				# Debug command to generate a new race
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
-						_race.call_deferred(&"generate_race", !_explosion_enabled)
+						_race.generate_race(!_explosion_enabled)
 
 				KEY_SPACE:
 					for marble in _marbles:
@@ -211,7 +215,7 @@ func set_mode(mode):
 			await Fade.fade_out(1, Color.BLACK, "Diamond", false, false).finished
 
 			_explosion_enabled = SettingsManager.get_value(&"marbles", &"explosion_enabled") as bool
-			_race.call_deferred(&"generate_race", !_explosion_enabled)
+			_race.generate_race(!_explosion_enabled)
 
 			_overlay.reset()
 			reset_position()
@@ -276,7 +280,7 @@ func _process(delta):
 	if _time > TIME_PERIOD:
 		if _mode == State.MODE_START:
 			# Regenerate race
-			_race.call_deferred(&"generate_race", true)
+			_race.generate_race(true)
 
 			# Reset timer
 			_time = 0
@@ -300,14 +304,18 @@ func _process(delta):
 					_explosion.set_emitting(true)
 
 		if _ranking._first_marble:
-			if (
-				_need_new_chunk
-				and (_ranking._first_marble._checkpoint_count + 3) % _race._step_count != 0
-			):
-				_race.generate_chunk()
-				_need_new_chunk = false
-			elif (_ranking._first_marble._checkpoint_count + 3) % _race._step_count == 0:
-				_need_new_chunk = true
+			# If a new checkpoint is crossed by the first marble
+			if _ranking._first_marble._checkpoint_count > _max_checkpoint_count:
+				# Store the max number of checkpoints crossed
+				_max_checkpoint_count = _ranking._first_marble._checkpoint_count
+
+				# Compute the lap (1 lap equals  to one chunk)
+				var lap_count: int = ceil((_max_checkpoint_count + 3) / _race._step_count)
+				# If one more lap was done
+				if lap_count > _old_lap_count:
+					# Generate a chunk
+					_race.generate_chunk()
+					_old_lap_count = lap_count
 	else:
 		_panel_timer.hide()
 
