@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxmtpk5gebd06"]
+[gd_scene load_steps=9 format=3 uid="uid://bxmtpk5gebd06"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://1ni00kklpf4b" path="res://scenes/gui/overlay.tscn" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4g5aorgnd1hu" path="res://scenes/marble.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://do5uv5bqridi0" path="res://scenes/explosion.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bh0nd3c40wf75" path="res://scenes/gui/menu.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://butiacoqyc0um" path="res://scenes/podium.tscn" id="8_q3udf"]
 [ext_resource type="PackedScene" uid="uid://cr0ipqbbhw6fv" path="res://scenes/gui/countdown.tscn" id="9"]
 
 [node name="Main" type="Node"]
@@ -76,6 +77,11 @@ visible = false
 visible = false
 
 [node name="Explosion" parent="." instance=ExtResource("6")]
+visible = false
+
+[node name="Podium" parent="." instance=ExtResource("8_q3udf")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 30, 0)
 visible = false
 
 [node name="Timer" type="Timer" parent="."]

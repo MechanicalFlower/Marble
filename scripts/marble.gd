@@ -134,6 +134,8 @@ func _start() -> void:
 	set_physics_process(true)
 	set_sleeping(false)
 	set_linear_velocity(Vector3.ZERO)
+	set_inertia(Vector3.ZERO)
+	set_freeze_enabled(false)
 	collision_layer = 1 << CollisionLayers.MARBLES
 
 
@@ -143,4 +145,5 @@ func _stop() -> void:
 	set_physics_process(false)
 	set_sleeping(true)
 	set_linear_velocity(Vector3.ZERO)
+	set_freeze_enabled(true)
 	collision_layer = 0

@@ -4,6 +4,8 @@ class_name Ranking
 extends VBoxContainer
 
 var _first_marble: Marble = null
+var _second_marble: Marble = null
+var _third_marble: Marble = null
 var _last_marble: Marble = null
 
 
@@ -19,6 +21,10 @@ func update() -> void:
 
 	if len(arr) > 0:
 		_first_marble = arr[0].get_marble()
+	if len(arr) > 1:
+		_second_marble = arr[1].get_marble()
+	if len(arr) > 2:
+		_third_marble = arr[2].get_marble()
 
 	var rank := 0
 	for child in arr:

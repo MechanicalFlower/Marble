@@ -38,6 +38,7 @@ var _positions := []
 @onready var _panel_timer := _overlay.get_node(^"Panel2") as ColorRect
 @onready var _label_timer = _overlay.get_node(^"Panel2/CenterContainer3/VBoxContainer/LabelTimer")
 @onready var _countdown := get_node(^"%Countdown")
+@onready var _podium := get_node(^"%Podium")
 
 
 func _ready() -> void:
@@ -210,6 +211,8 @@ func set_mode(mode):
 	if _mode == State.MODE_MARBLE:
 		# If no marbles exist
 		if start_a_new_race:
+			_podium.hide()
+			
 			await Fade.fade_out(1, Color.BLACK, "Diamond", false, false).finished
 
 			_explosion_enabled = SettingsManager.get_value(&"marbles", &"explosion_enabled") as bool
@@ -333,6 +336,13 @@ func _process(delta):
 				break
 		if not found:
 			replace_camera(_rotation_camera, [_marble_camera])
+
+			if _race_has_started:
+				_race_has_started = false
+				_podium.show()
+				_podium.set_first(_ranking._first_marble)
+				_podium.set_second(_ranking._second_marble)
+				_podium.set_third(_ranking._third_marble)
 
 
 # Handle victory conditions on explosion mode
