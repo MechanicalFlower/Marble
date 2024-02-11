@@ -15,7 +15,7 @@ universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
 [application]
 
 config/name="Marble"
-config/version="1.5.0"
+config/version="1.6.0"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
 config/features=PackedStringArray("4.2")
