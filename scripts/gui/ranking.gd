@@ -42,24 +42,27 @@ func more_checkpoint(a: Participant, b: Participant) -> bool:
 	var b_marble = b.get_marble()
 
 	var out: bool
-	if (
-		a_marble.has_finish() and b_marble.has_finish()
-		or a_marble.get_checkpoint_count() == b_marble.get_checkpoint_count()
-	):
+	if a_marble.has_finish() and b_marble.has_finish():
 		out = a.get_rank() < b.get_rank()
 	elif a_marble.has_finish():
 		out = true
 	elif b_marble.has_finish():
 		out = false
 	else:
-		if a_marble.has_explode() and b_marble.has_explode():
+		if (
+			(a_marble.has_explode() or a_marble.has_oob())
+			and (b_marble.has_explode() or b_marble.has_oob())
+		):
 			out = a.get_rank() < b.get_rank()
-		elif a_marble.has_explode():
+		elif a_marble.has_explode() or a_marble.has_oob():
 			out = false
-		elif b_marble.has_explode():
+		elif b_marble.has_explode() or b_marble.has_oob():
 			out = true
 		else:
-			out = a_marble.get_checkpoint_count() > b_marble.get_checkpoint_count()
+			if a_marble.get_checkpoint_count() == b_marble.get_checkpoint_count():
+				out = a.get_rank() < b.get_rank()
+			else:
+				out = a_marble.get_checkpoint_count() > b_marble.get_checkpoint_count()
 	return out
 
 

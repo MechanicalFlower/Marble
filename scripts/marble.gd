@@ -86,9 +86,6 @@ func _process(_delta: float) -> void:
 	_name.global_transform.origin = offset
 	_score.global_transform.origin = offset + Vector3(-0.4, -0.2, 0)
 
-	if global_transform.origin.y < -10000:
-		out_of_bound()
-
 
 func reset() -> void:
 	_start()
