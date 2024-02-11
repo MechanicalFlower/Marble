@@ -17,6 +17,7 @@ var _current_marble_index := 0
 var _time := 0.0
 var _explosion_enabled := false
 var _race_has_started := false
+var _lower_boundary = null
 
 # Variables used in explosion mode to check
 # if we need to generate another chunk of the race
@@ -38,6 +39,7 @@ var _positions := []
 @onready var _panel_timer := _overlay.get_node(^"Panel2") as ColorRect
 @onready var _label_timer = _overlay.get_node(^"Panel2/CenterContainer3/VBoxContainer/LabelTimer")
 @onready var _countdown := get_node(^"%Countdown")
+@onready var _podium := get_node(^"%Podium")
 
 
 func _ready() -> void:
@@ -104,6 +106,7 @@ func _unhandled_input(event):
 				KEY_R:
 					if _mode == State.MODE_MARBLE:
 						_race.generate_race(!_explosion_enabled)
+						_lower_boundary = get_lowest_piece(_race, true).global_transform.origin.y
 
 				KEY_SPACE:
 					for marble in _marbles:
@@ -156,11 +159,37 @@ func get_highest_piece() -> Piece:
 	var pieces = _race.get_children()
 	if len(pieces) == 0:
 		return null
-	var highest_piece = pieces[0]
+	var highest_piece = null
 	for piece in pieces:
-		if piece.position.y > highest_piece.position.y:
+		if not piece is Piece:
+			continue
+		if highest_piece == null:
+			highest_piece = piece
+		elif piece.position.y > highest_piece.position.y:
 			highest_piece = piece
 	return highest_piece
+
+
+func get_lowest_piece(piece_or_race, recursive: bool = false) -> Piece:
+	var pieces = piece_or_race.get_children()
+	if len(pieces) == 0:
+		return null
+
+	# Find the lower piece from children of the current node3d
+	var lowest_piece = null
+	for piece in pieces:
+		if not piece is Piece:
+			continue
+		if lowest_piece == null:
+			lowest_piece = piece
+		elif piece.position.y < lowest_piece.position.y:
+			lowest_piece = piece
+
+	if recursive:
+		var child_lowest_piece = get_lowest_piece(lowest_piece)
+		if child_lowest_piece != null:
+			lowest_piece = child_lowest_piece
+	return lowest_piece
 
 
 # Replace cameras with a new one
@@ -210,10 +239,13 @@ func set_mode(mode):
 	if _mode == State.MODE_MARBLE:
 		# If no marbles exist
 		if start_a_new_race:
+			_podium.hide()
+
 			await Fade.fade_out(1, Color.BLACK, "Diamond", false, false).finished
 
 			_explosion_enabled = SettingsManager.get_value(&"marbles", &"explosion_enabled") as bool
 			_race.generate_race(!_explosion_enabled)
+			_lower_boundary = get_lowest_piece(_race, true).global_transform.origin.y
 
 			_overlay.reset()
 			reset_position()
@@ -313,6 +345,7 @@ func _process(delta):
 				if lap_count > _old_lap_count:
 					# Generate a chunk
 					_race.generate_chunk()
+					_lower_boundary = get_lowest_piece(_race, true).global_transform.origin.y
 					_old_lap_count = lap_count
 	else:
 		_panel_timer.hide()
@@ -333,6 +366,23 @@ func _process(delta):
 				break
 		if not found:
 			replace_camera(_rotation_camera, [_marble_camera])
+
+			if _race_has_started:
+				_race_has_started = false
+				_podium.show()
+				_podium.set_first(_ranking._first_marble)
+				_podium.set_second(_ranking._second_marble)
+				_podium.set_third(_ranking._third_marble)
+
+	# Check if some marbles are out of bound
+	if _race_has_started and _lower_boundary != null:
+		for marble in _marbles:
+			if (
+				marble.visible
+				and marble._state == Marble.State.ROLL
+				and marble.global_transform.origin.y + 100 < _lower_boundary
+			):
+				marble.out_of_bound()
 
 
 # Handle victory conditions on explosion mode

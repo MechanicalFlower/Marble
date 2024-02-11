@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://butiacoqyc0um"]
+
+[ext_resource type="Script" path="res://scripts/podium.gd" id="1_62kyn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j1v6k"]
+size = Vector3(1, 1, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78627"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.733333, 0.611765, 0.380392, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olhkp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mf1on"]
+size = Vector3(1, 0.75, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6m2y"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.690196, 0.670588, 0.654902, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_es7k6"]
+size = Vector3(1, 0.75, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u4h8o"]
+size = Vector3(1, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8m4f"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.658824, 0.435294, 0.254902, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3may"]
+size = Vector3(1, 0.5, 1)
+
+[node name="Podium" type="Node3D"]
+script = ExtResource("1_62kyn")
+
+[node name="FirstPlace" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_j1v6k")
+surface_material_override/0 = SubResource("StandardMaterial3D_78627")
+
+[node name="Marker3D" type="Marker3D" parent="FirstPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstPlace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstPlace/StaticBody3D"]
+shape = SubResource("BoxShape3D_olhkp")
+
+[node name="Label3D" type="Label3D" parent="FirstPlace"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.426261)
+text = "1"
+
+[node name="SecondPlace" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.375, 0)
+mesh = SubResource("BoxMesh_mf1on")
+surface_material_override/0 = SubResource("StandardMaterial3D_y6m2y")
+
+[node name="Marker3D" type="Marker3D" parent="SecondPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SecondPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.125, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPlace/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.125, 0)
+shape = SubResource("BoxShape3D_es7k6")
+
+[node name="Label3D" type="Label3D" parent="SecondPlace"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.025, 0.5)
+text = "2
+"
+
+[node name="ThirdPlace" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 0)
+mesh = SubResource("BoxMesh_u4h8o")
+surface_material_override/0 = SubResource("StandardMaterial3D_a8m4f")
+
+[node name="Marker3D" type="Marker3D" parent="ThirdPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ThirdPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThirdPlace/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.250427, 0)
+shape = SubResource("BoxShape3D_o3may")
+
+[node name="Label3D" type="Label3D" parent="ThirdPlace"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.5)
+text = "3
+"

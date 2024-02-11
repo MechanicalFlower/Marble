@@ -3,12 +3,15 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+- Add a podium at the end of the race ([#50](https://github.com/MechanicalFlower/Marble/pull/50))
 ### Changed
 - Downgrade rendering settings of Godot ([#49](https://github.com/MechanicalFlower/Marble/pull/49))
 - Refactor boost to define multiple power types ([#48](https://github.com/MechanicalFlower/Marble/pull/48))
+- Refactor the out of bound detection ([#50](https://github.com/MechanicalFlower/Marble/pull/50))
 ### Deprecated
 ### Removed
 ### Fixed
+- Update marble collision mask at each race ([#50](https://github.com/MechanicalFlower/Marble/pull/50))
 ### Security
 ### Dependencies
 
