@@ -32,13 +32,6 @@ func _ready() -> void:
 	x_ray_material.set_next_pass(toon_material)
 	_ball_mesh.set_surface_override_material(0, x_ray_material)
 
-	# Set collision mask
-	var collision_enabled = SettingsManager.get_value(&"marbles", &"collision_enabled") as bool
-	if collision_enabled:
-		collision_mask = 1 << CollisionLayers.PROPS | 1 << CollisionLayers.MARBLES
-	else:
-		collision_mask = 1 << CollisionLayers.PROPS
-
 	pause()
 
 
@@ -136,6 +129,14 @@ func _start() -> void:
 	set_linear_velocity(Vector3.ZERO)
 	set_inertia(Vector3.ZERO)
 	set_freeze_enabled(false)
+
+	# Set collision mask
+	var collision_enabled = SettingsManager.get_value(&"marbles", &"collision_enabled") as bool
+	if collision_enabled:
+		collision_mask = 1 << CollisionLayers.PROPS | 1 << CollisionLayers.MARBLES
+	else:
+		collision_mask = 1 << CollisionLayers.PROPS
+
 	collision_layer = 1 << CollisionLayers.MARBLES
 
 
