@@ -125,4 +125,4 @@ jobs:
         run: just ci-publish
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
