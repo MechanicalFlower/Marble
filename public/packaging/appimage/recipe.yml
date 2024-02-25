@@ -19,11 +19,11 @@ ingredients:
     - libc6
   script:
     # Download released builds
-    - wget -c "https://github.com/MechanicalFlower/Marble/releases/download/1.6.0/Marble-linux-v1.6.0.zip"
+    - wget -c "https://github.com/MechanicalFlower/Marble/releases/download/1.6.1/Marble-linux-v1.6.1.zip"
     - unzip *.zip
     # Download the icon and the .desktop file
-    - wget -c "https://raw.githubusercontent.com/MechanicalFlower/Marble/1.6.0/public/packaging/org.mechanicalflower.Marble.desktop"
-    - wget -c "https://raw.githubusercontent.com/MechanicalFlower/Marble/1.6.0/assets/icon.png"
+    - wget -c "https://raw.githubusercontent.com/MechanicalFlower/Marble/1.6.1/public/packaging/org.mechanicalflower.Marble.desktop"
+    - wget -c "https://raw.githubusercontent.com/MechanicalFlower/Marble/1.6.1/assets/icon.png"
 
 script:
   - sed -i.bak -e "s,Version=.*$,,g" ../org.mechanicalflower.Marble.desktop
