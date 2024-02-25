@@ -49,6 +49,6 @@ jobs:
 
       # Publish, on each release
       - name: Publish AppImage
-        if: ${{ env.GITHUB_EVENT_NAME == 'release' || (env.GITHUB_EVENT_NAME == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/')) }}
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           gh release upload ${{ env.game_version }} ./${{ env.game_name }}-${{ env.game_version }}.AppImage
