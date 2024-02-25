@@ -3,6 +3,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Added
+- Add AppImage packaging support ([#53](https://github.com/MechanicalFlower/Marble/pull/53))
 ### Changed
 ### Deprecated
 ### Removed
