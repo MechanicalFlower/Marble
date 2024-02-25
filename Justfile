@@ -188,10 +188,14 @@ butler *ARGS: check-butler
     sed -i "s,config/version=.*$,config/version=\"{{ game_version }}\",g" ./project.godot
 
     echo "Update version in public/packaging"
+    # Snap
     sed -i "s,version:\ '.*'$,version:\ '{{ game_version }}',g" ./public/packaging/snap/snapcraft.yaml
     sed -i "s,archive/refs/tags/.*\.tar\.gz$,archive/refs/tags/{{ game_version }}\.tar\.gz,g" ./public/packaging/snap/snapcraft.yaml
     sed -i "s,releases/download/.*/Marble-linux-v.*\.zip$,releases/download/{{ game_version }}/Marble-linux-v{{ game_version }}\.zip,g" ./public/packaging/snap/snapcraft.yaml
-    sed -i "s,Version=.*$,Version={{ game_version }},g" ./public/packaging/org.mechanicalflower.Marble.desktop
+    # AppImage
+    sed -i "s,releases/download/.*/Marble-linux-v.*\.zip,releases/download/{{ game_version }}/Marble-linux-v{{ game_version }}\.zip,g" ./public/packaging/appimage/recipe.yml
+    sed -i "s,MechanicalFlower/Marble/.*/public/packaging/org.mechanicalflower.Marble.desktop,MechanicalFlower/Marble/{{ game_version }}/public/packaging/org.mechanicalflower.Marble.desktop,g" ./public/packaging/appimage/recipe.yml
+    sed -i "s,MechanicalFlower/Marble/.*/assets/icon.png,MechanicalFlower/Marble/{{ game_version }}/assets/icon.png,g" ./public/packaging/appimage/recipe.yml
 
 [private]
 pre-export: clean-addons makedirs bump-version install-addons import-resources
