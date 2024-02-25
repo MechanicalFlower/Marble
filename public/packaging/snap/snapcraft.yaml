@@ -2,7 +2,7 @@
 ---
 name: marble-race
 base: core20
-version: '1.6.0'
+version: '1.6.1'
 summary: A marble race minigame
 description: |
   A marble race minigame, made with Godot Engine.
@@ -25,7 +25,7 @@ apps:
 
 parts:
   marble-source:
-    source: https://github.com/MechanicalFlower/Marble/archive/refs/tags/1.6.0.tar.gz
+    source: https://github.com/MechanicalFlower/Marble/archive/refs/tags/1.6.1.tar.gz
     override-build: |
       snapcraftctl build
 
@@ -40,7 +40,7 @@ parts:
       mkdir -p ${SNAPCRAFT_PRIME}/gui
       cp ${SNAPCRAFT_PART_SRC}/assets/icon.png ${SNAPCRAFT_PRIME}/gui/icon.png
   marble-dist:
-    source: https://github.com/MechanicalFlower/Marble/releases/download/1.6.0/Marble-linux-v1.6.0.zip
+    source: https://github.com/MechanicalFlower/Marble/releases/download/1.6.1/Marble-linux-v1.6.1.zip
     override-build: |
       snapcraftctl build
 
