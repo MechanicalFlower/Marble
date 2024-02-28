@@ -9,6 +9,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 ### Security
 ### Dependencies
+- Bump `extractions/setup-just` from 1 to 2 ([#56](https://github.com/MechanicalFlower/Marble/pull/56))
 
 ## [1.6.1]
 ### Added
