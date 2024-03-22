@@ -4,6 +4,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 ### Added
 ### Changed
+- Correctly end the race if all marble are not exploded ([#57](https://github.com/MechanicalFlower/Marble/pull/57))
 ### Deprecated
 ### Removed
 ### Fixed
