@@ -391,7 +391,7 @@ func explosion_victory(_last_marble: Marble) -> bool:
 	var tmp_marble = null
 
 	for marble in _marbles:
-		if !marble.has_explode() and marble.visible:
+		if marble.in_race() and marble.visible:
 			marble_exploded_count += 1
 			if _last_marble != marble:
 				tmp_marble = marble
