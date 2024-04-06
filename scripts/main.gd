@@ -247,6 +247,10 @@ func set_mode(mode):
 			_race.generate_race(!_explosion_enabled)
 			_lower_boundary = get_lowest_piece(_race, true).global_transform.origin.y
 
+			# Reset values at each new race
+			_max_checkpoint_count = -1
+			_old_lap_count = 0
+
 			_overlay.reset()
 			reset_position()
 
