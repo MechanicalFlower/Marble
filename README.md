@@ -45,6 +45,90 @@ The race is infinite, and the game ends when only one marble remains.
 
 </div>
 
+## Installation
+
+### From a release
+
+Released binaries are available on Itch.io and
+on the Github repository, in the release section.
+
+Download the zip archive, accordingly to your OS, and unzip it.
+
+- **Windows**: Double click on `Marble.exe`.
+- **MacOS**: Double click on `Marble.app`.
+- **Linux**: In a terminal, run `./Marble.x86_64`.
+
+### From Snap
+
+With the [Snap command line](https://manpages.ubuntu.com/manpages/focal/en/man8/snap.8.html), run:
+```
+snap install marble-race
+```
+
+To run the game:
+```
+marble-race.marble
+```
+
+### From an AppImage
+
+The AppImage is available on the Github
+ repository, in the release section.
+
+More details on how to run an AppImage, on the
+ [official documentation](https://docs.appimage.org/introduction/quickstart.html#how-to-run-an-appimage).
+
+### From source
+
+> [!IMPORTANT]
+> For this installation, you need to have
+> the Godot Editor installed.
+
+Clone the source locally:
+```
+git clone https://github.com/MechanicalFlower/Marble.git
+```
+
+You need to install addons first:
+```
+godot --headless --script plug.gd install
+```
+
+And simply run the game as any Godot project:
+```
+godot
+```
+
+## Development
+
+The project use:
+- [`just`](https://just.systems/man/en/) as command runner,
+- [`pre-commit`](https://pre-commit.com/) to run formatters, this requires [Python 3](https://docs.python.org/3/).
+
+> [!IMPORTANT]
+> Actually, `just` recipes only support Linux.
+
+To check all available recipes, run:
+```
+just
+```
+
+To run formatters:
+```
+just fmt
+```
+
+To install, and run the game:
+```
+just install-addons
+just godot
+```
+
+> [!TIP]
+> In `just` recipes, the Godot Editor is installed
+> automatically. This ensure that you
+> use the right version of the engine.
+
 ## Contributing
 
 ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)
