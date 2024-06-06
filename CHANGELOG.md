@@ -12,7 +12,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Security
 ### Dependencies
 - Bump `extractions/setup-just` from 1 to 2 ([#56](https://github.com/MechanicalFlower/Marble/pull/56))
-- Bump `dawidd6/action-download-artifact` from 3 to 4 ([#65](https://github.com/MechanicalFlower/Marble/pull/65))
+- Bump `dawidd6/action-download-artifact` from 3 to 5 ([#65](https://github.com/MechanicalFlower/Marble/pull/65), [#68](https://github.com/MechanicalFlower/Marble/pull/68))
 
 ## [1.6.1]
 ### Added
