@@ -18,7 +18,7 @@ config/name="Marble"
 config/version="1.6.1"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.3")
 run/max_fps=60
 config/icon="res://assets/icon.png"
 
@@ -40,8 +40,8 @@ source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
 
 [custom_options]
 
-build_info/commit="8b5eab3456e7d73e84274c37eb9fd5ca14825420"
-build_info/date="2024/02/11"
+build_info/commit="17ae082e22d615b1f42ac1a9594707345437c931"
+build_info/date="2024/08/17"
 
 [display]
 
