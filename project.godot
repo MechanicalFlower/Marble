@@ -40,7 +40,7 @@ source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
 
 [custom_options]
 
-build_info/commit="17ae082e22d615b1f42ac1a9594707345437c931"
+build_info/commit="f6ac6f48bcfb91ff85e6d23baeea918e00b66f44"
 build_info/date="2024/08/17"
 
 [display]
@@ -89,6 +89,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 occlusion_culling/bvh_build_quality=1
+textures/vram_compression/import_etc2_astc=true
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 environment/ssao/quality=0
 environment/ssil/quality=0
