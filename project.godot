@@ -40,7 +40,7 @@ source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
 
 [custom_options]
 
-build_info/commit="f6ac6f48bcfb91ff85e6d23baeea918e00b66f44"
+build_info/commit="996e6018e05b70ef54ee9990d8b600588ed2ff3a"
 build_info/date="2024/08/17"
 
 [display]
@@ -51,7 +51,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/coi_serviceworker/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/export-build-info/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/export-build-info/plugin.cfg")
 
 [filesystem]
 
