@@ -18,7 +18,7 @@ config/name="Marble"
 config/version="1.6.1"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.3")
 run/max_fps=60
 config/icon="res://assets/icon.png"
 
@@ -40,8 +40,8 @@ source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
 
 [custom_options]
 
-build_info/commit="8b5eab3456e7d73e84274c37eb9fd5ca14825420"
-build_info/date="2024/02/11"
+build_info/commit="996e6018e05b70ef54ee9990d8b600588ed2ff3a"
+build_info/date="2024/08/17"
 
 [display]
 
@@ -51,7 +51,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/coi_serviceworker/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/export-build-info/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/export-build-info/plugin.cfg")
 
 [filesystem]
 
@@ -89,6 +89,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 occlusion_culling/bvh_build_quality=1
+textures/vram_compression/import_etc2_astc=true
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 environment/ssao/quality=0
 environment/ssil/quality=0

@@ -18,8 +18,8 @@ radius = 0.3
 
 [node name="Marble" type="RigidBody3D" groups=["marbles"]]
 collision_layer = 4
-max_contacts_reported = 10000
 contact_monitor = true
+max_contacts_reported = 10000
 script = ExtResource("1")
 
 [node name="Ball" type="MeshInstance3D" parent="."]
