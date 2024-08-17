@@ -18,6 +18,7 @@ apps:
     plugs:
       - pulseaudio
       - opengl
+      - wayland
       - x11
     desktop: org.mechanicalflower.Marble.desktop
     environment:
