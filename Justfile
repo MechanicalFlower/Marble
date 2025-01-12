@@ -22,8 +22,9 @@ cache_dir := main_dir / "cache"
 bin_dir := main_dir / "bin"
 
 # Local directories for game exports
-build_dir := justfile_directory() / "build"
-dist_dir := justfile_directory() / "dist"
+work_dir := env_var_or_default('WORKDIR', justfile_directory())
+build_dir := work_dir / "build"
+dist_dir := work_dir / "dist"
 
 # Godot variables
 godot_version := env_var('GODOT_VERSION')
@@ -52,7 +53,6 @@ game_itchio_key := env_var_or_default('GAME_ITCHIO_KEY', "")
 # Build info
 datetime := `date '+%Y%m%d'`
 short_version := replace_regex(game_version, "([0-9]+).([0-9]+).[0-9]+", "$1.$2")
-commit_hash := `git log --pretty=format:"%H" -1`
 
 # Python virtualenv
 venv_dir := justfile_directory() / "venv"
@@ -241,7 +241,7 @@ export: export-windows export-mac export-linux
 # Remove game plugins
 clean-addons:
     rm -rf .plugged
-    [ -f plug.gd ] && (cd addons/ && git clean -f -X -d) || true
+    [[ -f plug.gd && -d .git ]] && (cd addons/ && git clean -f -X -d) || true
 
 # Remove files created by Godot
 clean-resources:
