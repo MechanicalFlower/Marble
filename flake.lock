@@ -18,39 +18,25 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "godot": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1736701729,
-        "narHash": "sha256-qwDtbRDYERReYqlOlJS0Lw6F4WiG7VIWELq3pWq3jYE=",
-        "path": "/home/phlowrient/projects/by-lang/nix/godot-nix",
-        "type": "path"
+        "lastModified": 1736974421,
+        "narHash": "sha256-IghdXPrSK2u04p/U209nq2FpdEi7O/4sS6TV39eYqdw=",
+        "owner": "florianvazelle",
+        "repo": "godot-overlay",
+        "rev": "f006c07ca852d750bbb0715a27f7d94744a074f8",
+        "type": "github"
       },
       "original": {
-        "path": "/home/phlowrient/projects/by-lang/nix/godot-nix",
-        "type": "path"
+        "owner": "florianvazelle",
+        "ref": "rework",
+        "repo": "godot-overlay",
+        "type": "github"
       }
     },
     "nixpkgs": {
@@ -71,11 +57,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1736549401,
-        "narHash": "sha256-ibkQrMHxF/7TqAYcQE+tOnIsSEzXmMegzyBWza6uHKM=",
+        "lastModified": 1736867362,
+        "narHash": "sha256-i/UJ5I7HoqmFMwZEH6vAvBxOrjjOJNU739lnZnhUln8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1dab772dd4a68a7bba5d9460685547ff8e17d899",
+        "rev": "9c6b49aeac36e2ed73a8c472f1546f6d9cf1addc",
         "type": "github"
       },
       "original": {
@@ -87,27 +73,11 @@
     },
     "root": {
       "inputs": {
-        "flake-utils": "flake-utils",
         "godot": "godot",
         "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
