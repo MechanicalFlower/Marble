@@ -15,32 +15,34 @@
     (pkgs.lib.strings.splitString "\n" (builtins.readFile ./.env))
   ));
 
-  # Godot Editor
-  godot = pkgs.godotpkgs."${envVars.GODOT_VERSION}";
-
-  # Game data
-  gameName = envVars.GAME_NAME;
-  gameVersion = envVars.GAME_VERSION;
-
-  # Export preset by Arch/OS
+  # Export presets by Arch/OS
   presets = {"x86_64-linux" = "Linux/X11";};
 
   # TODO: create these derivations dynamically by parsing `plug.gd`
-  godot-debug-menu =  pkgs.mkPlug {
-    repo = "godot-extended-libraries/godot-debug-menu";
-    rev = "3211673efc9d1e41f94bbd74705eaed2d2b8bdd7";
-    hash = "sha256-1vUBulNYW0y58KOyBCyhPSa19v2HfUmvxncsSb1XxgQ=";
-  };
-  godot-universal-fade = pkgs.mkPlug {
-    repo = "KoBeWi/Godot-Universal-Fade";
-    rev = "f091514bba652880f81c5bc8809e0ee4498988ea";
-    hash = "sha256-hAbrZuGrlQxth6oIfpU6vKFqv1iI2hiFrQo2BiY5ElI=";
-  };
-in pkgs.mkGodot {
-  pname = gameName;
-  version = gameVersion;
+  addons = let 
+    sources = builtins.fromJSON (pkgs.lib.strings.fileContents ./.godot-deps.json);
+  in 
+    builtins.map(u: pkgs.godotpkgs.mkPlug { 
+      inherit (u) owner repo hash;
+      rev = u.commit;
+    }) sources.addons;
+in pkgs.godotpkgs."${envVars.GODOT_VERSION}".mkGodot {
+  inherit addons;
+
+  pname = envVars.GAME_NAME;
+  version = envVars.GAME_VERSION;
   src = ./.;
-  addons = [godot-debug-menu godot-universal-fade];
   preset = presets.${system} or (throw "Unsupported system: ${system}");
-  exportTemplates = "${godot}/templates";
+
+  # TODO: pass custom hook to `mkGodot`
+  # prePatch = ''
+  #   # TODO: ensure to patch game version
+  #   substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Icon=org.mechanicalflower.Marble' '$out/share/icons/hicolor/apps/marble.png'
+  #   substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Exec=marble-wrapper' 'Exec=$out/bin/${gameName}'
+  # '';
+
+  # preInstall = ''
+  #   install -D -m 644 -t $out/share/applications ./public/packaging/org.mechanicalflower.Marble.desktop
+  #   install -D -m 644 -T ./assets/icon.png $out/share/icons/hicolor/apps/marble.png
+  # '';
 }

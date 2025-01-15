@@ -13,6 +13,7 @@ A marble race minigame, made with [Godot Engine](https://godotengine.org/).
 <a href="https://mechanical-flower.itch.io/marble" target="_blank"><img src="public/publishing/store/itchio.webp" alt="Download on itch.io" height="40px" ></a>
 <a href="https://snapcraft.io/marble-race"><img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="40px"/></a>
 <a href="https://github.com/mechanicalflower/Marble/releases/"><img alt="Download as AppImage" src="https://docs.appimage.org/_images/download-appimage-banner.svg" height="40px"/></a>
+<a href="#nix" target="_blank"><img src="public/publishing/store/nix-badge-dark.svg" alt="Packaged for nixpkgs"  height="40px"></a>
 <!-- <a href="https://flathub.org/apps/details/org.mechanicalflower.Marble" target="_blank"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub"  height="40px"></a> -->
 
 </div>
@@ -77,6 +78,18 @@ The AppImage is available on the Github
 
 More details on how to run an AppImage, on the
  [official documentation](https://docs.appimage.org/introduction/quickstart.html#how-to-run-an-appimage).
+
+### From Nix
+
+With the [Nix command line](https://nix.dev/manual/nix/2.24/command-ref/new-cli/nix), run:
+```
+nix run github:MechanicalFlower/Marble
+```
+
+Or if you don't have flakes enabled:
+```
+nix run --extra-experimental-features "flakes nix-command" github:MechanicalFlower/Marble
+```
 
 ### From source
 
