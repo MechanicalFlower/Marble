@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     godot.url = "github:florianvazelle/godot-overlay/rework";
+    godot.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

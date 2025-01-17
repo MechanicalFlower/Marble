@@ -22,7 +22,7 @@
   addons = let
     sources = builtins.fromJSON (pkgs.lib.strings.fileContents ./.godot-deps.json);
   in
-    builtins.map(u: pkgs.godotpkgs.mkPlug {
+    builtins.map(u: pkgs.mkPlug {
       inherit (u) owner repo hash;
       rev = u.commit;
     }) sources.addons;
