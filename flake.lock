@@ -27,16 +27,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1737100017,
+        "lastModified": 1737100581,
         "narHash": "sha256-9Bar6+4NEUuuxgPUTYiWJmW6O7ypuKZS/tDep3w9JU4=",
         "owner": "florianvazelle",
         "repo": "godot-overlay",
-        "rev": "7316a5b41f184e674fae8b316133e3991306f8d5",
+        "rev": "65c57ae694804415a0053dd70aca37e85c23c122",
         "type": "github"
       },
       "original": {
         "owner": "florianvazelle",
-        "ref": "rework",
         "repo": "godot-overlay",
         "type": "github"
       }
