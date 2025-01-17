@@ -18,15 +18,15 @@
   # Export presets by Arch/OS
   presets = {"x86_64-linux" = "Linux/X11";};
 
-  # TODO: create these derivations dynamically by parsing `plug.gd`
-  addons = let 
+  # Parse plug.gd file and dynamically create addon derivations
+  addons = let
     sources = builtins.fromJSON (pkgs.lib.strings.fileContents ./.godot-deps.json);
-  in 
-    builtins.map(u: pkgs.godotpkgs.mkPlug { 
+  in
+    builtins.map(u: pkgs.godotpkgs.mkPlug {
       inherit (u) owner repo hash;
       rev = u.commit;
     }) sources.addons;
-in pkgs.godotpkgs."${envVars.GODOT_VERSION}".mkGodot {
+in pkgs.godotpkgs."${envVars.GODOT_VERSION}".mkGodot rec {
   inherit addons;
 
   pname = envVars.GAME_NAME;
@@ -34,15 +34,14 @@ in pkgs.godotpkgs."${envVars.GODOT_VERSION}".mkGodot {
   src = ./.;
   preset = presets.${system} or (throw "Unsupported system: ${system}");
 
-  # TODO: pass custom hook to `mkGodot`
-  # prePatch = ''
-  #   # TODO: ensure to patch game version
-  #   substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Icon=org.mechanicalflower.Marble' '$out/share/icons/hicolor/apps/marble.png'
-  #   substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Exec=marble-wrapper' 'Exec=$out/bin/${gameName}'
-  # '';
+  preBuildPhase = ''
+    # TODO: ensure to patch game version
+    substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Icon=org.mechanicalflower.Marble' '$out/share/icons/hicolor/apps/marble.png'
+    substituteInPlace ./public/packaging/org.mechanicalflower.Marble.desktop --replace-fail 'Exec=marble-wrapper' 'Exec=$out/bin/${pname}'
+  '';
 
-  # preInstall = ''
-  #   install -D -m 644 -t $out/share/applications ./public/packaging/org.mechanicalflower.Marble.desktop
-  #   install -D -m 644 -T ./assets/icon.png $out/share/icons/hicolor/apps/marble.png
-  # '';
+  preInstallPhase = ''
+    install -D -m 644 -t $out/share/applications ./public/packaging/org.mechanicalflower.Marble.desktop
+    install -D -m 644 -T ./assets/icon.png $out/share/icons/hicolor/apps/marble.png
+  '';
 }

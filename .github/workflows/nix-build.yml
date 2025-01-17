@@ -1,4 +1,4 @@
-name: nix build CI
+name: Nix Build
 
 on:
   workflow_dispatch:
