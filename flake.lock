@@ -27,11 +27,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1737100581,
-        "narHash": "sha256-9Bar6+4NEUuuxgPUTYiWJmW6O7ypuKZS/tDep3w9JU4=",
+        "lastModified": 1737101400,
+        "narHash": "sha256-7R7nBKAjYNeINSmfvxe+tVjYE97TN3L8dNBiR2nE5jI=",
         "owner": "florianvazelle",
         "repo": "godot-overlay",
-        "rev": "65c57ae694804415a0053dd70aca37e85c23c122",
+        "rev": "ac54ab1cccda17972a5b480be260c68f3d727531",
         "type": "github"
       },
       "original": {
@@ -42,11 +42,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1736916166,
-        "narHash": "sha256-puPDoVKxkuNmYIGMpMQiK8bEjaACcCksolsG36gdaNQ=",
+        "lastModified": 1737569578,
+        "narHash": "sha256-6qY0pk2QmUtBT9Mywdvif0i/CLVgpCjMUn6g9vB+f3M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e24b4c09e963677b1beea49d411cd315a024ad3a",
+        "rev": "47addd76727f42d351590c905d9d1905ca895b82",
         "type": "github"
       },
       "original": {

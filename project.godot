@@ -18,7 +18,7 @@ config/name="Marble"
 config/version="1.6.1"
 run/main_scene="res://scenes/main.tscn"
 config/project_settings_override="override.cfg"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 run/max_fps=60
 config/icon="res://assets/icon.png"
 
@@ -40,8 +40,8 @@ source/commit="41b766d42997fc9af1af4cb8680329bf02d0833f"
 
 [custom_options]
 
-build_info/commit="996e6018e05b70ef54ee9990d8b600588ed2ff3a"
-build_info/date="2024/08/17"
+build_info/commit="a15d491ab3844ed4d9aebe7be21dd05e8e15fe29"
+build_info/date="2025/01/23"
 
 [display]
 
@@ -83,6 +83,7 @@ wav={
 
 [physics]
 
+3d/physics_engine="Jolt Physics"
 common/enable_object_picking=false
 common/enable_pause_aware_picking=true
 

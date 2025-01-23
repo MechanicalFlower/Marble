@@ -6,6 +6,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Add nix packaging support ([#88](https://github.com/MechanicalFlower/Marble/pull/88))
 ### Changed
 - Correctly end the race if all marble are not exploded ([#57](https://github.com/MechanicalFlower/Marble/pull/57))
+- Use the Jolt Physics Engine ([#89](https://github.com/MechanicalFlower/Marble/pull/89))
 ### Deprecated
 ### Removed
 ### Fixed
@@ -15,6 +16,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `extractions/setup-just` from 1 to 2 ([#56](https://github.com/MechanicalFlower/Marble/pull/56))
 - Bump `dawidd6/action-download-artifact` from 3 to 6 ([#65](https://github.com/MechanicalFlower/Marble/pull/65), [#68](https://github.com/MechanicalFlower/Marble/pull/68), [#70](https://github.com/MechanicalFlower/Marble/pull/70))
 - Bump `godot` from 4.2 to 4.3 ([#76](https://github.com/MechanicalFlower/Marble/pull/76))
+- Bump `godot` from 4.2 to 4.4 ([#89](https://github.com/MechanicalFlower/Marble/pull/89))
 
 ## [1.6.1]
 ### Added
