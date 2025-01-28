@@ -1,24 +1,18 @@
 {
+  "nix": {
+    "enabled": true
+  },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^plug\\.gd$"],
+      "fileMatch": ["^\\.godot-deps\\.json$"],
       "matchStrings": [
-        "\\s+plug\\(\\s*\"(?<depName>.*)\",\\s+{\\s*\"commit\":\\s*\"(?<currentDigest>.*)\",\\s*\"renovate-branch\":\\s*\"(?<currentValue>.*)\""
+        "\\s+{\\s*\"owner\":\\s*\"(?<depOwner>.*)\",\\s*\"repo\":\\s*\"(?<depRepo>.*)\",\\s*\"commit\":\\s*\"(?<currentDigest>.*)\",\\s*\"renovate-branch\":\\s*\"(?<currentValue>.*)\""
       ],
-      "packageNameTemplate": "https://github.com/{{{depName}}}.git",
+      "depNameTemplate": "{{{depOwner}}}/{{{depRepo}}}",
+      "packageNameTemplate": "https://github.com/{{{depOwner}}}/{{{depRepo}}}.git",
       "versioningTemplate": "git",
       "datasourceTemplate": "git-refs"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["^plug\\.gd$"],
-      "matchStrings": [
-        "\\s+plug\\(\"(?<depName>.*?)\",\\ \\{\\s*\"tag\":\\ \"(?<currentValue>.*)\""
-      ],
-      "packageNameTemplate": "https://github.com/{{{depName}}}.git",
-      "versioningTemplate": "git",
-      "datasourceTemplate": "git-tags"
     },
     {
       "customType": "regex",

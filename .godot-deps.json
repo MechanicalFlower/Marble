@@ -1,0 +1,18 @@
+{
+    "addons": [
+        {
+            "owner": "godot-extended-libraries",
+            "repo": "godot-debug-menu",
+		    "commit": "3211673efc9d1e41f94bbd74705eaed2d2b8bdd7",
+            "hash": "sha256-1vUBulNYW0y58KOyBCyhPSa19v2HfUmvxncsSb1XxgQ=",
+            "renovate-branch": "master"
+        },
+        {
+            "owner": "KoBeWi",
+            "repo": "Godot-Universal-Fade",
+		    "commit": "f091514bba652880f81c5bc8809e0ee4498988ea",
+            "hash": "sha256-hAbrZuGrlQxth6oIfpU6vKFqv1iI2hiFrQo2BiY5ElI=",
+            "renovate-branch": "master"
+        }
+    ]
+}
