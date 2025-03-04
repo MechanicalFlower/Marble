@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bh0nd3c40wf75"]
 
-[ext_resource type="Script" path="res://scripts/gui/menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://dk8w2a8f1y2wh" path="res://scripts/gui/menu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2"]
 [ext_resource type="AudioStream" uid="uid://befsdykgrnt25" path="res://assets/sounds/sfx/ui_open.wav" id="3"]
-[ext_resource type="Script" path="res://addons/export-build-info/label.gd" id="3_3g7a0"]
+[ext_resource type="Script" uid="uid://by1ed8o3cdjht" path="res://addons/export-build-info/label.gd" id="3_3g7a0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wpgwf"]
 font = ExtResource("2")

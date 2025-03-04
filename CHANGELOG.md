@@ -13,7 +13,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Dependencies
 - Bump `extractions/setup-just` from 1 to 2 ([#56](https://github.com/MechanicalFlower/Marble/pull/56))
 - Bump `dawidd6/action-download-artifact` from 3 to 6 ([#65](https://github.com/MechanicalFlower/Marble/pull/65), [#68](https://github.com/MechanicalFlower/Marble/pull/68), [#70](https://github.com/MechanicalFlower/Marble/pull/70))
-- Bump `godot` from 4.2 to 4.3 ([#76](https://github.com/MechanicalFlower/Marble/pull/76))
+- Bump `godot` from 4.2 to 4.4 ([#76](https://github.com/MechanicalFlower/Marble/pull/76), [#94](https://github.com/MechanicalFlower/Marble/pull/94))
 
 ## [1.6.1]
 ### Added

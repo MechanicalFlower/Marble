@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1yn8okktqnyx"]
 
-[ext_resource type="Script" path="res://scripts/camera/cinematic_camera.gd" id="1"]
+[ext_resource type="Script" uid="uid://bqcxpebqog6ea" path="res://scripts/camera/cinematic_camera.gd" id="1"]
 
 [node name="MarbleCamera" type="Node3D"]
 process_mode = 3

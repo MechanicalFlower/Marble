@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8obdevmnmamd"]
 
-[ext_resource type="Script" path="res://scripts/race.gd" id="1"]
+[ext_resource type="Script" uid="uid://b4io3i0hcwpx0" path="res://scripts/race.gd" id="1"]
 
 [sub_resource type="Curve3D" id="Curve3D_gwdgr"]
 

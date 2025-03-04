@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://1ni00kklpf4b"]
 
-[ext_resource type="Script" path="res://scripts/gui/ranking.gd" id="1"]
+[ext_resource type="Script" uid="uid://cuv6iqadat5ky" path="res://scripts/gui/ranking.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2_8us2t"]
-[ext_resource type="Script" path="res://scripts/gui/overlay.gd" id="3"]
+[ext_resource type="Script" uid="uid://bg1m45hxivvdy" path="res://scripts/gui/overlay.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bph3mheo28yg4" path="res://assets/icons/icons8-dynamite-100.png" id="4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecb06"]

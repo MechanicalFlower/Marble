@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://kpsvshil6d4q"]
 
-[ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/blocks/bumper.gd" id="2"]
+[ext_resource type="Script" uid="uid://bwn5mvl4uaelw" path="res://scripts/blocks/piece.gd" id="1"]
+[ext_resource type="Script" uid="uid://b5v0fyh1ow5pt" path="res://scripts/blocks/bumper.gd" id="2"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://h3dbn48vuyv4" path="res://scenes/blocks/forward_down.tscn" id="5"]
 [ext_resource type="AudioStream" uid="uid://d1ov0uhwvty5i" path="res://assets/sounds/sfx/bump.wav" id="5_wrpvs"]
 [ext_resource type="PackedScene" uid="uid://vyhdstws7j5j" path="res://scenes/blocks/hopper2.tscn" id="6"]
-[ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="7"]
+[ext_resource type="Script" uid="uid://dwt08hlift8p3" path="res://scripts/blocks/checkpoint.gd" id="7"]
 
 [sub_resource type="CylinderMesh" id="1"]
 
@@ -37,7 +37,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_on4sg"]
 _data = {
-"bump": SubResource("6")
+&"bump": SubResource("6")
 }
 
 [sub_resource type="BoxShape3D" id="5"]
