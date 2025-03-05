@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3hw4un8s0u0l"]
 
-[ext_resource type="Script" path="res://scripts/camera/marble_camera.gd" id="1"]
+[ext_resource type="Script" uid="uid://ctgfknyymcfk6" path="res://scripts/camera/marble_camera.gd" id="1"]
 
 [node name="MarbleCamera" type="Node3D"]
 script = ExtResource("1")

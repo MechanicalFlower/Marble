@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://768qm8vsl1un"]
 
-[ext_resource type="Script" path="res://scripts/power.gd" id="1_cvq4u"]
-[ext_resource type="Shader" path="res://shaders/energy_shield.gdshader" id="2_fwh4g"]
+[ext_resource type="Script" uid="uid://bsubuow11obu4" path="res://scripts/power.gd" id="1_cvq4u"]
+[ext_resource type="Shader" uid="uid://c8pqw5ckyvhxi" path="res://shaders/energy_shield.gdshader" id="2_fwh4g"]
 [ext_resource type="AudioStream" uid="uid://5o2mnxsagwq1" path="res://assets/sounds/boost.ogg" id="3_wdakx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yntlh"]

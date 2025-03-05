@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr0ipqbbhw6fv"]
 
-[ext_resource type="Script" path="res://scripts/gui/countdown.gd" id="1"]
+[ext_resource type="Script" uid="uid://bpkfym2ygf1b5" path="res://scripts/gui/countdown.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cpxtqija5l465" path="res://assets/fonts/box_pixies.ttf" id="2_5qytn"]
 [ext_resource type="AudioStream" uid="uid://nau0cerdcaga" path="res://assets/sounds/countdown/countdown-b.ogg" id="3"]
 [ext_resource type="AudioStream" uid="uid://c8qsejp3fxb6y" path="res://assets/sounds/countdown/countdown-a.ogg" id="4"]

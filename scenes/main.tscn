@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxmtpk5gebd06"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="Script" uid="uid://b5efwlfhv53v5" path="res://scripts/main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://1ni00kklpf4b" path="res://scenes/gui/overlay.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b8obdevmnmamd" path="res://scenes/race.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://4g5aorgnd1hu" path="res://scenes/marble.tscn" id="5"]

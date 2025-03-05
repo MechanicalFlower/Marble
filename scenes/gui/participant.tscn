@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbh7t8fgh2gnu"]
 
-[ext_resource type="Script" path="res://scripts/gui/participant.gd" id="1"]
+[ext_resource type="Script" uid="uid://ck5u7sj5yyo" path="res://scripts/gui/participant.gd" id="1"]
 
 [node name="Participant" type="HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)

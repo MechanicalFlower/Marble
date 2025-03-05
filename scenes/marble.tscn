@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://4g5aorgnd1hu"]
 
-[ext_resource type="Script" path="res://scripts/marble.gd" id="1"]
+[ext_resource type="Script" uid="uid://bwf7ms3g3ypuf" path="res://scripts/marble.gd" id="1"]
 [ext_resource type="Material" uid="uid://5gxm1ehx7waa" path="res://resources/materials/xray_marble.tres" id="2"]
-[ext_resource type="Script" path="res://scripts/roll_sound.gd" id="4"]
+[ext_resource type="Script" uid="uid://whwk44gxpqj7" path="res://scripts/roll_sound.gd" id="4"]
 [ext_resource type="AudioStream" uid="uid://3hc6gfblh3gf" path="res://assets/sounds/sfx/roll.wav" id="4_d1o80"]
 [ext_resource type="AudioStream" uid="uid://b7ga03rbxi6qs" path="res://assets/sounds/sfx/hit.wav" id="6_iicuw"]
 [ext_resource type="AudioStream" uid="uid://c44julexev4dj" path="res://assets/sounds/explosion/bomb.ogg" id="7_1gve1"]

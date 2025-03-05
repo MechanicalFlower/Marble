@@ -3,7 +3,7 @@
 
 # ⚽ Marble
 
-![Godot Badge](https://img.shields.io/badge/godot-4.3-blue?logo=Godot-Engine&logoColor=white)
+![Godot Badge](https://img.shields.io/badge/godot-4.4-blue?logo=Godot-Engine&logoColor=white)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
 ![reuse](./.reuse/REUSE-compliant.svg)
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://dp612uo7gar38"]
 
-[ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
+[ext_resource type="Script" uid="uid://bwn5mvl4uaelw" path="res://scripts/blocks/piece.gd" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://c8keioqlqeoq5" path="res://assets/blocks/finish_line.obj" id="2_7kots"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="3"]
 [ext_resource type="Material" uid="uid://b8rgiyhrayedw" path="res://resources/materials/flag.tres" id="4"]
 [ext_resource type="Material" path="res://resources/materials/flag_text.tres" id="5"]
-[ext_resource type="Script" path="res://scripts/blocks/finish_line.gd" id="6"]
+[ext_resource type="Script" uid="uid://cyi1qrgebuuv2" path="res://scripts/blocks/finish_line.gd" id="6"]
 [ext_resource type="AudioStream" uid="uid://bdttmbobiy344" path="res://assets/sounds/sfx/finish_line.wav" id="6_h6fv5"]
 
 [sub_resource type="ConcavePolygonShape3D" id="3"]

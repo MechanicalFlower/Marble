@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://be3dc2gqk5xnm"]
 
-[ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
+[ext_resource type="Script" uid="uid://bwn5mvl4uaelw" path="res://scripts/blocks/piece.gd" id="1"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="2"]
 [ext_resource type="ArrayMesh" uid="uid://dt0nsm4a74lgm" path="res://assets/blocks/turn_left2.obj" id="3"]
-[ext_resource type="Script" path="res://scripts/blocks/checkpoint.gd" id="4"]
+[ext_resource type="Script" uid="uid://dwt08hlift8p3" path="res://scripts/blocks/checkpoint.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://768qm8vsl1un" path="res://scenes/power.tscn" id="5_fqsh4"]
 
 [sub_resource type="ConcavePolygonShape3D" id="3"]

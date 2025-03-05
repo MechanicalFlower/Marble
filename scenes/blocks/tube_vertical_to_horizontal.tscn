@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://v6ynkmksptpa"]
 
-[ext_resource type="Script" path="res://scripts/blocks/piece.gd" id="1"]
+[ext_resource type="Script" uid="uid://bwn5mvl4uaelw" path="res://scripts/blocks/piece.gd" id="1"]
 [ext_resource type="Material" uid="uid://be05svsycj308" path="res://resources/materials/piece.tres" id="2"]
 [ext_resource type="ArrayMesh" uid="uid://dlgst0aoyhihd" path="res://assets/blocks/tube_vertical_to_horizontal.obj" id="3"]
 
