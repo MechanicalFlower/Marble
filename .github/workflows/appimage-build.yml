@@ -30,7 +30,7 @@ jobs:
       - name: Install pkg2image dependencies
         run: |
           sudo add-apt-repository universe
-          sudo apt install libfuse2
+          sudo apt install libfuse2t64 imagemagick
 
       # Install pkg2appimage and build the game (https://github.com/AppImageCommunity/pkg2appimage)
       - name: Build AppImage
