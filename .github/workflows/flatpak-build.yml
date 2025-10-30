@@ -12,7 +12,7 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
       with:
         bundle: marble.flatpak
